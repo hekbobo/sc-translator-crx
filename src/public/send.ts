@@ -26,7 +26,11 @@ export type GetSelectorsResponse = GenericResponse<{
 export type GetAllCollectedTextResponse = GenericResponse<string[]>;
 export type GetCollectedByTextResponse = GenericResponse<{
     translations: Translation[];
-}>
+}>;
+export type I18nDetectLanguageResponse = GenericResponse<{
+    languages: chrome.i18n.LanguageDetectionResult['languages'];
+    isReliable: boolean;
+}>;
 
 type GenericMessage<ActionType, ActionPayload> = {
     type: ActionType;
@@ -58,6 +62,11 @@ export type ChromeRuntimeMessage = GenericMessage<
     {
         text: string;
         source: string;
+    }
+> | GenericMessage<
+    typeof types.SCTS_I18N_DETECT_LANGUAGE,
+    {
+        text: string;
     }
 > | GenericMessage<
     typeof types.SCTS_AUDIO,
@@ -112,6 +121,10 @@ export const sendAudio = (text: string, source: string, from: string) => {
 
 export const sendDetect = (text: string, source: string) => {
     return chromeRuntimeSendMessage<DetectResponse>({ type: types.SCTS_DETECT, payload: { text, source } });
+};
+
+export const sendI18nDetectLanguage = (text: string) => {
+    return chromeRuntimeSendMessage<I18nDetectLanguageResponse>({ type: types.SCTS_I18N_DETECT_LANGUAGE, payload: { text } });
 };
 
 export const sendSeparate = (text: string) => {

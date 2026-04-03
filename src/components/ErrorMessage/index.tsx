@@ -6,6 +6,7 @@ import { getMessage } from '../../public/i18n';
 const errorMessage: { [key: string]: string; } = {
     [extensionErrors.SOURCE_ERROR]: getMessage(`errorCode_${extensionErrors.SOURCE_ERROR}`),
     [extensionErrors.EXTENSION_UPDATED]: getMessage(`errorCode_${extensionErrors.EXTENSION_UPDATED}`),
+    [extensionErrors.SKIP_NON_ENGLISH]: getMessage(`errorCode_${extensionErrors.SKIP_NON_ENGLISH}`),
     [translateErrors.BAD_REQUEST]: getMessage(`errorCode_${translateErrors.BAD_REQUEST}`),
     [translateErrors.CONNECTION_TIMED_OUT]: getMessage(`errorCode_${translateErrors.CONNECTION_TIMED_OUT}`),
     [translateErrors.LANGUAGE_NOT_SOPPORTED]: getMessage(`errorCode_${translateErrors.LANGUAGE_NOT_SOPPORTED}`),

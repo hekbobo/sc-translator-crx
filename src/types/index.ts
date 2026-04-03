@@ -129,6 +129,8 @@ export type DefaultOptions = {
     defaultAudioSource: string;
     translateWithKeyPress: boolean;
     useDotCn: boolean;
+    /** When true, only translate if source language is English (selection / popup / separate window). */
+    translateEnglishOnly: boolean;
     multipleTranslateSourceList: string[];
     multipleTranslateFrom: string;
     multipleTranslateTo: string;

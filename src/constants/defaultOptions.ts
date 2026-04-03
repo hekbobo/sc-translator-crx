@@ -16,6 +16,7 @@ const defaultOptions: DefaultOptions = {
     defaultAudioSource: GOOGLE_COM,
     translateWithKeyPress: false,
     useDotCn: false,
+    translateEnglishOnly: true,
     multipleTranslateSourceList: [GOOGLE_COM, BING_COM],
     multipleTranslateFrom: '',
     multipleTranslateTo: '',

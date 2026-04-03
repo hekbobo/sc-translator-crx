@@ -110,6 +110,12 @@
     "optionsUseDotCn": {
         "message": "Use \".cn\" in URL (For example: translate.google.cn)"
     },
+    "optionsTranslateEnglishOnly": {
+        "message": "Translate English only"
+    },
+    "optionsTranslateEnglishOnlyDescription": {
+        "message": "When enabled, only text detected as English is translated (floating button, popup, and separate window). Webpage translation is not affected. If source language is set explicitly, only \"English\" is translated."
+    },
     "optionsMode": {
         "message": "Mode"
     },
@@ -757,6 +763,9 @@
     },
     "errorCode_SOURCE_ERROR": {
         "message": "Error: Translate source not found."
+    },
+    "errorCode_SKIP_NON_ENGLISH": {
+        "message": "Skipped: source text is not English (English-only mode is on)."
     },
     "download": {
         "message": "Download"

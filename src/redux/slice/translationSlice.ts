@@ -4,6 +4,8 @@ import { textPreprocessing } from '../../public/text-preprocessing';
 import { sendTranslate } from '../../public/send';
 import scBrowserAI from '../../public/sc-browser-ai';
 import { BROWSER_AI } from '../../constants/translateSource';
+import scOptions from '../../public/sc-options';
+import { isSourceLanguageEnglish } from '../../public/translate/is-english-source';
 
 type TranslationState = {
     text: string;
@@ -31,6 +33,14 @@ export const fetchTranslationFromSource = createAsyncThunk<
     const preprocessedText = textPreprocessing(text);
 
     if (!preprocessedText) { return; }
+
+    const { translateEnglishOnly } = await scOptions.get(['translateEnglishOnly']);
+    if (translateEnglishOnly) {
+        const isEnglish = await isSourceLanguageEnglish(preprocessedText, from);
+        if (!isEnglish) {
+            return;
+        }
+    }
 
     dispatch(requestStart({ source }));
 

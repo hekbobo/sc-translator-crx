@@ -110,6 +110,12 @@
     "optionsUseDotCn": {
         "message": "在 URL 中使用“.cn”（例如：translate.google.cn）"
     },
+    "optionsTranslateEnglishOnly": {
+        "message": "仅翻译英文"
+    },
+    "optionsTranslateEnglishOnlyDescription": {
+        "message": "开启后，仅当划选文本被识别为英文（或源语言设为英语）时才翻译，适用于浮动按钮、扩展弹窗与独立翻译窗口；网页整页翻译不受影响。若手动指定了源语言，则仅当源语言为「英语」时翻译。"
+    },
     "optionsMode": {
         "message": "模式"
     },
@@ -757,6 +763,9 @@
     },
     "errorCode_SOURCE_ERROR": {
         "message": "错误：未找到翻译源。"
+    },
+    "errorCode_SKIP_NON_ENGLISH": {
+        "message": "已跳过：当前为「仅翻译英文」模式，源文本不是英文。"
     },
     "download": {
         "message": "下载"

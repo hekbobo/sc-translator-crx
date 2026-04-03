@@ -1,6 +1,8 @@
 export const SCTS_TRANSLATE = 'SCTS_TRANSLATE';
 export const SCTS_AUDIO = 'SCTS_AUDIO';
 export const SCTS_DETECT = 'SCTS_DETECT';
+/** chrome.i18n.detectLanguage — must run in service worker; not available in content scripts. */
+export const SCTS_I18N_DETECT_LANGUAGE = 'SCTS_I18N_DETECT_LANGUAGE';
 export const SCTS_CONTEXT_MENUS_CLICKED = 'SCTS_CONTEXT_MENUS_CLICKED';
 export const SCTS_TRANSLATE_COMMAND_KEY_PRESSED = 'SCTS_TRANSLATE_COMMAND_KEY_PRESSED';
 export const SCTS_AUDIO_COMMAND_KEY_PRESSED = 'SCTS_AUDIO_COMMAND_KEY_PRESSED';

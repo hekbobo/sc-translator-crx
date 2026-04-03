@@ -110,6 +110,12 @@
     "optionsUseDotCn": {
         "message": "URL で 「.cn」 を使用します（例えば：translate.google.cn）"
     },
+    "optionsTranslateEnglishOnly": {
+        "message": "英語のみ翻訳する"
+    },
+    "optionsTranslateEnglishOnlyDescription": {
+        "message": "有効にすると、選択テキストが英語と判定された場合（またはソース言語が英語に設定されている場合）のみ翻訳します。フローティングボタン、拡張機能のポップアップ、スタンドアロン翻訳ウィンドウに適用されます。ページ全体の翻訳には影響しません。ソース言語を手動で指定している場合は「英語」のときのみ翻訳します。"
+    },
     "optionsMode": {
         "message": "モード"
     },
@@ -757,6 +763,9 @@
     },
     "errorCode_SOURCE_ERROR": {
         "message": "エラー：翻訳ソースが見つかりません。"
+    },
+    "errorCode_SKIP_NON_ENGLISH": {
+        "message": "スキップ：「英語のみ翻訳」が有効で、ソーステキストは英語ではありません。"
     },
     "download": {
         "message": "ダウンロード"

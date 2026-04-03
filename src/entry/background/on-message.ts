@@ -9,6 +9,7 @@ import {
     GetAllCollectedTextResponse,
     GetCollectedByTextResponse,
     GetSelectorsResponse,
+    I18nDetectLanguageResponse,
     IsCollectResponse,
     TranslateResponse
 } from '../../public/send';
@@ -16,7 +17,7 @@ import { getSpecifySelectors } from './page-translation-rule';
 import scOptions from '../../public/sc-options';
 
 type TypedSendResponse = (
-    response: TranslateResponse | AudioResponse | DetectResponse | IsCollectResponse | GetSelectorsResponse | GetAllCollectedTextResponse | GetCollectedByTextResponse
+    response: TranslateResponse | AudioResponse | DetectResponse | IsCollectResponse | GetSelectorsResponse | GetAllCollectedTextResponse | GetCollectedByTextResponse | I18nDetectLanguageResponse
 ) => void;
 
 chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sendResponse: TypedSendResponse) => {
@@ -39,6 +40,18 @@ chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sen
             scOptions.get(['useDotCn'])
                 .then(({ useDotCn }) => (detect({ ...message.payload, com: !useDotCn })))
                 .then(sendResponse);
+
+            return true;
+        }
+        case types.SCTS_I18N_DETECT_LANGUAGE: {
+            const { text } = message.payload;
+            chrome.i18n.detectLanguage(text, (result) => {
+                if (chrome.runtime.lastError) {
+                    sendResponse({ code: chrome.runtime.lastError.message ?? 'I18N_DETECT_FAILED' });
+                    return;
+                }
+                sendResponse({ languages: result.languages, isReliable: result.isReliable });
+            });
 
             return true;
         }

@@ -14,6 +14,10 @@ import { sendSeparate } from '../../public/send';
 import { isTextBox } from '../../public/utils';
 import { GetStorageKeys, Position } from '../../types';
 import { callOutPanelInContentScript, closePanel, requestToHidePanel, showPanelAndSetPosition } from '../../redux/slice/panelStatusSlice';
+import store from '../../redux/store';
+import scOptions from '../../public/sc-options';
+import { textPreprocessing } from '../../public/text-preprocessing';
+import { isSourceLanguageEnglish } from '../../public/translate/is-english-source';
 import {
     translateButtonContext,
     TRANSLATE_BUTTON_COPY,
@@ -107,14 +111,28 @@ const TsBtn: React.FC = () => {
     const dispatch = useAppDispatch();
 
     const handleForwardTranslate = useCallback((text: string, position: Position, to: undefined | string = undefined) => {
-        if (respondToSeparateWindow) {
-            sendSeparate(text);
-            return;
-        }
+        void (async () => {
+            if (respondToSeparateWindow) {
+                sendSeparate(text);
+                return;
+            }
 
-        dispatch(showPanelAndSetPosition({ position, pinThePanelWhileOpeningIt }));
+            const preprocessedText = textPreprocessing(text);
+            if (!preprocessedText) { return; }
 
-        dispatch(nextTranslaion({ text, to }));
+            const { translateEnglishOnly } = await scOptions.get(['translateEnglishOnly']);
+            if (translateEnglishOnly) {
+                const from = store.getState().translation.from;
+                if (!(await isSourceLanguageEnglish(preprocessedText, from))) {
+                    dispatch(closePanel());
+                    return;
+                }
+            }
+
+            dispatch(showPanelAndSetPosition({ position, pinThePanelWhileOpeningIt }));
+
+            dispatch(nextTranslaion({ text, to }));
+        })();
     }, [dispatch, respondToSeparateWindow, pinThePanelWhileOpeningIt]);
 
     const handleTranslateButtonClick = (translateButton: string) => {

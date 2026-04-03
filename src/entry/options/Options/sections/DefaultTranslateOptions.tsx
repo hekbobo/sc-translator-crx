@@ -21,6 +21,7 @@ const useOptionsDependency: GetStorageKeys<
     'multipleTranslateFrom' |
     'multipleTranslateTo' |
     'useDotCn' |
+    'translateEnglishOnly' |
     'customTranslateSourceList' |
     'displayOfTranslation' |
     'enabledThirdPartyServices'
@@ -32,6 +33,7 @@ const useOptionsDependency: GetStorageKeys<
     'multipleTranslateFrom',
     'multipleTranslateTo',
     'useDotCn',
+    'translateEnglishOnly',
     'customTranslateSourceList',
     'displayOfTranslation',
     'enabledThirdPartyServices'
@@ -46,6 +48,7 @@ const DefaultTranslateOptions: React.FC = () => {
         multipleTranslateFrom,
         multipleTranslateTo,
         useDotCn,
+        translateEnglishOnly,
         customTranslateSourceList,
         displayOfTranslation,
         enabledThirdPartyServices
@@ -59,6 +62,14 @@ const DefaultTranslateOptions: React.FC = () => {
                     checked={useDotCn}
                     onChange={v => scOptions.set({ useDotCn: v })}
                 />
+            </div>
+            <div className='opt-section-row'>
+                <Switch
+                    label={getMessage('optionsTranslateEnglishOnly')}
+                    checked={translateEnglishOnly}
+                    onChange={v => scOptions.set({ translateEnglishOnly: v })}
+                />
+                <div className='item-description'>{getMessage('optionsTranslateEnglishOnlyDescription')}</div>
             </div>
             <div className='opt-section-row'>
                 {getMessage('optionsLanguage')}
