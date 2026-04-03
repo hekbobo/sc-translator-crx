@@ -6,7 +6,7 @@ import { DefaultOptions, DeprecatedOptions } from '../../types';
 import { TRANSLATE_BUTTON_TRANSLATE } from '../../constants/translateButtonTypes';
 import { initContextMenus } from './context-menus';
 import { initSourceParams } from '../../constants/sourceParams';
-import { BING_COM, MICROSOFT_COM } from '../../constants/translateSource';
+import { BING_COM, MICROSOFT_COM, webPageTranslateSource } from '../../constants/translateSource';
 import scOptions from '../../public/sc-options';
 
 const initStorageOnInstalled = (userLang: string, update: boolean) => {
@@ -35,6 +35,11 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
 
     scOptions.get(null).then((d: any) => {
         const data = d as DefaultOptions & DeprecatedOptions;
+        // Default: input fields inside should not trigger translation.
+        // To honor "默认打开", force-enable on updates as well.
+        if (update) {
+            data.doNotRespondInTextBox = true;
+        }
         // in new version, use 'useDotCn' instead of 'xxx.cn'
         if (update && (data.defaultTranslateSource === 'google.cn' || data.defaultTranslateSource === 'bing.cn' || data.defaultAudioSource === 'google.cn')) {
             data.useDotCn = true;
@@ -86,6 +91,17 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
         // Remove Baidu audio
         if (update && data.defaultAudioSource === 'baidu.com') {
             data.defaultAudioSource = defaultSet.defaultAudioSource;
+        }
+
+        if (update) {
+            const merged = data as DefaultOptions;
+            merged.customWebpageTranslateSourceList = [];
+            merged.enableAutoTranslateWebpage = false;
+            merged.autoTranslateWebpageHostList = [];
+            const validWpSources = new Set(webPageTranslateSource.map(s => s.source));
+            if (!validWpSources.has(merged.webPageTranslateSource)) {
+                merged.webPageTranslateSource = defaultSet.webPageTranslateSource;
+            }
         }
 
         chrome.storage.local.set({ ...defaultSet, ...data, sourceParamsCache: initSourceParams }, () => {

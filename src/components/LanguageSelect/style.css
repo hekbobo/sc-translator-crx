@@ -5,9 +5,10 @@
     user-select: none;
     outline: 0;
     white-space: pre;
-    padding: 4px;
+    padding: 4px 6px;
     width: 150px;
     display: inline-block;
+    border-radius: 8px;
 }
 .language-select__badge {
     display: flex;
@@ -19,10 +20,11 @@
 }
 .language-select__search {
     display: flex;
-    margin: 4px;
-    border-bottom: 1px solid currentColor;
+    margin: 6px 4px;
     align-items: center;
-    padding: 4px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: var(--bg-total);
 }
 .language-select__search-input {
     flex: 1;
@@ -33,8 +35,9 @@
     width: 100%;
 }
 .language-select__option, .language-select__no-result {
-    padding: 4px;
-    line-height: 1;
+    padding: 7px 10px;
+    line-height: 1.2;
+    border-radius: 6px;
 }
 .language-select__option:hover {
     background: var(--bg-item-hover);

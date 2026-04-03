@@ -19,10 +19,6 @@ export type IsCollectResponse = GenericResponse<{
     text: string;
     isCollected: boolean;
 }>;
-export type GetSelectorsResponse = GenericResponse<{
-    includeSelectors: string;
-    excludeSelectors: string;
-}>;
 export type GetAllCollectedTextResponse = GenericResponse<string[]>;
 export type GetCollectedByTextResponse = GenericResponse<{
     translations: Translation[];
@@ -95,11 +91,6 @@ export type ChromeRuntimeMessage = GenericMessage<
         host: string;
     }
 > | GenericMessage<
-    typeof types.SCTS_GET_SPECIFY_SELECTORS,
-    {
-        hostAndPathname: string;
-    }
-> | GenericMessage<
     typeof types.SCTS_GET_ALL_COLLECTED_TEXT,
     Record<string, never>
 > | GenericMessage<
@@ -149,10 +140,6 @@ export const sendUpdatePageTranslationState = (host: string, translating: boolea
 
 export const sendShouldAutoTranslateThisPage = (host: string) => {
     return chromeRuntimeSendMessage<'Yes' | 'No'>({ type: types.SCTS_SHOULD_AUTO_TRANSLATE_THIS_PAGE, payload: { host } });
-};
-
-export const sendGetSpecifySelectors = (hostAndPathname: string) => {
-    return chromeRuntimeSendMessage<GetSelectorsResponse>({ type: types.SCTS_GET_SPECIFY_SELECTORS, payload: { hostAndPathname } });
 };
 
 export const sendGetAllCollectedText = () => {

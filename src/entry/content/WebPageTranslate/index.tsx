@@ -14,16 +14,14 @@ import { closeWebPageTranslating, errorRetry, startWebPageTranslating, switchWay
 import { GetStorageKeys } from '../../../types';
 import './style.css';
 import Logo from '../../../components/Logo';
-import { sendGetSpecifySelectors, sendShouldAutoTranslateThisPage, sendUpdatePageTranslationState } from '../../../public/send';
+import { sendShouldAutoTranslateThisPage, sendUpdatePageTranslationState } from '../../../public/send';
 import scOptions from '../../../public/sc-options';
 
 const wPTI18nCache = {
     switchDisplayModeOfResult: getMessage('contentSwitchDisplayModeOfResult'),
     startWebPageTranslating: getMessage('contentStartWebPageTranslating'),
     closeWebPageTranslating: getMessage('contentCloseWebPageTranslating'),
-    restartWebpageTranslating: getMessage('contentRestartWebpageTranslating'),
-    enableAutoTranslationOnThisSite: getMessage('contentEnableAutoTranslationOnThisSite'),
-    disableAutoTranslationOnThisSite: getMessage('contentDisableAutoTranslationOnThisSite')
+    restartWebpageTranslating: getMessage('contentRestartWebpageTranslating')
 };
 
 // WPT means web page transalte
@@ -87,10 +85,7 @@ const wPTReducer = (state: WPTReducerState, action: WPTReducerAction): WPTReduce
     }
 };
 
-const useOptionsDependency: GetStorageKeys<
-    'autoTranslateWebpageHostList' |
-    'translateRedirectedSameDomainPage'
-> = ['autoTranslateWebpageHostList', 'translateRedirectedSameDomainPage'];
+const useOptionsDependency: GetStorageKeys<'translateRedirectedSameDomainPage'> = ['translateRedirectedSameDomainPage'];
 
 const WebPageTranslate: React.FC = () => {
     const langCodes = useMemo(() => preferredLangCode[scOptions.getInit().userLanguage], []);
@@ -101,13 +96,7 @@ const WebPageTranslate: React.FC = () => {
         targetLanguage: scOptions.getInit().webPageTranslateTo
     });
 
-    const { autoTranslateWebpageHostList, translateRedirectedSameDomainPage } = useOptions(useOptionsDependency);
-
-    const hostSet = useMemo(() => {
-        return new Set(autoTranslateWebpageHostList);
-    }, [autoTranslateWebpageHostList]);
-
-    const host = window.location.host;
+    const { translateRedirectedSameDomainPage } = useOptions(useOptionsDependency);
 
     const handleError = useCallback((errorReason: string) => {
         errorReason && dispach({ type: 'change-error', error: errorReason });
@@ -126,34 +115,28 @@ const WebPageTranslate: React.FC = () => {
 
         closeWebPageTranslating();
 
-        sendGetSpecifySelectors(`${window.location.host}${window.location.pathname}`).then((data) => {
-            let specifySelectors = { includeSelectors: '', excludeSelectors: '' };
+        const specifySelectors = { includeSelectors: '', excludeSelectors: '' };
 
-            if (!('code' in data)) {
-                specifySelectors = data;
-            }
-
-            const startSuccess = startWebPageTranslating({
-                element: document.body,
-                translateSource: source,
-                targetLanguage,
-                enhancement: scOptions.getInit().displayModeEnhancement,
-                translateDynamicContent: scOptions.getInit().translateDynamicContent,
-                translateIframeContent: scOptions.getInit().translateIframeContent,
-                customization: scOptions.getInit().comparisonCustomization,
-                specifySelectors,
-                onError: handleError,
-                onRequestStart: handleRequestStart,
-                onRequestFinish: handleRequestFinish
-            });
-    
-            if (startSuccess) {
-                dispach({ type: 'process-success' });
-            }
-            else {
-                dispach({ type: 'change-error', error: 'Process failed!' });
-            }
+        const startSuccess = startWebPageTranslating({
+            element: document.body,
+            translateSource: source,
+            targetLanguage,
+            enhancement: scOptions.getInit().displayModeEnhancement,
+            translateDynamicContent: scOptions.getInit().translateDynamicContent,
+            translateIframeContent: scOptions.getInit().translateIframeContent,
+            customization: scOptions.getInit().comparisonCustomization,
+            specifySelectors,
+            onError: handleError,
+            onRequestStart: handleRequestStart,
+            onRequestFinish: handleRequestFinish
         });
+
+        if (startSuccess) {
+            dispach({ type: 'process-success' });
+        }
+        else {
+            dispach({ type: 'change-error', error: 'Process failed!' });
+        }
     }, [source, targetLanguage, working, dispach, handleError, handleRequestStart, handleRequestFinish]);
 
     const activatePageTranslation = useCallback(() => {
@@ -183,23 +166,14 @@ const WebPageTranslate: React.FC = () => {
     useEffectOnce(() => {
         switchWayOfFontsDisplaying(scOptions.getInit().webPageTranslateDisplayMode);
 
-        const auto = scOptions.getInit().translateDynamicContent && scOptions.getInit().enableAutoTranslateWebpage && scOptions.getInit().autoTranslateWebpageHostList.includes(host);
+        if (!working && scOptions.getInit().translateRedirectedSameDomainPage) {
+            sendShouldAutoTranslateThisPage(location.host).then((response) => {
+                if (response === 'Yes') {
+                    dispach({ type: 'active-wpt', show: !scOptions.getInit().noControlBarWhileFirstActivating, auto: false });
 
-        if (!working) {
-            if (auto) {
-                dispach({ type: 'active-wpt', show: !scOptions.getInit().noControlBarWhileFirstActivating, auto });
-
-                startProcessing();
-            }
-            else if (scOptions.getInit().translateRedirectedSameDomainPage) {
-                sendShouldAutoTranslateThisPage(location.host).then((response) => {
-                    if (response === 'Yes') {
-                        dispach({ type: 'active-wpt', show: !scOptions.getInit().noControlBarWhileFirstActivating, auto });
-
-                        startProcessing();
-                    }
-                });
-            }
+                    startProcessing();
+                }
+            });
         }
     });
 
@@ -291,7 +265,7 @@ const WebPageTranslate: React.FC = () => {
                 <SourceSelect
                     source={source}
                     className='border-bottom-select'
-                    sourceList={webPageTranslateSourceList.concat(scOptions.getInit().customWebpageTranslateSourceList)}
+                    sourceList={webPageTranslateSourceList}
                     onChange={source => dispach({ type: 'change-source', source })}
                     faviconOnly
                 />
@@ -330,17 +304,6 @@ const WebPageTranslate: React.FC = () => {
             >
                 <IconFont iconName='#icon-switch' />
             </PanelIconButtonWrapper>
-            {scOptions.getInit().translateDynamicContent && scOptions.getInit().enableAutoTranslateWebpage && <PanelIconButtonWrapper
-                onClick={() => {
-                    const nextHostSet = new Set(hostSet);
-                    nextHostSet.has(host) ? nextHostSet.delete(host) : nextHostSet.add(host);
-                    scOptions.set({ autoTranslateWebpageHostList: [...nextHostSet] });
-                }}
-                title={hostSet.has(host) ? wPTI18nCache.disableAutoTranslationOnThisSite : wPTI18nCache.enableAutoTranslationOnThisSite}
-                iconGrey={!hostSet.has(host)}
-            >
-                <IconFont iconName='#icon-auto' />
-            </PanelIconButtonWrapper>}
             <div className='web-page-translate__content__division' />
             <PanelIconButtonWrapper
                 onClick={closePageTranslation}

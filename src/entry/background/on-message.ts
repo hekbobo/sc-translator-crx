@@ -8,16 +8,14 @@ import {
     DetectResponse,
     GetAllCollectedTextResponse,
     GetCollectedByTextResponse,
-    GetSelectorsResponse,
     I18nDetectLanguageResponse,
     IsCollectResponse,
     TranslateResponse
 } from '../../public/send';
-import { getSpecifySelectors } from './page-translation-rule';
 import scOptions from '../../public/sc-options';
 
 type TypedSendResponse = (
-    response: TranslateResponse | AudioResponse | DetectResponse | IsCollectResponse | GetSelectorsResponse | GetAllCollectedTextResponse | GetCollectedByTextResponse | I18nDetectLanguageResponse
+    response: TranslateResponse | AudioResponse | DetectResponse | IsCollectResponse | GetAllCollectedTextResponse | GetCollectedByTextResponse | I18nDetectLanguageResponse
 ) => void;
 
 chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sendResponse: TypedSendResponse) => {
@@ -106,13 +104,6 @@ chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sen
             text && scIndexedDB.delete(DB_STORE_COLLECTION, text);
 
             return false;
-        }
-        case types.SCTS_GET_SPECIFY_SELECTORS: {
-            const { hostAndPathname } = message.payload;
-
-            getSpecifySelectors(hostAndPathname).then(data => sendResponse(data));
-
-            return true;
         }
         case types.SCTS_GET_ALL_COLLECTED_TEXT: {
             scIndexedDB.getAllKeys('collection').then(data => sendResponse(data as string[]));

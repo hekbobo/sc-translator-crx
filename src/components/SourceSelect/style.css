@@ -6,11 +6,16 @@
     user-select: none;
     outline: 0;
     white-space: pre;
-    padding: 2px;
-    max-width: 150px;
+    padding: 4px 6px;
+    max-width: 190px;
+    border-radius: 8px;
 }
 .source-select .iconfont {
-    margin-left: 4px;
+    margin-left: 2px;
+}
+
+.source-select:hover {
+    background: var(--bg-item-hover);
 }
 .source-select--disabled {
     color: rgb(170, 170, 170);
@@ -23,11 +28,18 @@
 .source-select__value {
     flex: 1;
     overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
 }
 .source-select__options__option {
-    padding: 4px;
+    padding: 7px 10px;
     overflow: hidden;
     cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .source-select__options__option:hover {
     background: var(--bg-item-hover);

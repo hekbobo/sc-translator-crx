@@ -28,7 +28,7 @@ const SourceFavicon: React.FC<SourceFaviconProps> = ({ source, className, favico
 };
 
 const getSourceNameFromCustomSources = (source: string) => {
-    return scOptions.getInit().customTranslateSourceList.concat(scOptions.getInit().customWebpageTranslateSourceList).find(v => v.source === source)?.name ?? source;
+    return scOptions.getInit().customTranslateSourceList.find(v => v.source === source)?.name ?? source;
 }
 
 const getFavicon = (source: string) => {

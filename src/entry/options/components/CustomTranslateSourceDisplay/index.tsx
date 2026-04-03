@@ -3,7 +3,6 @@ import Button from '../../../../components/Button';
 import IconFont from '../../../../components/IconFont';
 import { getMessage } from '../../../../public/i18n';
 import { checkResultFromCustomSource } from '../../../../public/translate/custom/check-result';
-import { checkResultFromCustomWebpageTranslatSource } from '../../../../public/web-page-translate/custom/check-result';
 import { CustomTranslateSource } from '../../../../types';
 import './style.css';
 import scOptions from '../../../../public/sc-options';
@@ -11,10 +10,9 @@ import scOptions from '../../../../public/sc-options';
 type CustomTranslateSourceDisplayProps = {
     customTranslateSources: CustomTranslateSource[];
     onChange: (customTranslateSources: CustomTranslateSource[]) => void;
-    webpage?: boolean;
 };
 
-const CustomTranslateSourceDisplay: React.FC<CustomTranslateSourceDisplayProps> = ({ customTranslateSources, onChange, webpage }) => {
+const CustomTranslateSourceDisplay: React.FC<CustomTranslateSourceDisplayProps> = ({ customTranslateSources, onChange }) => {
     const [modifying, setModifying] = useState(false);
     const [updated, setUpdated] = useState(false);
     const [customSources, setCustomSources] = useState<CustomTranslateSource[]>([]);
@@ -48,7 +46,7 @@ const CustomTranslateSourceDisplay: React.FC<CustomTranslateSourceDisplayProps> 
 
             const id = testDataRef.current.id;
 
-            testCustomSource(url, webpage).then(() => {
+            testCustomSource(url).then(() => {
                 if (!urlInputRef.current || !nameInputRef.current || testDataRef.current.id !== id) { return; }
 
                 setCustomSources(customSources.concat({
@@ -78,17 +76,17 @@ const CustomTranslateSourceDisplay: React.FC<CustomTranslateSourceDisplayProps> 
         catch (err) {
             setMessage(`Error: ${(err as Error).message}`);
         }
-    }, [customSources, webpage]);
+    }, [customSources]);
 
     const onSaveBtnClick = useCallback(() => {
         onChange(customSources);
-        scOptions.setInit({ ...scOptions.getInit(), [webpage ? 'customWebpageTranslateSourceList' : 'customTranslateSourceList']: customSources });
+        scOptions.setInit({ ...scOptions.getInit(), customTranslateSourceList: customSources });
 
         setModifying(false);
         setUpdated(false);
         setMessage('');
         testDataRef.current = { id: testDataRef.current.id + 1, url: '' };
-    }, [onChange, customSources, webpage]);
+    }, [onChange, customSources]);
 
     const onCancelBtnClick = useCallback(() => {
         setUpdated(false);
@@ -140,14 +138,8 @@ const CustomTranslateSourceDisplay: React.FC<CustomTranslateSourceDisplayProps> 
     );
 };
 
-const testCustomSource = async (url: string, webpage?: boolean) => {
-    const fetchJSON = webpage ? {
-        paragraphs: [
-            ["This ", "is", " a sentence."],
-            ["This ", "is another sentence."]
-        ],
-        targetLanguage: 'en'
-    } : {
+const testCustomSource = async (url: string) => {
+    const fetchJSON = {
         text: 'test',
         from: 'auto',
         to: 'en',
@@ -167,7 +159,7 @@ const testCustomSource = async (url: string, webpage?: boolean) => {
 
     const data = await res.json();
 
-    webpage ? checkResultFromCustomWebpageTranslatSource(data) : checkResultFromCustomSource(data);
+    checkResultFromCustomSource(data);
 };
 
 export default CustomTranslateSourceDisplay;

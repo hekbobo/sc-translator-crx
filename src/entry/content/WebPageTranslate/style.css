@@ -18,10 +18,10 @@
 }
 .page-translation__select-box {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 }
 .web-page-translate__content .source-select {
-    padding: 0;
+    padding: 4px 6px;
 }
 .web-page-translate__select {
     width: 100px;

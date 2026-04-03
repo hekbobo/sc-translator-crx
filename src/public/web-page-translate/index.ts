@@ -1,9 +1,9 @@
+import { SOURCE_ERROR } from '../../constants/errorCodes';
 import { GOOGLE_COM, MICROSOFT_COM } from '../../constants/translateSource';
 import { ComparisonCustomization, DisplayModeEnhancement } from '../../types';
 import { getMessage } from '../i18n';
 import { translate as googleWebTranslate } from './google/translate';
 import { translate as microsoftWebTranslate } from './microsoft/translate';
-import { translate as customWebTranslate } from './custom/translate';
 import { getError } from '../translate/utils';
 export type WebpageTranslateResult = {
     translations: string[];
@@ -1185,7 +1185,7 @@ const translateProcess = ({ translateList, beforeTranslate, onSuccess, onError, 
         translate = microsoftWebTranslate;
     }
     else {
-        translate = customWebTranslate;
+        translate = async () => { throw getError(SOURCE_ERROR); };
     }
 
     const tempCloseFlag = closeFlag;
