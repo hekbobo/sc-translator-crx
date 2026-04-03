@@ -8,20 +8,19 @@ import DefaultTranslateOptions from './sections/DefaultTranslateOptions';
 import History from './sections/History';
 import More from './sections/More';
 import SeparateWindow from './sections/SeparateWindow';
-import Theme from './sections/Theme';
+import CustomizeStyle from './sections/CustomizeStyle';
 import Translate from './sections/Translate';
 import TranslatePanel from './sections/TranslatePanel';
 import Clipboard from './sections/Clipboard';
 import './style.css';
 import WebPageTranslating from './sections/WebPageTranslating';
-import TextPreprocessing from './sections/TextPreprocessing';
 
 const Options: React.FC = () => {
     return (
         <div className='options'>
             <OptionsMenu />
-            <div className='sub-title'  id='theme'>{getMessage('optionsTheme')}</div>
-            <Theme />
+            <div className='sub-title' id='customize-style'>{getMessage('optionsCustomizeStyle')}</div>
+            <CustomizeStyle />
             <div className='sub-title' id='clipboard'>{getMessage('optionsClipboard')}</div>
             <Clipboard />
             <div className='sub-title' id='web-page-translating'>{getMessage('optionsWebPageTranslating')}</div>
@@ -34,8 +33,6 @@ const Options: React.FC = () => {
             <TranslatePanel />
             <div className='sub-title' id='default-translate-options'>{getMessage('optionsDefaultTranslateOptions')}</div>
             <DefaultTranslateOptions />
-            <div className='sub-title' id='text-preprocessing'>{getMessage('optionsTextPreprocessing')}</div>
-            <TextPreprocessing />
             <div className='sub-title' id='in-web-page'>{getMessage('optionsInWebPage')}</div>
             <Translate />
             <div className='sub-title' id='history'>{getMessage('optionsHistory')}</div>

@@ -80,9 +80,6 @@
     "optionsMoreFeaturesOrBugReports": {
         "message": "更多功能或错误报告"
     },
-    "optionsTheme": {
-        "message": "主题"
-    },
     "optionsDarkMode": {
         "message": "黑夜模式"
     },
@@ -210,10 +207,10 @@
         "message": "翻译面板固定时直接翻译"
     },
     "optionsDoNotRespondInTextBox": {
-        "message": "不在文本框中响应"
+        "message": "输入框内不翻译"
     },
     "optionsDoNotRespondInTextBoxDescription": {
-        "message": "在文本框内选择文本时，扩展不会展示按钮和自动翻译。"
+        "message": "在输入框、文本框或可编辑区域内选中文本时，不展示翻译按钮，也不触发自动翻译与快捷键翻译。"
     },
     "optionsMore": {
         "message": "其它"
@@ -260,41 +257,8 @@
     "optionsAutoInsertResultDescription": {
         "message": "启用此选项后，扩展将在翻译请求完成并可以插入时自动在网页中插入翻译结果。你可以通过使用“切换‘自动在网页中插入翻译结果’选项”键盘快捷键来切换此选项。"
     },
-    "optionsTextPreprocessing": {
-        "message": "文本预处理"
-    },
-    "optionsTextPreprocessingDescription": {
-        "message": "“文本预处理”通过正则表达式来匹配字符串，并在匹配后将其替换。如果你不熟悉正则表达式，则不建议自己编写正则表达式。"
-    },
-    "optionsReplaceWithRegExp": {
-        "message": "用正则表达式替换"
-    },
-    "optionsPattern": {
-        "message": "模式"
-    },
-    "optionsFlags": {
-        "message": "标志"
-    },
-    "optionsReplacement": {
-        "message": "替换值"
-    },
     "optionsModify": {
         "message": "修改"
-    },
-    "optionsPatternCanNotBeEmpty": {
-        "message": "模式不能为空。"
-    },
-    "optionsTestSomeText": {
-        "message": "测试一些文本"
-    },
-    "optionsTestSomeTextDescription": {
-        "message": "在下方左边的文本框里输入文本后会在右边的文本框里展示处理后的文本。"
-    },
-    "optionsConvertCamelCase": {
-        "message": "转换驼峰式"
-    },
-    "optionsLearnMoreAboutTextPreprocessing": {
-        "message": "深入了解文本预处理。"
     },
     "optionsCustomizeStyle": {
         "message": "自定义样式"
@@ -343,18 +307,6 @@
     },
     "optionsNoControlBarWhileFirstActivatingDescription": {
         "message": "只有当“激活网页翻译后直接翻译”选项启用后此选项才会生效。启用此选项后，首次激活“网页翻译”将不会展示控制栏。首次激活后，再次激活“网页翻译”可以展示或隐藏控制栏。"
-    },
-    "optionsBeforeSendingTranslateRequest": {
-        "message": "在发送翻译请求之前"
-    },
-    "optionsBeforeSendingTranslateRequestDescription": {
-        "message": "你要翻译的文本将在发送翻译请求之前进行处理。"
-    },
-    "optionsAfterSelectingText": {
-        "message": "选择文本后"
-    },
-    "optionsAfterSelectingTextDescription": {
-        "message": "你在网页中选择的文本将会被处理。文本通过正则表达式被置为空后，按钮将不会被展示，文本也不会被自动翻译。非文字已被默认置换为空。"
     },
     "optionsTranslateToTargetLanguage": {
         "message": "翻译为目标语言"
@@ -518,19 +470,7 @@
     "optionsSourceLanguage": {
         "message": "源语言"
     },
-    "themePreset": {
-        "message": "预设"
-    },
-    "themeTextColor": {
-        "message": "文本颜色"
-    },
-    "themeBackgroundColor": {
-        "message": "背景颜色"
-    },
-    "themeThemeName": {
-        "message": "主题名称"
-    },
-    "themeSaveColor": {
+    "optionsSaveColor": {
         "message": "保存颜色"
     },
     "contentInputHere": {
@@ -598,9 +538,6 @@
     },
     "popupDisableDarkMode": {
         "message": "禁用黑夜模式"
-    },
-    "popupSwitchToTheNextTheme": {
-        "message": "切换到下一个主题"
     },
     "popupOpenCollectionPage": {
         "message": "打开收藏页面"

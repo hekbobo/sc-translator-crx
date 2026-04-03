@@ -80,9 +80,6 @@
     "optionsMoreFeaturesOrBugReports": {
         "message": "More features or bug reports"
     },
-    "optionsTheme": {
-        "message": "Theme"
-    },
     "optionsDarkMode": {
         "message": "Dark Mode"
     },
@@ -210,10 +207,10 @@
         "message": "Translate directly while translate panel pinning"
     },
     "optionsDoNotRespondInTextBox": {
-        "message": "Do not respond in text box"
+        "message": "Do not translate inside input fields"
     },
     "optionsDoNotRespondInTextBoxDescription": {
-        "message": "Extension will not show button and will not auto translate if you select some text in text box."
+        "message": "When focus is in an input, textarea, or contenteditable area, the extension will not show the translate button, auto-translate, or keyboard-shortcut translate."
     },
     "optionsMore": {
         "message": "More"
@@ -260,41 +257,8 @@
     "optionsAutoInsertResultDescription": {
         "message": "After enabling this option, the extension will insert translate result in web page automatically when the translate request is completed and can be inserted. You can toggle this option through \"Toggle the option of 'insert translate results in web pages automatically'\" keyboard shortcut."
     },
-    "optionsTextPreprocessing": {
-        "message": "Text preprocessing"
-    },
-    "optionsTextPreprocessingDescription": {
-        "message": "\"Text preprocessing\" use the regular expressions to match the string and then replace them. If you are not familiar with regular expressions, you are not recommended to write your own regular expressions."
-    },
-    "optionsReplaceWithRegExp": {
-        "message": "Replace with regular expression"
-    },
-    "optionsPattern": {
-        "message": "Pattern"
-    },
-    "optionsFlags": {
-        "message": "Flags"
-    },
-    "optionsReplacement": {
-        "message": "Replacement"
-    },
     "optionsModify": {
         "message": "Modify"
-    },
-    "optionsPatternCanNotBeEmpty": {
-        "message": "Pattern can not be empty."
-    },
-    "optionsTestSomeText": {
-        "message": "Test some text"
-    },
-    "optionsTestSomeTextDescription": {
-        "message": "After entering the text in the text box on the left below, the processed text will be displayed in the text box on the right."
-    },
-    "optionsConvertCamelCase": {
-        "message": "Convert camel case"
-    },
-    "optionsLearnMoreAboutTextPreprocessing": {
-        "message": "Learn more about text preprocessing."
     },
     "optionsCustomizeStyle": {
         "message": "Customize style"
@@ -343,18 +307,6 @@
     },
     "optionsNoControlBarWhileFirstActivatingDescription": {
         "message": "This option is only available when you enable the \"Translate directly after activating webpage translating\" option. After enabling this option, the control bar will not be displayed while the first time of \"Webpage translating\" activating. After first activating, you can activate \"Webpage translating\" again to display or hide the control bar."
-    },
-    "optionsBeforeSendingTranslateRequest": {
-        "message": "Before sending translate request"
-    },
-    "optionsBeforeSendingTranslateRequestDescription": {
-        "message": "The text you want to translate will be processed before sending a translate request."
-    },
-    "optionsAfterSelectingText": {
-        "message": "After selecting text"
-    },
-    "optionsAfterSelectingTextDescription": {
-        "message": "The text you selected in the webpage will be processed. When the text is emptied through regular expressions, the button will not be displayed, and the text will not be automatically translated. Non-letter has been replaced as empty by default."
     },
     "optionsTranslateToTargetLanguage": {
         "message": "Translate to target language"
@@ -518,19 +470,7 @@
     "optionsSourceLanguage": {
         "message": "Source language"
     },
-    "themePreset": {
-        "message": "Preset"
-    },
-    "themeTextColor": {
-        "message": "Text color"
-    },
-    "themeBackgroundColor": {
-        "message": "Background color"
-    },
-    "themeThemeName": {
-        "message": "Theme name"
-    },
-    "themeSaveColor": {
+    "optionsSaveColor": {
         "message": "Save color"
     },
     "contentInputHere": {
@@ -598,9 +538,6 @@
     },
     "popupDisableDarkMode": {
         "message": "Disable dark mode"
-    },
-    "popupSwitchToTheNextTheme": {
-        "message": "Switch to the next theme"
     },
     "popupOpenCollectionPage": {
         "message": "Open collection page"

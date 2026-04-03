@@ -81,7 +81,7 @@ const ColorAdjust: React.FC<ColorAdjustProps> = ({ selectedColor, adjust, opacit
                 mouseDownCallback={v => opacityChange(Number(v.toFixed(2)))}
                 mouseMoveCallback={v => opacityChange(Number(v.toFixed(2)))}
             />
-            <Button variant='text' className='color-adjust__save-btn' onClick={handleSaveBtnClick}>{getMessage('themeSaveColor')}</Button>
+            <Button variant='text' className='color-adjust__save-btn' onClick={handleSaveBtnClick}>{getMessage('optionsSaveColor')}</Button>
         </div>
     );
 };

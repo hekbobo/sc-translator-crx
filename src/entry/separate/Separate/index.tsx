@@ -12,7 +12,6 @@ import { GetStorageKeys } from '../../../types';
 import { callOutPanel } from '../../../redux/slice/panelStatusSlice';
 import CollectButton from '../../../components/PanelIconButtons/CollectButton';
 import OpenOptionsPageButton from '../../../components/PanelIconButtons/OpenOptionsPageButton';
-import SwitchThemeButton from '../../../components/PanelIconButtons/SwitchThemeButton';
 import OpenCollectionPageButton from '../../../components/PanelIconButtons/OpenCollectionPageButton';
 import scOptions from '../../../public/sc-options';
 
@@ -73,7 +72,6 @@ const Separate: React.FC = () => {
                 <div className='popup-header__icons flex-align-items-center'>
                     <CollectButton />
                     <OpenCollectionPageButton />
-                    <SwitchThemeButton />
                     <OpenOptionsPageButton />
                 </div>
             </div>

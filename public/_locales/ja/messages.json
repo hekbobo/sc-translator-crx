@@ -80,9 +80,6 @@
     "optionsMoreFeaturesOrBugReports": {
         "message": "その他の機能またはバグレポート"
     },
-    "optionsTheme": {
-        "message": "テーマ"
-    },
     "optionsDarkMode": {
         "message": "ダークモード"
     },
@@ -210,10 +207,10 @@
         "message": "翻訳パネルの固定中に直接翻訳する"
     },
     "optionsDoNotRespondInTextBox": {
-        "message": "テキストボックスに応答しない"
+        "message": "入力欄内では翻訳しない"
     },
     "optionsDoNotRespondInTextBoxDescription": {
-        "message": "テキストボックスでテキストを選択するでも、拡張機能は「ボタンを表示」や「自動翻訳」をしません。"
+        "message": "入力欄・テキストエリア・contenteditable にフォーカスがあるときは、翻訳ボタンの表示・自動翻訳・ショートカット翻訳を行いません。"
     },
     "optionsMore": {
         "message": "その他"
@@ -260,41 +257,8 @@
     "optionsAutoInsertResultDescription": {
         "message": "このオプションを有効にすると、拡張機能は、翻訳リクエストが完了して挿入することができるときに、翻訳結果をWebページに自動的に挿入します。このオプションは、「『翻訳結果をWebページに自動的に挿入する』オプションを切り替えます」キーボードショートカットで切り替えることができます。"
     },
-    "optionsTextPreprocessing": {
-        "message": "テキストの前処理"
-    },
-    "optionsTextPreprocessingDescription": {
-        "message": "「テキストの前処理」は正規表現を使用して、マッチしたテキストを置き換えます。正規表現に慣れていない場合は、自分で正規表現を作成することはお勧めしません。"
-    },
-    "optionsReplaceWithRegExp": {
-        "message": "正規表現で置き換える"
-    },
-    "optionsPattern": {
-        "message": "パターン"
-    },
-    "optionsFlags": {
-        "message": "フラグ"
-    },
-    "optionsReplacement": {
-        "message": "置換値"
-    },
     "optionsModify": {
         "message": "変更する"
-    },
-    "optionsPatternCanNotBeEmpty": {
-        "message": "パターンを空にすることはできません。"
-    },
-    "optionsTestSomeText": {
-        "message": "テキストをテストする"
-    },
-    "optionsTestSomeTextDescription": {
-        "message": "下にいる左のテキストボックスにテキストを入力すると、処理されたテキストが右のテキストボックスに表示されます。"
-    },
-    "optionsConvertCamelCase": {
-        "message": "キャメルケースを変換する"
-    },
-    "optionsLearnMoreAboutTextPreprocessing": {
-        "message": "テキストの前処理をもっと知る。"
     },
     "optionsCustomizeStyle": {
         "message": "スタイルをカスタマイズする"
@@ -343,18 +307,6 @@
     },
     "optionsNoControlBarWhileFirstActivatingDescription": {
         "message": "このオプションは、「『Webページ翻訳』をアクティブ化にした直後に翻訳する」オプションを有効にした場合にのみ使用できます。このオプションを有効にすると、「Webページ翻訳」が初アクティブ化にしたときにコントロールバーが表示されなくなります。初アクティブ化後、「Webページ翻訳」を再びアクティブにすると、コントロールバーを表示または非表示にできます。"
-    },
-    "optionsBeforeSendingTranslateRequest": {
-        "message": "翻訳リクエストを送信する前に"
-    },
-    "optionsBeforeSendingTranslateRequestDescription": {
-        "message": "翻訳したいテキストはリクエストを送信する前に処理されます。"
-    },
-    "optionsAfterSelectingText": {
-        "message": "テキストを選択した後"
-    },
-    "optionsAfterSelectingTextDescription": {
-        "message": "Webページで選択したテキストが処理されます。テキストは正規表現を通して空にされると、ボタンは表示されず、テキストは自動的に翻訳されません。非文字はデフォルトで空に置き換えられます。"
     },
     "optionsTranslateToTargetLanguage": {
         "message": "目標言語に翻訳します"
@@ -518,19 +470,7 @@
     "optionsSourceLanguage": {
         "message": "ソース言語"
     },
-    "themePreset": {
-        "message": "プリセット"
-    },
-    "themeTextColor": {
-        "message": "テキストの色"
-    },
-    "themeBackgroundColor": {
-        "message": "背景色"
-    },
-    "themeThemeName": {
-        "message": "テーマ名"
-    },
-    "themeSaveColor": {
+    "optionsSaveColor": {
         "message": "色を保存"
     },
     "contentInputHere": {
@@ -598,9 +538,6 @@
     },
     "popupDisableDarkMode": {
         "message": "ダークモードを無効にする"
-    },
-    "popupSwitchToTheNextTheme": {
-        "message": "次のテーマに切り替える"
     },
     "popupOpenCollectionPage": {
         "message": "コレクションページを開く"

@@ -113,9 +113,17 @@ export const mouseDrag = (mouseMoveCallback: (pos: Position) => void, mouseUpCal
     document.addEventListener('mouseup', mouseUpListener, true);
 };
 
+/** Input types where users typically select/type text (not button/checkbox/radio). */
+const TEXTBOX_INPUT_TYPES = new Set([
+    'text', 'search', 'email', 'url', 'tel', 'password', 'number',
+    'date', 'datetime-local', 'month', 'time', 'week'
+]);
+
 export const isTextBox = (element: Element) => {
-    return (element.tagName === 'INPUT' && ((element as HTMLInputElement).type === 'text' || (element as HTMLInputElement).type === 'search'))
-        || element.tagName === 'TEXTAREA'
+    if (element.tagName === 'INPUT') {
+        return TEXTBOX_INPUT_TYPES.has((element as HTMLInputElement).type);
+    }
+    return element.tagName === 'TEXTAREA'
         || (element as HTMLElement).isContentEditable;
 };
 

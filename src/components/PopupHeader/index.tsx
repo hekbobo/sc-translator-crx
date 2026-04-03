@@ -5,7 +5,6 @@ import CollectButton from '../PanelIconButtons/CollectButton';
 import ToggleTranslateButton from '../PanelIconButtons/ToggleTranslateButton';
 import ToggleHistoryButton from '../PanelIconButtons/ToggleHistoryButton';
 import OpenOptionsPageButton from '../PanelIconButtons/OpenOptionsPageButton';
-import SwitchThemeButton from '../PanelIconButtons/SwitchThemeButton';
 import OpenCollectionPageButton from '../PanelIconButtons/OpenCollectionPageButton';
 import PageTranslationButton from '../PanelIconButtons/PageTranslationButton';
 
@@ -24,7 +23,6 @@ const PopupHeader: React.FC = () => {
             <div className='popup-header__icons flex-align-items-center'>
                 <CollectButton />
                 <OpenCollectionPageButton />
-                <SwitchThemeButton />
                 <ToggleTranslateButton host={host} />
                 <ToggleHistoryButton host={host} />
                 <OpenOptionsPageButton />

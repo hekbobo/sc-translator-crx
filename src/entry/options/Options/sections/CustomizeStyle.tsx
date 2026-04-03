@@ -3,38 +3,16 @@ import { getMessage } from '../../../../public/i18n';
 import { useOptions } from '../../../../public/react-use';
 import { GetStorageKeys } from '../../../../types';
 import CustomizeStyleTextarea from '../../components/CustomizeStyleTextarea';
-import CustomizeTheme from '../../components/CustomizeTheme';
 import scOptions from '../../../../public/sc-options';
 
-const useOptionsDependency: GetStorageKeys<
-    'styleVarsList' |
-    'styleVarsIndex' |
-    'customizeStyleText'
-> = [
-    'styleVarsList',
-    'styleVarsIndex',
-    'customizeStyleText'
-];
+const useOptionsDependency: GetStorageKeys<'customizeStyleText'> = ['customizeStyleText'];
 
-const Theme: React.FC = () => {
-    const {
-        styleVarsList,
-        styleVarsIndex,
-        customizeStyleText
-    } = useOptions(useOptionsDependency);
+const CustomizeStyle: React.FC = () => {
+    const { customizeStyleText } = useOptions(useOptionsDependency);
 
     return (
         <div className='opt-section'>
             <div className='opt-section-row'>
-                <CustomizeTheme
-                    styleVarsList={styleVarsList}
-                    styleVarsIndex={styleVarsIndex}
-                    updateStyleVarsList={list => scOptions.set({ styleVarsList: list })}
-                    updateStyleVarsIndex={index => scOptions.set({ styleVarsIndex: index })}
-                />
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsCustomizeStyle')}
                 <div className='mt10-ml30'>
                     <CustomizeStyleTextarea
                         customizeStyleText={customizeStyleText}
@@ -48,4 +26,4 @@ const Theme: React.FC = () => {
     );
 };
 
-export default Theme;
+export default CustomizeStyle;

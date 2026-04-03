@@ -8,14 +8,13 @@ import { cn } from '../../../../public/utils';
 import './style.css';
 
 const menusItems = [
-    { title: getMessage('optionsTheme'), id: 'theme' },
+    { title: getMessage('optionsCustomizeStyle'), id: 'customize-style' },
     { title: getMessage('optionsClipboard'), id: 'clipboard' },
     { title: getMessage('optionsWebPageTranslating'), id: 'web-page-translating' },
     { title: getMessage('optionsAudio'), id: 'audio' },
     { title: getMessage('titleSeparateWindow'), id: 'separate-window' },
     { title: getMessage('optionsTranslatePanel'), id: 'translate-panel' },
     { title: getMessage('optionsDefaultTranslateOptions'), id: 'default-translate-options' },
-    { title: getMessage('optionsTextPreprocessing'), id: 'text-preprocessing' },
     { title: getMessage('optionsInWebPage'), id: 'in-web-page' },
     { title: getMessage('optionsHistory'), id: 'history' },
     { title: getMessage('optionsContextMenus'), id: 'context-menus' },

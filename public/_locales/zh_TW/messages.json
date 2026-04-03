@@ -80,9 +80,6 @@
     "optionsMoreFeaturesOrBugReports": {
         "message": "更多功能或錯誤報告"
     },
-    "optionsTheme": {
-        "message": "主題"
-    },
     "optionsDarkMode": {
         "message": "黑夜模式"
     },
@@ -210,10 +207,10 @@
         "message": "翻譯面板固定時直接翻譯"
     },
     "optionsDoNotRespondInTextBox": {
-        "message": "不在文本框中響應"
+        "message": "輸入框內不翻譯"
     },
     "optionsDoNotRespondInTextBoxDescription": {
-        "message": "在文本框內選擇文本時，擴充功能不會展示按鈕和自動翻譯。"
+        "message": "在輸入框、文字區域或可編輯區域內選取文字時，不顯示翻譯按鈕，也不觸發自動翻譯與快捷鍵翻譯。"
     },
     "optionsMore": {
         "message": "其它"
@@ -260,41 +257,8 @@
     "optionsAutoInsertResultDescription": {
         "message": "啟用此選項後，擴充功能將在翻譯請求完成並可以插入時自動在網頁中插入翻譯結果。你可以通過使用「切換『自動在網頁中插入翻譯結果』選項」鍵盤快速鍵來切換此選項。"
     },
-    "optionsTextPreprocessing": {
-        "message": "文本預處理"
-    },
-    "optionsTextPreprocessingDescription": {
-        "message": "「文本預處理」通過正則表達式來匹配字符串，並在匹配後將其替換。如果你不熟悉正則表達式，則不建議自己編寫正則表達式。"
-    },
-    "optionsReplaceWithRegExp": {
-        "message": "用正則表達式替換"
-    },
-    "optionsPattern": {
-        "message": "模式"
-    },
-    "optionsFlags": {
-        "message": "標誌"
-    },
-    "optionsReplacement": {
-        "message": "替換值"
-    },
     "optionsModify": {
         "message": "修改"
-    },
-    "optionsPatternCanNotBeEmpty": {
-        "message": "模式不能為空。"
-    },
-    "optionsTestSomeText": {
-        "message": "測試一些文本"
-    },
-    "optionsTestSomeTextDescription": {
-        "message": "在下方左邊的文本框裡輸入文本後會在右邊的文本框裡展示處理後的文本。"
-    },
-    "optionsConvertCamelCase": {
-        "message": "轉換駝峰式"
-    },
-    "optionsLearnMoreAboutTextPreprocessing": {
-        "message": "深入瞭解文本預處理。"
     },
     "optionsCustomizeStyle": {
         "message": "自定義樣式"
@@ -343,18 +307,6 @@
     },
     "optionsNoControlBarWhileFirstActivatingDescription": {
         "message": "只有當「啟動網頁翻譯後直接翻譯」選項啟用後此選項才會生效。啟用此選項後，首次啟動「網頁翻譯」將不會展示控制欄。首次啟動後，再次啟動「網頁翻譯」可以展示或隱藏控制欄。"
-    },
-    "optionsBeforeSendingTranslateRequest": {
-        "message": "在發送翻譯請求之前"
-    },
-    "optionsBeforeSendingTranslateRequestDescription": {
-        "message": "你要翻譯的文本將在發送翻譯請求之前進行處理。"
-    },
-    "optionsAfterSelectingText": {
-        "message": "選擇文本後"
-    },
-    "optionsAfterSelectingTextDescription": {
-        "message": "你在網頁中選擇的文本將會被處理。文本通過正則表達式被置為空後，按鈕將不會被展示，文本也不會被自動翻譯。非文字已被默認置換為空。"
     },
     "optionsTranslateToTargetLanguage": {
         "message": "翻譯為目標語言"
@@ -518,19 +470,7 @@
     "optionsSourceLanguage": {
         "message": "源語言"
     },
-    "themePreset": {
-        "message": "預設"
-    },
-    "themeTextColor": {
-        "message": "文字顏色"
-    },
-    "themeBackgroundColor": {
-        "message": "背景顏色"
-    },
-    "themeThemeName": {
-        "message": "主題名稱"
-    },
-    "themeSaveColor": {
+    "optionsSaveColor": {
         "message": "保存顏色"
     },
     "contentInputHere": {
@@ -598,9 +538,6 @@
     },
     "popupDisableDarkMode": {
         "message": "禁用黑夜模式"
-    },
-    "popupSwitchToTheNextTheme": {
-        "message": "切換到下一個主題"
     },
     "popupOpenCollectionPage": {
         "message": "打開收藏頁面"

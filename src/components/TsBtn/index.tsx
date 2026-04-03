@@ -112,6 +112,10 @@ const TsBtn: React.FC = () => {
 
     const handleForwardTranslate = useCallback((text: string, position: Position, to: undefined | string = undefined) => {
         void (async () => {
+            if (doNotRespondInTextBox && document.activeElement && isTextBox(document.activeElement)) {
+                return;
+            }
+
             if (respondToSeparateWindow) {
                 sendSeparate(text);
                 return;
@@ -133,7 +137,7 @@ const TsBtn: React.FC = () => {
 
             dispatch(nextTranslaion({ text, to }));
         })();
-    }, [dispatch, respondToSeparateWindow, pinThePanelWhileOpeningIt]);
+    }, [dispatch, doNotRespondInTextBox, respondToSeparateWindow, pinThePanelWhileOpeningIt]);
 
     const handleTranslateButtonClick = (translateButton: string) => {
         setShowBtn(false);
