@@ -6,9 +6,7 @@ import Audio from './sections/Audio';
 import ContextMenus from './sections/ContextMenus';
 import DefaultTranslateOptions from './sections/DefaultTranslateOptions';
 import History from './sections/History';
-import KeyboardShortcut from './sections/KeyboardShortcut';
 import More from './sections/More';
-import Pdf from './sections/Pdf';
 import SeparateWindow from './sections/SeparateWindow';
 import Theme from './sections/Theme';
 import Translate from './sections/Translate';
@@ -17,7 +15,6 @@ import Clipboard from './sections/Clipboard';
 import './style.css';
 import WebPageTranslating from './sections/WebPageTranslating';
 import TextPreprocessing from './sections/TextPreprocessing';
-import SyncSettings from './sections/SyncSettings';
 
 const Options: React.FC = () => {
     return (
@@ -25,8 +22,6 @@ const Options: React.FC = () => {
             <OptionsMenu />
             <div className='sub-title'  id='theme'>{getMessage('optionsTheme')}</div>
             <Theme />
-            <div className='sub-title' id='pdf'>PDF</div>
-            <Pdf />
             <div className='sub-title' id='clipboard'>{getMessage('optionsClipboard')}</div>
             <Clipboard />
             <div className='sub-title' id='web-page-translating'>{getMessage('optionsWebPageTranslating')}</div>
@@ -47,10 +42,6 @@ const Options: React.FC = () => {
             <History />
             <div className='sub-title' id='context-menus'>{getMessage('optionsContextMenus')}</div>
             <ContextMenus />
-            <div className='sub-title' id='keyboard-shortcut'>{getMessage('optionsKeyboardShortcut')}</div>
-            <KeyboardShortcut />
-            <div className='sub-title' id='sync-settings'>{getMessage('optionsSyncSettings')}</div>
-            <SyncSettings />
             <div className='sub-title' id='more'>{getMessage('optionsMore')}</div>
             <More />
             <OverScroll />

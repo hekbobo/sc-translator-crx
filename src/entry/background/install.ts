@@ -55,6 +55,15 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
             if (index === -1) {
                 data.contextMenus = data.contextMenus.concat({ id: TRANSLATE_CURRENT_PAGE, enabled: false });
             }
+            data.contextMenus = data.contextMenus.filter(v => (v.id as string) !== 'OPEN_THIS_PAGE_WITH_PDF_VIEWER');
+        }
+
+        if (update && 'enablePdfViewer' in data) {
+            delete (data as { enablePdfViewer?: boolean }).enablePdfViewer;
+        }
+
+        if (update && 'enablePageTranslationCache' in data) {
+            delete (data as { enablePageTranslationCache?: boolean }).enablePageTranslationCache;
         }
 
         // In 3.9.0, remake translate button

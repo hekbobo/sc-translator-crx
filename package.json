@@ -16,6 +16,10 @@
     "dev": "webpack --env development --config config/webpack.config.js",
     "check-types": "tsc --project tsconfig.json --noEmit"
   },
+  "resolutions": {
+    "@types/filesystem": "0.0.36",
+    "@types/har-format": "1.2.16"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "react": "^19.1.0",

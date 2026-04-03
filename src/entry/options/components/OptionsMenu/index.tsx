@@ -9,7 +9,6 @@ import './style.css';
 
 const menusItems = [
     { title: getMessage('optionsTheme'), id: 'theme' },
-    { title: 'PDF', id: 'pdf' },
     { title: getMessage('optionsClipboard'), id: 'clipboard' },
     { title: getMessage('optionsWebPageTranslating'), id: 'web-page-translating' },
     { title: getMessage('optionsAudio'), id: 'audio' },
@@ -20,8 +19,6 @@ const menusItems = [
     { title: getMessage('optionsInWebPage'), id: 'in-web-page' },
     { title: getMessage('optionsHistory'), id: 'history' },
     { title: getMessage('optionsContextMenus'), id: 'context-menus' },
-    { title: getMessage('optionsKeyboardShortcut'), id: 'keyboard-shortcut' },
-    { title: getMessage('optionsSyncSettings'), id: 'sync-settings' },
     { title: getMessage('optionsMore'), id: 'more' }
 ];
 

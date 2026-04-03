@@ -71,7 +71,6 @@ export type Position = {
 export type HistoryPanelStatus = { pin: boolean; width: number };
 
 export type OptionsContextMenuId =
-    | 'OPEN_THIS_PAGE_WITH_PDF_VIEWER'
     | 'OPEN_SEPARATE_WINDOW'
     | 'TRANSLATE_SELECTION_TEXT'
     | 'LISTEN_SELECTION_TEXT'
@@ -133,7 +132,6 @@ export type DefaultOptions = {
     multipleTranslateSourceList: string[];
     multipleTranslateFrom: string;
     multipleTranslateTo: string;
-    enablePdfViewer: boolean;
     preferredLanguage: string;
     secondPreferredLanguage: string;
     styleVarsList: StyleVarsList;
@@ -187,7 +185,6 @@ export type DefaultOptions = {
     comparisonCustomization: ComparisonCustomization;
     translateIframeContent: boolean;
     translateRedirectedSameDomainPage: boolean;
-    enablePageTranslationCache: boolean;
     autoPlayAudio: boolean;
     autoPlayAudioLangs: string[];
     highlightCollectedText: boolean;
@@ -206,5 +203,3 @@ export type DeprecatedOptions = {
     defaultTranslateFrom: string;
     defaultTranslateTo: string;
 };
-
-export type SyncOptions = Omit<DefaultOptions, 'sourceParamsCache'>;

@@ -29,9 +29,6 @@
     "extCloseCommandDescription": {
         "message": "在网页中关闭扩展"
     },
-    "extOpenWithPdfViewerDescription": {
-        "message": "用 PDF 阅读器打开此页面"
-    },
     "extSwitchWTDisplayModeDescription": {
         "message": "切换网页内网页翻译结果的显示方式"
     },
@@ -128,26 +125,14 @@
     "optionsNotEnabled": {
         "message": "未启用"
     },
-    "optionsEnablePdfViewer": {
-        "message": "启用 PDF 阅读器"
-    },
-    "optionsEnablePdfViewerDescription": {
-        "message": "启用此选项时，此扩展将重定向所有 PDF 文件的 URL。通过使用 PDF 阅读器，可以令此扩展在 PDF 文件内使用。如果你想要对本地 PDF 文件也启用此扩展，请在扩展管理中勾选“允许访问文件 URL”。"
-    },
     "optionsPreferredLanguage": {
         "message": "首选语言"
     },
     "optionsPreferredLanguageDescription": {
         "message": "当翻译的目标语言为“自动选择”时，会翻译为“首选语言”。当文本的语言与“首选语言”相同时，将会翻译为“次选语言”。"
     },
-    "optionsKeyboardShortcut": {
-        "message": "快捷键"
-    },
     "optionsCallOutCommandDescription": {
         "message": "当扩展在网页中启用时，点击此快捷键可以直接唤出扩展。当在已唤出扩展的状态下点击此快捷键时，将会聚焦文本框。"
-    },
-    "optionsCustomizeHere": {
-        "message": "在此自定义"
     },
     "optionsButtonsPosition": {
         "message": "按钮的位置"
@@ -389,15 +374,6 @@
     "optionsEncourage": {
         "message": "如果觉得“Sc翻译”对你有帮助，可以通过在扩展商店给出五星评价或者点击 GitHub 页面上的 Star 按钮来鼓励开发者，非常感谢！"
     },
-    "optionsSyncSettingsToOtherBrowsers": {
-        "message": "同步设置到其它浏览器"
-    },
-    "optionsSyncSettingsToOtherBrowsersDescription": {
-        "message": "你需要在不同环境中的相同浏览器中登录相同账号以启用此功能。同时，你需要确认你的账号已启用扩展的同步功能。"
-    },
-    "optionsSyncSettings": {
-        "message": "同步设置"
-    },
     "optionsDisplayOfTranslation": {
         "message": "翻译结果的展示"
     },
@@ -427,15 +403,6 @@
     },
     "optionsCustomWebpageTranslateSourceLearn": {
         "message": "深入了解自定义网页翻译源。"
-    },
-    "optionsExportSettings": {
-        "message": "导出设置"
-    },
-    "optionsImportSettings": {
-        "message": "导入设置"
-    },
-    "optionsFileSyncDescription": {
-        "message": "被导出的设置将会以明文的形式保存在文件中。"
     },
     "optionsWebpageTranslatingInstructions": {
         "message": "网页翻译说明"
@@ -496,18 +463,6 @@
     },
     "optionsDisplayOriginalTextWhenCtrlPressed": {
         "message": "仅在同时按住“Ctrl”键时显示原文"
-    },
-    "optionsEnablePageTranslationCache": {
-        "message": "将翻译结果缓存到磁盘"
-    },
-    "optionsEnablePageTranslationCacheDescription": {
-        "message": "页面翻译发送翻译请求前会先在缓存中寻找。翻译曾经翻译过的页面可以加快翻译速度和减少翻译请求的数量。"
-    },
-    "optionsClearTranslationCache": {
-        "message": "清除翻译缓存"
-    },
-    "optionsConfirmClearTranslationCache": {
-        "message": "翻译缓存将被清除。"
     },
     "optionsSpecifyTranslate": {
         "message": "指定要翻译或不翻译的内容"
@@ -772,9 +727,6 @@
     },
     "sentenceBingHttp429": {
         "message": "（请求过多）你可能需要前往官网进行翻译并完成验证后才能继续使用。官网："
-    },
-    "contextMenus_OPEN_THIS_PAGE_WITH_PDF_VIEWER": {
-        "message": "用 PDF 阅读器打开此页面"
     },
     "contextMenus_OPEN_SEPARATE_WINDOW": {
         "message": "打开独立翻译窗口"

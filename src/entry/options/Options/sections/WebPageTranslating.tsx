@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Checkbox from '../../../../components/Checkbox';
 import SourceSelect from '../../../../components/SourceSelect';
 import Switch from '../../../../components/Switch';
@@ -12,9 +12,6 @@ import CustomTranslateSourceDisplay from '../../components/CustomTranslateSource
 import HostList from '../../components/HostList';
 import WebPageTranslateDisplayMode from '../../components/WebPageTranslateDisplayMode';
 import CustomizeTranslation from '../../components/CustomizeTranslation';
-import Button from '../../../../components/Button';
-import scIndexedDB from '../../../../public/sc-indexed-db';
-import ConfirmDelete from '../../../collection/components/ConfirmDelete';
 import SpecifyRule from '../../components/SpecifyRule';
 import scOptions from '../../../../public/sc-options';
 import LanguageSelect from '../../../../components/LanguageSelect';
@@ -33,8 +30,7 @@ const useOptionsDependency: GetStorageKeys<
     'enableAutoTranslateWebpage' |
     'comparisonCustomization' |
     'translateIframeContent' |
-    'translateRedirectedSameDomainPage' |
-    'enablePageTranslationCache'
+    'translateRedirectedSameDomainPage'
 > = [
     'webPageTranslateSource',
     'webPageTranslateTo',
@@ -49,8 +45,7 @@ const useOptionsDependency: GetStorageKeys<
     'enableAutoTranslateWebpage',
     'comparisonCustomization',
     'translateIframeContent',
-    'translateRedirectedSameDomainPage',
-    'enablePageTranslationCache'
+    'translateRedirectedSameDomainPage'
 ];
 
 const WebPageTranslating: React.FC = () => {
@@ -68,11 +63,8 @@ const WebPageTranslating: React.FC = () => {
         enableAutoTranslateWebpage,
         comparisonCustomization,
         translateIframeContent,
-        translateRedirectedSameDomainPage,
-        enablePageTranslationCache
+        translateRedirectedSameDomainPage
     } = useOptions(useOptionsDependency);
-
-    const [readyToClearCache, setReadyToClearCache] = useState(false);
 
     return (
         <div className='opt-section'>
@@ -282,34 +274,6 @@ const WebPageTranslating: React.FC = () => {
                             updateList={list => scOptions.set({ autoTranslateWebpageHostList: list })}
                         />
                     </div>
-                </div>
-            </div>
-            <div className='opt-section-row'>
-                <Switch
-                    label={getMessage('optionsEnablePageTranslationCache')}
-                    checked={enablePageTranslationCache}
-                    onChange={v => scOptions.set({ enablePageTranslationCache: v })}
-                />
-                <div className='item-description'>
-                    {getMessage('optionsEnablePageTranslationCacheDescription')}
-                </div>
-                <div className='mt10-ml30'>
-                    <Button
-                        variant='outlined'
-                        onClick={() => setReadyToClearCache(true)}
-                    >
-                        {getMessage('optionsClearTranslationCache')}
-                    </Button>
-                    {readyToClearCache && <ConfirmDelete
-                        onConfirm={() => {
-                            scIndexedDB.clear('page-translation-cache');
-
-                            setReadyToClearCache(false);
-                        }}
-                        onCancel={() => setReadyToClearCache(false)}
-                        onClose={() => setReadyToClearCache(false)}
-                        drawerTitle={getMessage('optionsConfirmClearTranslationCache')}
-                    />}
                 </div>
             </div>
             <div className='opt-section-row'>

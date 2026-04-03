@@ -1,8 +1,9 @@
 import { TranslateRequest } from '../types';
-import type { WebpageTranslateResult } from './web-page-translate';
 
 const DB_NAME = 'ScTranslator';
-const DB_VERSION = 3;
+const DB_VERSION = 4;
+/** Removed store; kept for upgrade migration only. */
+const LEGACY_PAGE_TRANSLATION_CACHE = 'page-translation-cache';
 
 export const DB_STORE_COLLECTION = 'collection';
 
@@ -17,15 +18,6 @@ export type StoreCollectionValue = {
     tags?: string[];
 };
 
-export const DB_STORE_PAGE_TRANSLATION_CACHE = 'page-translation-cache';
-
-export type StorePageTranslationCacheValue = {
-    query: string;
-    key: string;
-    date: number;
-    translation: WebpageTranslateResult;
-};
-
 export const DB_STORE_PAGE_TRANSLATION_RULE = 'page-translation-rule';
 
 export type StorePageTranslationRuleValue = {
@@ -35,15 +27,13 @@ export type StorePageTranslationRuleValue = {
     exclude?: string;
 };
 
-type StoreName = typeof DB_STORE_COLLECTION | typeof DB_STORE_PAGE_TRANSLATION_CACHE | typeof DB_STORE_PAGE_TRANSLATION_RULE;
+type StoreName = typeof DB_STORE_COLLECTION | typeof DB_STORE_PAGE_TRANSLATION_RULE;
 type StoreValue<T> = 
     T extends typeof DB_STORE_COLLECTION ? StoreCollectionValue :
-    T extends typeof DB_STORE_PAGE_TRANSLATION_CACHE ? StorePageTranslationCacheValue :
     T extends typeof DB_STORE_PAGE_TRANSLATION_RULE ? StorePageTranslationRuleValue :
     never;
 type StoreAddValue<T> = 
     T extends typeof DB_STORE_COLLECTION ? StoreCollectionValue :
-    T extends typeof DB_STORE_PAGE_TRANSLATION_CACHE ? StorePageTranslationCacheValue :
     T extends typeof DB_STORE_PAGE_TRANSLATION_RULE ? Omit<StorePageTranslationRuleValue, 'id'> :
     never;
 
@@ -58,19 +48,19 @@ const scIndexedDB = (() => {
         instance = await new Promise((resolve, reject) => {
             request.onsuccess = () => resolve(request.result);
             request.onerror = () => reject(request.error);
-            request.onupgradeneeded = () => {
-                if (!request.result.objectStoreNames.contains(DB_STORE_COLLECTION)) {
-                    request.result.createObjectStore(DB_STORE_COLLECTION, { keyPath: 'text' });
+            request.onupgradeneeded = (event) => {
+                const db = request.result;
+
+                if (event.oldVersion < 4 && db.objectStoreNames.contains(LEGACY_PAGE_TRANSLATION_CACHE)) {
+                    db.deleteObjectStore(LEGACY_PAGE_TRANSLATION_CACHE);
                 }
 
-                if (!request.result.objectStoreNames.contains(DB_STORE_PAGE_TRANSLATION_CACHE)) {
-                    const pageTranslationCacheStore = request.result.createObjectStore(DB_STORE_PAGE_TRANSLATION_CACHE, { keyPath: 'query' });
-                    pageTranslationCacheStore.createIndex('date', 'date');
-                    pageTranslationCacheStore.createIndex('key', 'key');
+                if (!db.objectStoreNames.contains(DB_STORE_COLLECTION)) {
+                    db.createObjectStore(DB_STORE_COLLECTION, { keyPath: 'text' });
                 }
 
-                if (!request.result.objectStoreNames.contains(DB_STORE_PAGE_TRANSLATION_RULE)) {
-                    request.result.createObjectStore(DB_STORE_PAGE_TRANSLATION_RULE, { keyPath: 'id', autoIncrement: true });
+                if (!db.objectStoreNames.contains(DB_STORE_PAGE_TRANSLATION_RULE)) {
+                    db.createObjectStore(DB_STORE_PAGE_TRANSLATION_RULE, { keyPath: 'id', autoIncrement: true });
                 }
             };
         });

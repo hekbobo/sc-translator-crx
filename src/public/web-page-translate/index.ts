@@ -5,8 +5,6 @@ import { translate as googleWebTranslate } from './google/translate';
 import { translate as microsoftWebTranslate } from './microsoft/translate';
 import { translate as customWebTranslate } from './custom/translate';
 import { getError } from '../translate/utils';
-import { sendGetPageTranslationCache, sendSetPageTranslationCache } from '../send';
-
 export type WebpageTranslateResult = {
     translations: string[];
     comparisons?: string[];
@@ -85,8 +83,6 @@ let comparisonCustomization: ComparisonCustomization = {
     underlineColor: 'rgba(144,236,233,1)',
     underlineStyle: 'solid'
 };
-
-let enablePageTranslationCache = false;
 
 let pageTranslateItemMap: { [key: number]: PageTranslateItemEnity; } = {};
 let itemMapIndex = 0;
@@ -648,7 +644,6 @@ export const startWebPageTranslating = ({
     translateDynamicContent: translateDC,
     translateIframeContent: translateIC,
     customization,
-    enableCache,
     specifySelectors,
     onError,
     onRequestStart,
@@ -661,7 +656,6 @@ export const startWebPageTranslating = ({
     translateDynamicContent: boolean;
     translateIframeContent: boolean;
     customization: ComparisonCustomization;
-    enableCache: boolean;
     specifySelectors: { includeSelectors: string; excludeSelectors: string; };
     onError?: (errorReason: string) => void;
     onRequestStart?: () => void;
@@ -700,8 +694,6 @@ export const startWebPageTranslating = ({
     displayModeEnhancement = enhancement;
 
     comparisonCustomization = customization;
-
-    enablePageTranslationCache = enableCache;
 
     const { includeSelectors, excludeSelectors } = specifySelectors;
     if (includeSelectors) {
@@ -1099,14 +1091,6 @@ const getTranslateList = async (nextTranslateList: PageTranslateItemEnity[], key
         return true;
     });
 
-    if (enablePageTranslationCache) {
-        const result = await sendGetPageTranslationCache(list.map(item => item.key), source, '', language);
-
-        if (!('code' in result)) {
-            Object.entries(result).forEach(([key, translation]) => cacheMap.set(key, translation));
-        }
-    }
-
     const translateList: { keys: string[]; paragraphs: string[][]; }[] = [];
 
     let keys: string[] = [];
@@ -1218,10 +1202,6 @@ const translateProcess = ({ translateList, beforeTranslate, onSuccess, onError, 
 
             if (keys.length !== result.length) { throw getError(`Error: "result"'s length is not the same as "paragraphs"'s.`); }
 
-            if (enablePageTranslationCache) {
-                sendSetPageTranslationCache(keys.map((key, index) => ({ key, translation: result[index] })), source, '', language);
-            }
-
             result.forEach((translation, index) => {
                 const key = keys[index];
                 cacheMap.set(key, translation);
@@ -1270,12 +1250,6 @@ const translateAttribute = async (attributes: AttributeTranslation[]) => {
 
         return true;
     });
-
-    if (enablePageTranslationCache) {
-        const result = await sendGetPageTranslationCache(attributes.map(v => v.attributeText), source, '', language);
-
-        !('code' in result) && Object.entries(result).forEach(([key, translation]) => cacheMap.set(key, translation));
-    }
 
     attributes.forEach((item) => {
         const cacheResult = cacheMap.get(item.attributeText);

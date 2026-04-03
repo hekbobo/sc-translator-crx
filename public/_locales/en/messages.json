@@ -29,9 +29,6 @@
     "extCloseCommandDescription": {
         "message": "Close extension in web page"
     },
-    "extOpenWithPdfViewerDescription": {
-        "message": "Open this page with PDF viewer"
-    },
     "extSwitchWTDisplayModeDescription": {
         "message": "Switch the display mode of webpage translations inside the webpage"
     },
@@ -128,26 +125,14 @@
     "optionsNotEnabled": {
         "message": "Not enabled"
     },
-    "optionsEnablePdfViewer": {
-        "message": "Enable PDF viewer"
-    },
-    "optionsEnablePdfViewerDescription": {
-        "message": "When you enable this option, this extension will redirect the URL of all PDF files. With the PDF viewer, this extension can be used on PDF files. If you want to enable this extension for local PDF files as well, check \"Allow access to file URLs\" in extension management."
-    },
     "optionsPreferredLanguage": {
         "message": "Preferred Language"
     },
     "optionsPreferredLanguageDescription": {
         "message": "When the target language of translation is \"auto\", it will be translated into the \"preferred language\". When the language of the text is the same as the \"preferred language\", it will be translated into \"second preferred Language\"."
     },
-    "optionsKeyboardShortcut": {
-        "message": "Keyboard shortcut"
-    },
     "optionsCallOutCommandDescription": {
         "message": "You can call out extension in web page when the extension is enabled in web page with this keyboard shortcut. When you click this keyboard shortcut with the extension called out, it focuses on the text box."
-    },
-    "optionsCustomizeHere": {
-        "message": "Customize here"
     },
     "optionsButtonsPosition": {
         "message": "Button's position"
@@ -389,15 +374,6 @@
     "optionsEncourage": {
         "message": "If you find \"ScTranslator\" helpful, you can encourage the developer by giving a five-star rating on the extension store or clicking the \"Star\" button on the GitHub page, thank you very much!"
     },
-    "optionsSyncSettingsToOtherBrowsers": {
-        "message": "Sync settings to other browsers"
-    },
-    "optionsSyncSettingsToOtherBrowsersDescription": {
-        "message": "You need to log in to the same account in the same browser in different environments to enable this feature. And you need to make sure that your account has enabled the sync of extensions."
-    },
-    "optionsSyncSettings": {
-        "message": "Sync settings"
-    },
     "optionsDisplayOfTranslation": {
         "message": "Display of translation"
     },
@@ -427,15 +403,6 @@
     },
     "optionsCustomWebpageTranslateSourceLearn": {
         "message": "Learn more about custom webpage translate source."
-    },
-    "optionsExportSettings": {
-        "message": "Export settings"
-    },
-    "optionsImportSettings": {
-        "message": "Import settings"
-    },
-    "optionsFileSyncDescription": {
-        "message": "The exported settings will be saved in clear text in the file."
     },
     "optionsWebpageTranslatingInstructions": {
         "message": "Webpage translating instructions"
@@ -496,18 +463,6 @@
     },
     "optionsDisplayOriginalTextWhenCtrlPressed": {
         "message": "Display original text only when \"Ctrl\" key is pressed at the same time"
-    },
-    "optionsEnablePageTranslationCache": {
-        "message": "Cache translation results to disk"
-    },
-    "optionsEnablePageTranslationCacheDescription": {
-        "message": "Page translation will look in the cache before sending a translation request. Translating previously translated pages can speed up translation and reduce the number of translation requests."
-    },
-    "optionsClearTranslationCache": {
-        "message": "Clear translation cache"
-    },
-    "optionsConfirmClearTranslationCache": {
-        "message": "The translation cache will be cleared."
     },
     "optionsSpecifyTranslate": {
         "message": "Specify what to translate or not translate"
@@ -772,9 +727,6 @@
     },
     "sentenceBingHttp429": {
         "message": "(Too Many Requests) You may need to go to the official website to translate and complete the verification before you can continue to use it. Official website:"
-    },
-    "contextMenus_OPEN_THIS_PAGE_WITH_PDF_VIEWER": {
-        "message": "Open this page with PDF viewer"
     },
     "contextMenus_OPEN_SEPARATE_WINDOW": {
         "message": "Open separate translate window"

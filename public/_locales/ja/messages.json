@@ -29,9 +29,6 @@
     "extCloseCommandDescription": {
         "message": "ウェブページで拡張機能を閉じる"
     },
-    "extOpenWithPdfViewerDescription": {
-        "message": "PDFビューアでこのページを開く"
-    },
     "extSwitchWTDisplayModeDescription": {
         "message": "Webページ内でWebページ翻訳結果の表示モードを切り変えます"
     },
@@ -128,26 +125,14 @@
     "optionsNotEnabled": {
         "message": "無効"
     },
-    "optionsEnablePdfViewer": {
-        "message": "PDFビューアを有効にする"
-    },
-    "optionsEnablePdfViewerDescription": {
-        "message": "このオプションを有効にすると、この拡張機能はすべてのPDFファイルのURLをリダイレクトします。PDFビューアを使用すると、この拡張機能をPDFファイルで使用することができます。ローカルPDFファイルでもこの拡張機能を有効にする場合は、拡張機能管理の「ファイルの URL へのアクセスを許可する」をチェックしてください。"
-    },
     "optionsPreferredLanguage": {
         "message": "優先言語"
     },
     "optionsPreferredLanguageDescription": {
         "message": "翻訳の目標言語が「自動選択」の場合、「優先言語」に翻訳されます。テキストの言語が「優先言語」と同じ場合、「第二優先言語」に翻訳されます。"
     },
-    "optionsKeyboardShortcut": {
-        "message": "キーボードショートカット"
-    },
     "optionsCallOutCommandDescription": {
         "message": "このキーボードショートカットでは、ウェブページで拡張機能を有効にしている場合に、ウェブページ内の拡張機能を呼び出すことができます。拡張機能をもう呼び出した状態でこのキーボードショートカットをクリックすると、テキストボックスにフォーカスします。"
-    },
-    "optionsCustomizeHere": {
-        "message": "ここでカスタマイズ"
     },
     "optionsButtonsPosition": {
         "message": "ボタンの位置"
@@ -389,15 +374,6 @@
     "optionsEncourage": {
         "message": "もし「サイ翻訳」が役に立つと思ったら、拡張機能ストアで星五つの評価をするか、GitHubページの「Star」ボタンをクリックして、開発者を励むことができます、ありがとうございます！"
     },
-    "optionsSyncSettingsToOtherBrowsers": {
-        "message": "設定を他のブラウザに同期する"
-    },
-    "optionsSyncSettingsToOtherBrowsersDescription": {
-        "message": "この機能を有効にするには、異なる環境で同じブラウザで同じアカウントにログインする必要があります。また、アカウントで拡張機能の同期が有効になっていることを確認する必要があります。"
-    },
-    "optionsSyncSettings": {
-        "message": "設定の同期"
-    },
     "optionsDisplayOfTranslation": {
         "message": "翻訳結果の表示"
     },
@@ -427,15 +403,6 @@
     },
     "optionsCustomWebpageTranslateSourceLearn": {
         "message": "カスタムWebページ翻訳ソースをもっと知る。"
-    },
-    "optionsExportSettings": {
-        "message": "エクスポート設定"
-    },
-    "optionsImportSettings": {
-        "message": "インポート設定"
-    },
-    "optionsFileSyncDescription": {
-        "message": "エクスポートされた設定は、明文でファイルに保存されます。"
     },
     "optionsWebpageTranslatingInstructions": {
         "message": "Webページ翻訳説明"
@@ -496,18 +463,6 @@
     },
     "optionsDisplayOriginalTextWhenCtrlPressed": {
         "message": "「Ctrl」キーを同時に押したときのみ原文を表示する"
-    },
-    "optionsEnablePageTranslationCache": {
-        "message": "翻訳結果をディスクにキャッシュする"
-    },
-    "optionsEnablePageTranslationCacheDescription": {
-        "message": "ページ翻訳は、翻訳リクエストを送信する前にキャッシュを検索します。以前に翻訳したページを翻訳すると、翻訳の速度が向上し、翻訳リクエストの数を減らすことができます。"
-    },
-    "optionsClearTranslationCache": {
-        "message": "翻訳キャッシュをクリアする"
-    },
-    "optionsConfirmClearTranslationCache": {
-        "message": "翻訳キャッシュがクリアされます。"
     },
     "optionsSpecifyTranslate": {
         "message": "翻訳するかしないかを指定する"
@@ -772,9 +727,6 @@
     },
     "sentenceBingHttp429": {
         "message": "（リクエストが多すぎます）利用を継続する前に、公式サイトで翻訳し、検証を完了する必要があるかもしれない。公式サイト："
-    },
-    "contextMenus_OPEN_THIS_PAGE_WITH_PDF_VIEWER": {
-        "message": "PDFビューアでこのページを開く"
     },
     "contextMenus_OPEN_SEPARATE_WINDOW": {
         "message": "スタンドアロン翻訳ウィンドウを開く"

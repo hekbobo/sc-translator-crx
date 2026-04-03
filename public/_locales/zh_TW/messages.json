@@ -29,9 +29,6 @@
     "extCloseCommandDescription": {
         "message": "在網頁中關閉擴充功能"
     },
-    "extOpenWithPdfViewerDescription": {
-        "message": "用 PDF 閱讀器打開此頁面"
-    },
     "extSwitchWTDisplayModeDescription": {
         "message": "切換網頁內網頁翻譯結果的顯示方式"
     },
@@ -128,26 +125,14 @@
     "optionsNotEnabled": {
         "message": "未啟用"
     },
-    "optionsEnablePdfViewer": {
-        "message": "啟用 PDF 閱讀器"
-    },
-    "optionsEnablePdfViewerDescription": {
-        "message": "啟用此選項時，此擴充功能將重定向所有 PDF 文件的 URL。通過使用PDF閱讀器，可以令此擴充功能在 PDF 文件內使用。如果你想要對本地 PDF 檔案也啟用此擴充功能，請在擴充功能管理中勾選「允許存取檔案URL」。"
-    },
     "optionsPreferredLanguage": {
         "message": "首選語言"
     },
     "optionsPreferredLanguageDescription": {
         "message": "當翻譯的目標語言為「自動選擇」時，會翻譯為「首選語言」。當文本的語言與「首選語言」相同時，將會翻譯為「次選語言」。"
     },
-    "optionsKeyboardShortcut": {
-        "message": "鍵盤快捷鍵"
-    },
     "optionsCallOutCommandDescription": {
         "message": "當擴充功能在網頁中啟用時，點擊此快捷鍵可以直接喚出擴充功能。當在已喚出擴充功能的狀態下點擊此快捷鍵時，將會聚焦文本框。"
-    },
-    "optionsCustomizeHere": {
-        "message": "在此自定義"
     },
     "optionsButtonsPosition": {
         "message": "按鈕的位置"
@@ -389,15 +374,6 @@
     "optionsEncourage": {
         "message": "如果覺得「Sc翻譯」對你有幫助，可以通過在擴充功能商店給出五星評價或者點擊 GitHub 頁面上的 Star 按鈕來鼓勵開發者，非常感謝！"
     },
-    "optionsSyncSettingsToOtherBrowsers": {
-        "message": "同步設置到其它瀏覽器"
-    },
-    "optionsSyncSettingsToOtherBrowsersDescription": {
-        "message": "你需要在不同環境中的相同瀏覽器中登錄相同帳號以啟用此功能。同時，你需要確認你的帳號已啟用擴展的同步功能。"
-    },
-    "optionsSyncSettings": {
-        "message": "同步設置"
-    },
     "optionsDisplayOfTranslation": {
         "message": "翻譯結果的展示"
     },
@@ -427,15 +403,6 @@
     },
     "optionsCustomWebpageTranslateSourceLearn": {
         "message": "深入瞭解自定義網頁翻譯源。"
-    },
-    "optionsExportSettings": {
-        "message": "導出設置"
-    },
-    "optionsImportSettings": {
-        "message": "導入設置"
-    },
-    "optionsFileSyncDescription": {
-        "message": "被導出的設置將會以明文的形式保存在文件中。"
     },
     "optionsWebpageTranslatingInstructions": {
         "message": "網頁翻譯說明"
@@ -496,18 +463,6 @@
     },
     "optionsDisplayOriginalTextWhenCtrlPressed": {
         "message": "僅在同時按住「Ctrl」鍵時顯示原文"
-    },
-    "optionsEnablePageTranslationCache": {
-        "message": "將翻譯結果快取到磁碟"
-    },
-    "optionsEnablePageTranslationCacheDescription": {
-        "message": "頁面翻譯將在發送翻譯請求之前查看快取。翻譯先前翻譯的頁面可以加快翻譯速度並減少翻譯請求的數量。"
-    },
-    "optionsClearTranslationCache": {
-        "message": "清除翻譯快取"
-    },
-    "optionsConfirmClearTranslationCache": {
-        "message": "翻譯快取將被清除。"
     },
     "optionsSpecifyTranslate": {
         "message": "指定要翻譯或不翻譯的內容"
@@ -772,9 +727,6 @@
     },
     "sentenceBingHttp429": {
         "message": "（請求過多）你可能需要前往官網進行翻譯並完成驗證後才能繼續使用。官網："
-    },
-    "contextMenus_OPEN_THIS_PAGE_WITH_PDF_VIEWER": {
-        "message": "用 PDF 閱讀器打開此頁面"
     },
     "contextMenus_OPEN_SEPARATE_WINDOW": {
         "message": "打開獨立翻譯視窗"

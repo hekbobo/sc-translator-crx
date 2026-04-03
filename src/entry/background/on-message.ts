@@ -1,25 +1,22 @@
 import * as types from '../../constants/chromeSendMessageTypes';
 import { translate, audio, detect } from '../../public/request';
 import { createSeparateWindow } from './separate-window';
-import { syncSettingsToOtherBrowsers } from './sync';
 import scIndexedDB, { DB_STORE_COLLECTION } from '../../public/sc-indexed-db';
 import {
     AudioResponse,
     ChromeRuntimeMessage,
     DetectResponse,
     GetAllCollectedTextResponse,
-    GetCacheResponse,
     GetCollectedByTextResponse,
     GetSelectorsResponse,
     IsCollectResponse,
     TranslateResponse
 } from '../../public/send';
-import { addCache, getCache } from './page-translation-cache';
 import { getSpecifySelectors } from './page-translation-rule';
 import scOptions from '../../public/sc-options';
 
 type TypedSendResponse = (
-    response: TranslateResponse | AudioResponse | DetectResponse | IsCollectResponse | GetCacheResponse | GetSelectorsResponse | GetAllCollectedTextResponse | GetCollectedByTextResponse
+    response: TranslateResponse | AudioResponse | DetectResponse | IsCollectResponse | GetSelectorsResponse | GetAllCollectedTextResponse | GetCollectedByTextResponse
 ) => void;
 
 chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sendResponse: TypedSendResponse) => {
@@ -49,11 +46,6 @@ chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sen
             const { text } = message.payload;
 
             text && createSeparateWindow(text);
-
-            return false;
-        }
-        case types.SCTS_SYNC_SETTINGS_TO_OTHER_BROWSERS: {
-            syncSettingsToOtherBrowsers();
 
             return false;
         }
@@ -100,20 +92,6 @@ chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sen
 
             text && scIndexedDB.delete(DB_STORE_COLLECTION, text);
 
-            return false;
-        }
-        case types.SCTS_GET_PAGE_TRANSLATION_CACHE: {
-            const { keys, source, from, to } = message.payload;
-
-            getCache(keys, source, from, to).then(data => sendResponse(data));
-
-            return true;
-        }
-        case types.SCTS_SET_PAGE_TRANSLATION_CACHE: {
-            const { cache, source, from, to } = message.payload;
-
-            addCache(cache, source, from, to);
-            
             return false;
         }
         case types.SCTS_GET_SPECIFY_SELECTORS: {

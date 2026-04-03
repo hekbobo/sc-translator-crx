@@ -4,7 +4,6 @@ import {
     contextMenusContexts,
     LISTEN_SELECTION_TEXT,
     OPEN_SEPARATE_WINDOW,
-    OPEN_THIS_PAGE_WITH_PDF_VIEWER,
     TRANSLATE_CURRENT_PAGE,
     TRANSLATE_SELECTION_TEXT
 } from '../../constants/contextMenusIds';
@@ -40,10 +39,6 @@ const listenSelectionText: OnContextMenuClick = async ({ selectionText }, tab) =
         const enabled = await getIsContentScriptEnabled(tab.id);
         enabled && sendTabsAudioCommandKeyPressed(tab.id);
     }
-};
-
-const openThisPageWithPdfViewer: OnContextMenuClick = (info, tab) => {
-    tab?.url && chrome.tabs.create({ url: `${chrome.runtime.getURL('/pdf-viewer/web/viewer.html')}?file=${encodeURIComponent(tab.url)}` });
 };
 
 const openSeparateTranslateWindow = () => {
@@ -88,13 +83,6 @@ export const initContextMenus = () => {
             contexts: ['action']
         }, () => { if (chrome.runtime.lastError) {} });
 
-        // open this page with pdf viewer
-        chrome.contextMenus.create({
-            id: 'action_open_this_page_with_pdf_viewer',
-            title: getMessage('contextMenus_OPEN_THIS_PAGE_WITH_PDF_VIEWER'),
-            contexts: ['action']
-        }, () => { if (chrome.runtime.lastError) {} });
-
         // translate current page
         chrome.contextMenus.create({
             id: 'action_translate_current_page',
@@ -124,17 +112,11 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         case OPEN_SEPARATE_WINDOW:
             openSeparateTranslateWindow();
             return;
-        case OPEN_THIS_PAGE_WITH_PDF_VIEWER:
-            openThisPageWithPdfViewer(info, tab);
-            return;
         case TRANSLATE_CURRENT_PAGE:
             translateCurrentPage(info, tab);
             return;
         case 'action_separate_window':
             openSeparateTranslateWindow();
-            return;
-        case 'action_open_this_page_with_pdf_viewer':
-            openThisPageWithPdfViewer(info, tab);
             return;
         case 'action_translate_current_page':
             translateCurrentPage(info, tab);

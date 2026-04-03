@@ -1,7 +1,6 @@
 import * as types from '../constants/chromeSendMessageTypes';
 import { EXTENSION_UPDATED } from '../constants/errorCodes';
 import { TranslateResult, Translation } from '../types';
-import type { WebpageTranslateResult } from './web-page-translate';
 
 type ErrorResponse = {
     code: string;
@@ -19,9 +18,6 @@ export type DetectResponse = GenericResponse<{
 export type IsCollectResponse = GenericResponse<{
     text: string;
     isCollected: boolean;
-}>;
-export type GetCacheResponse = GenericResponse<{
-    [K: string]: WebpageTranslateResult;
 }>;
 export type GetSelectorsResponse = GenericResponse<{
     includeSelectors: string;
@@ -58,9 +54,6 @@ export type ChromeRuntimeMessage = GenericMessage<
         text: string;
     }
 > | GenericMessage<
-    typeof types.SCTS_SYNC_SETTINGS_TO_OTHER_BROWSERS,
-    Record<string, never>
-> | GenericMessage<
     typeof types.SCTS_DETECT,
     {
         text: string;
@@ -91,22 +84,6 @@ export type ChromeRuntimeMessage = GenericMessage<
     typeof types.SCTS_SHOULD_AUTO_TRANSLATE_THIS_PAGE,
     {
         host: string;
-    }
-> | GenericMessage<
-    typeof types.SCTS_GET_PAGE_TRANSLATION_CACHE,
-    {
-        keys: string[];
-        source: string;
-        from: string;
-        to: string;
-    }
-> | GenericMessage<
-    typeof types.SCTS_SET_PAGE_TRANSLATION_CACHE,
-    {
-        cache: { key: string; translation: WebpageTranslateResult }[];
-        source: string;
-        from: string;
-        to: string;
     }
 > | GenericMessage<
     typeof types.SCTS_GET_SPECIFY_SELECTORS,
@@ -141,10 +118,6 @@ export const sendSeparate = (text: string) => {
     return chromeRuntimeSendMessage({ type: types.SCTS_SEND_TEXT_TO_SEPARATE_WINDOW, payload: { text } });
 };
 
-export const sendSyncSettingsToOtherBrowsers = () => {
-    return chromeRuntimeSendMessage({ type: types.SCTS_SYNC_SETTINGS_TO_OTHER_BROWSERS, payload: {} });
-};
-
 export const sendIsCollected = (text: string) => {
     return chromeRuntimeSendMessage<IsCollectResponse>({ type: types.SCTS_IS_COLLECTED, payload: { text } });
 };
@@ -163,14 +136,6 @@ export const sendUpdatePageTranslationState = (host: string, translating: boolea
 
 export const sendShouldAutoTranslateThisPage = (host: string) => {
     return chromeRuntimeSendMessage<'Yes' | 'No'>({ type: types.SCTS_SHOULD_AUTO_TRANSLATE_THIS_PAGE, payload: { host } });
-};
-
-export const sendGetPageTranslationCache = (keys: string[], source: string, from: string, to: string) => {
-    return chromeRuntimeSendMessage<GetCacheResponse>({ type: types.SCTS_GET_PAGE_TRANSLATION_CACHE, payload: { keys, source, from, to } });
-};
-
-export const sendSetPageTranslationCache = (cache: { key: string; translation: WebpageTranslateResult; }[], source: string, from: string, to: string) => {
-    return chromeRuntimeSendMessage({ type: types.SCTS_SET_PAGE_TRANSLATION_CACHE, payload: { cache, source, from, to } });
 };
 
 export const sendGetSpecifySelectors = (hostAndPathname: string) => {
