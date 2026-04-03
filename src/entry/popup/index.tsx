@@ -5,14 +5,13 @@ import '../../styles/global.css';
 import { Provider } from 'react-redux';
 import store from '../../redux/store';
 import { initTranslation } from '../../redux/init';
-import { appendColorVarsStyle, appendCustomizeStyle, appendFontSizeStyle } from '../../public/inject-style';
+import { appendColorVarsStyle, appendFontSizeStyle } from '../../public/inject-style';
 import ResultBox from './ResultBox';
 import scOptions from '../../public/sc-options';
 
 scOptions.init().then((options) => {
     appendColorVarsStyle(document.head);
     appendFontSizeStyle(document.head);
-    appendCustomizeStyle(document.head);
 
     initTranslation({
         sourceList: options.multipleTranslateSourceList,

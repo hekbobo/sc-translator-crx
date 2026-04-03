@@ -2,13 +2,11 @@ import React from 'react';
 import { getMessage } from '../../../public/i18n';
 import OptionsMenu from '../components/OptionsMenu';
 import OverScroll from '../components/OverScroll';
-import Audio from './sections/Audio';
 import ContextMenus from './sections/ContextMenus';
 import DefaultTranslateOptions from './sections/DefaultTranslateOptions';
 import History from './sections/History';
 import More from './sections/More';
 import SeparateWindow from './sections/SeparateWindow';
-import CustomizeStyle from './sections/CustomizeStyle';
 import Translate from './sections/Translate';
 import TranslatePanel from './sections/TranslatePanel';
 import Clipboard from './sections/Clipboard';
@@ -19,14 +17,10 @@ const Options: React.FC = () => {
     return (
         <div className='options'>
             <OptionsMenu />
-            <div className='sub-title' id='customize-style'>{getMessage('optionsCustomizeStyle')}</div>
-            <CustomizeStyle />
             <div className='sub-title' id='clipboard'>{getMessage('optionsClipboard')}</div>
             <Clipboard />
             <div className='sub-title' id='web-page-translating'>{getMessage('optionsWebPageTranslating')}</div>
             <WebPageTranslating />
-            <div className='sub-title' id='audio'>{getMessage('optionsAudio')}</div>
-            <Audio />
             <div className='sub-title' id='separate-window'>{getMessage('titleSeparateWindow')}</div>
             <SeparateWindow />
             <div className='sub-title' id='translate-panel'>{getMessage('optionsTranslatePanel')}</div>

@@ -7,7 +7,7 @@ import store from '../../redux/store';
 import { initTranslation } from '../../redux/init';
 import HandleCommand from './HandleCommands';
 import Separate from './Separate';
-import { appendColorVarsStyle, appendCustomizeStyle, appendFontSizeStyle } from '../../public/inject-style';
+import { appendColorVarsStyle, appendFontSizeStyle } from '../../public/inject-style';
 import { getMessage } from '../../public/i18n';
 import scOptions from '../../public/sc-options';
 
@@ -18,7 +18,6 @@ scOptions.init().then((options) => {
 
     appendColorVarsStyle(document.head);
     appendFontSizeStyle(document.head);
-    appendCustomizeStyle(document.head);
 
     initTranslation({
         sourceList: options.multipleTranslateSourceList,

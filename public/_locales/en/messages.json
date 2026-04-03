@@ -89,12 +89,6 @@
     "optionsShowButtonAfterSelectDescription": {
         "message": "When you select some text and release the left mouse button, the buttons you checked below will be displayed. The order of the buttons is related to the order in which you checked. If you don't want to show any buttons, just uncheck all the buttons."
     },
-    "optionsAudio": {
-        "message": "Audio"
-    },
-    "optionsDefaultAudioOptions": {
-        "message": "Default audio options"
-    },
     "optionsTranslateWithKeyPress": {
         "message": "Press \"Ctrl\" key and select text to translate"
     },
@@ -140,15 +134,6 @@
     "optionsButtonsPosition": {
         "message": "Button's position"
     },
-    "optionsVolume": {
-        "message": "Volume"
-    },
-    "optionsPlaybackRate": {
-        "message": "Playback rate"
-    },
-    "optionsPlayTestAudio": {
-        "message": "Play test audio"
-    },
     "optionsHideButtonAfterFixedTime": {
         "message": "Hide button after fixed time"
     },
@@ -184,18 +169,6 @@
     },
     "optionsTranslatePanel": {
         "message": "Translate panel"
-    },
-    "optionsMaxHeightOfTranslatePanel": {
-        "message": "Max height of translate panel"
-    },
-    "optionsPercentage": {
-        "message": "Percentage"
-    },
-    "optionsWidthOfTranslatePanel": {
-        "message": "Width of translate panel"
-    },
-    "optionsFontSizeOfTranslatePanel": {
-        "message": "Font size of translate panel"
     },
     "optionsStwAutoRespondDescription": {
         "message": "Separate translate window will auto respond to the translate request which you click the \"translate\" item of context menus in the extension unavailable page."
@@ -259,15 +232,6 @@
     },
     "optionsModify": {
         "message": "Modify"
-    },
-    "optionsCustomizeStyle": {
-        "message": "Customize style"
-    },
-    "optionsCustomizeStyleDescription": {
-        "message": "The CSS you input here will inject in all page except the options page."
-    },
-    "optionsCustomizeStyleNotice": {
-        "message": "Notice: there is no guarantee that elements or class names wil not be changed. Once elements or class names are changed, the CSS you input might cause \"style disorder\", then, you might need to adjust the CSS you input here."
     },
     "optionsPreview": {
         "message": "Preview:"
@@ -386,9 +350,6 @@
     "optionsTogglePageTranslationStateDescription": {
         "message": "When this keyboard shortcut is used on an extension enabled page, you can activate page translation while it is not activated, or close it while it is activated."
     },
-    "optionsKeepUsingDefaultAudioSource": {
-        "message": "Use this audio source in other translation sources"
-    },
     "optionsParagraphWrap": {
         "message": "Display translation in a new line when paragraph is detected"
     },
@@ -451,21 +412,6 @@
     },
     "optionsNotValidSelectorError": {
         "message": "It is not a valid selector."
-    },
-    "optionsAutoplayAudio": {
-        "message": "Automatically play audio after translation is completed"
-    },
-    "optionsAutoplayAudioDescription": {
-        "message": "When the number of characters in the original text is 30 or less and there is a completed translation in the translation request, the audio of the original text will be played automatically."
-    },
-    "optionsSelectAutoplayLanguage": {
-        "message": "Select the language for autoplay"
-    },
-    "optionsSelectAutoplayLanguageDescription": {
-        "message": "If it is empty, all languages will be played automatically. If it is not empty, only the language you selected will be played automatically."
-    },
-    "optionsSelectAutoPlayLanguageClear": {
-        "message": "All selected languages will be cleared."
     },
     "optionsSourceLanguage": {
         "message": "Source language"

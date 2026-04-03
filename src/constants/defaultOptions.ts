@@ -52,7 +52,6 @@ const defaultOptions: DefaultOptions = {
     autoInsertResult: false,
     textPreprocessingRegExpList: [],
     textPreprocessingPreset: { convertCamelCase: false },
-    customizeStyleText: '',
     translateButtons: defaultTranslateButtons,
     webPageTranslateSource: GOOGLE_COM,
     webPageTranslateTo: LANG_EN,

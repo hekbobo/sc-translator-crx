@@ -127,6 +127,59 @@ export const isTextBox = (element: Element) => {
         || (element as HTMLElement).isContentEditable;
 };
 
+const walkNodeToTextBox = (node: Node | null): boolean => {
+    let cur: Node | null = node;
+    if (cur?.nodeType === Node.TEXT_NODE) {
+        cur = (cur as Text).parentElement;
+    }
+    while (cur && cur !== document.documentElement) {
+        if (cur.nodeType === Node.ELEMENT_NODE && isTextBox(cur as Element)) {
+            return true;
+        }
+        cur = (cur as Element).parentElement ?? cur.parentNode;
+    }
+    return false;
+};
+
+/**
+ * Detect focus/selection inside input, textarea, or contenteditable.
+ * Use this instead of only `document.activeElement` — after mouseup, focus may
+ * already have moved (e.g. React), so we also use event.composedPath and Selection.
+ */
+export const isSelectionOrActiveInTextBox = (mouseupEvent?: MouseEvent): boolean => {
+    const ae = document.activeElement;
+    if (ae && isTextBox(ae)) {
+        return true;
+    }
+
+    if (mouseupEvent) {
+        if (mouseupEvent.composedPath().some(n => n instanceof Element && isTextBox(n))) {
+            return true;
+        }
+    }
+
+    const sel = window.getSelection();
+    if (sel?.rangeCount) {
+        const range = sel.getRangeAt(0);
+        if (walkNodeToTextBox(range.commonAncestorContainer)) {
+            return true;
+        }
+        if (sel.anchorNode && walkNodeToTextBox(sel.anchorNode)) {
+            return true;
+        }
+    }
+
+    if (ae instanceof HTMLInputElement && ae.selectionStart != null && ae.selectionEnd != null
+        && ae.selectionStart !== ae.selectionEnd && TEXTBOX_INPUT_TYPES.has(ae.type)) {
+        return true;
+    }
+    if (ae instanceof HTMLTextAreaElement && ae.selectionStart !== ae.selectionEnd) {
+        return true;
+    }
+
+    return false;
+};
+
 export const cn = (...args: (undefined | null | boolean | string)[]) => {
     let className = '';
 

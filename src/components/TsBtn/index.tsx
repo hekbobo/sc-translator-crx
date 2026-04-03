@@ -11,7 +11,7 @@ import {
 import IconFont from '../IconFont';
 import './style.css';
 import { sendSeparate } from '../../public/send';
-import { isTextBox } from '../../public/utils';
+import { isSelectionOrActiveInTextBox } from '../../public/utils';
 import { GetStorageKeys, Position } from '../../types';
 import { callOutPanelInContentScript, closePanel, requestToHidePanel, showPanelAndSetPosition } from '../../redux/slice/panelStatusSlice';
 import store from '../../redux/store';
@@ -112,7 +112,7 @@ const TsBtn: React.FC = () => {
 
     const handleForwardTranslate = useCallback((text: string, position: Position, to: undefined | string = undefined) => {
         void (async () => {
-            if (doNotRespondInTextBox && document.activeElement && isTextBox(document.activeElement)) {
+            if (doNotRespondInTextBox && isSelectionOrActiveInTextBox()) {
                 return;
             }
 
@@ -217,10 +217,10 @@ const TsBtn: React.FC = () => {
         }
     });
 
-    useGetSelection(({ text, pos }) => {
+    useGetSelection(({ text, pos, mouseEvent }) => {
         if (!translateEnabled) { return; }
 
-        if (doNotRespondInTextBox && document.activeElement && isTextBox(document.activeElement)) { return; }
+        if (doNotRespondInTextBox && isSelectionOrActiveInTextBox(mouseEvent)) { return; }
 
         const posWithBtnPosition: Position = { x: pos.x + btnPosition.x, y: pos.y + btnPosition.y };
 

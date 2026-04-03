@@ -13,11 +13,6 @@ let translatePanelFontSize: number;
 
 let fontSizeStyle: HTMLStyleElement;
 
-// customize style
-let customizeStyleText: string;
-
-let customizeStyle: HTMLStyleElement;
-
 const styleVarsToStyleText = (styleVars: StyleVars) => {
     styleVars = { ...defaultStyleVars, ...styleVars };
     return (Object.keys(styleVars) as (keyof StyleVars)[]).reduce((t: string, c: keyof StyleVars) => (t + `${c}:${styleVars[c]};`), '#sc-translator-root{') + '}';
@@ -38,10 +33,6 @@ const updateColorVarsStyleInnerText = () => {
 
 const updateFontSizeStyleInnerText = () => {
     fontSizeStyle.innerText = fontSizeToStyleText(translatePanelFontSize);
-};
-
-const updateCustomizeStyleInnerText = () => {
-    customizeStyle.innerText = customizeStyleText.replaceAll('\n', ' ');
 };
 
 export const appendColorVarsStyle = (targetParent: HTMLElement | ShadowRoot) => {
@@ -74,19 +65,4 @@ export const appendFontSizeStyle = (targetParent: HTMLElement | ShadowRoot) => {
         changes.translatePanelFontSize !== undefined && (translatePanelFontSize = changes.translatePanelFontSize);
         updateFontSizeStyleInnerText();
     });
-};
-
-export const appendCustomizeStyle = (targetParent: HTMLElement | ShadowRoot) => {
-    customizeStyle = document.createElement('style');
-    targetParent.appendChild(customizeStyle);
-
-    const keys: GetStorageKeys<'customizeStyleText'> = ['customizeStyleText'];
-    scOptions.get(keys).then((storage) => {
-        customizeStyleText = storage.customizeStyleText;
-        updateCustomizeStyleInnerText();
-    });
-    scOptions.listen(keys, (changes) => {
-        changes.customizeStyleText !== undefined && (customizeStyleText = changes.customizeStyleText);
-        updateCustomizeStyleInnerText();
-    })
 };

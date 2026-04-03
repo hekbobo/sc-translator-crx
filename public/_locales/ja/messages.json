@@ -89,12 +89,6 @@
     "optionsShowButtonAfterSelectDescription": {
         "message": "テキストを選択した後にマウスの左ボタンを離すと、下でチェックしたボタンが表示されます。ボタンの順序は、チェックした順序に関連しています。ボタンを表示したくない場合は、すべてのボタンのチェックを外してください。"
     },
-    "optionsAudio": {
-        "message": "音声"
-    },
-    "optionsDefaultAudioOptions": {
-        "message": "デフォルトの音声オプション"
-    },
     "optionsTranslateWithKeyPress": {
         "message": "「Ctrl」キーを押してテキストを選択した後に翻訳する"
     },
@@ -140,15 +134,6 @@
     "optionsButtonsPosition": {
         "message": "ボタンの位置"
     },
-    "optionsVolume": {
-        "message": "音量"
-    },
-    "optionsPlaybackRate": {
-        "message": "再生速度"
-    },
-    "optionsPlayTestAudio": {
-        "message": "テストオーディオを再生する"
-    },
     "optionsHideButtonAfterFixedTime": {
         "message": "一定時間後にボタンを非表示にする"
     },
@@ -184,18 +169,6 @@
     },
     "optionsTranslatePanel": {
         "message": "翻訳パネル"
-    },
-    "optionsMaxHeightOfTranslatePanel": {
-        "message": "翻訳パネルの最大高さ"
-    },
-    "optionsPercentage": {
-        "message": "パーセント"
-    },
-    "optionsWidthOfTranslatePanel": {
-        "message": "翻訳パネルの幅"
-    },
-    "optionsFontSizeOfTranslatePanel": {
-        "message": "翻訳パネルのフォントサイズ"
     },
     "optionsStwAutoRespondDescription": {
         "message": "スタンドアロン翻訳ウィンドウは、拡張機能が利用できないページのコンテキストメニューの「翻訳」項目をクリックした翻訳リクエストに自動的に応答します。"
@@ -259,15 +232,6 @@
     },
     "optionsModify": {
         "message": "変更する"
-    },
-    "optionsCustomizeStyle": {
-        "message": "スタイルをカスタマイズする"
-    },
-    "optionsCustomizeStyleDescription": {
-        "message": "入力したCSSは、オプションページを除くすべてのページに挿入されます。"
-    },
-    "optionsCustomizeStyleNotice": {
-        "message": "注意：要素とクラス名が変更されないという保証はありません。要素とクラス名が変更されると、入力したCSSによって「スタイルの乱れ」が発生する可能性があるため、ここで入力したCSSを調整する必要がある場合があります。"
     },
     "optionsPreview": {
         "message": "プレビュー："
@@ -386,9 +350,6 @@
     "optionsTogglePageTranslationStateDescription": {
         "message": "拡張機能が有効なページでこのキーボードショートカットを使用すると、ページ翻訳がアクティブしない状態でアクティブにしたり、アクティブした状態で閉じたりすることができます。"
     },
-    "optionsKeepUsingDefaultAudioSource": {
-        "message": "この音声ソースを他の翻訳ソースで使用する"
-    },
     "optionsParagraphWrap": {
         "message": "段落検出時に改行で訳文を表示する"
     },
@@ -451,21 +412,6 @@
     },
     "optionsNotValidSelectorError": {
         "message": "有効なセレクターではありません。"
-    },
-    "optionsAutoplayAudio": {
-        "message": "翻訳が完了したら自動的に音声を再生します"
-    },
-    "optionsAutoplayAudioDescription": {
-        "message": "原文の文字数が30以下と翻訳リクエストに一つ翻訳済みがある場合、原文の音声が自動的に再生されます。"
-    },
-    "optionsSelectAutoplayLanguage": {
-        "message": "自動再生の言語を選択する"
-    },
-    "optionsSelectAutoplayLanguageDescription": {
-        "message": "空の場合は、すべての言語が自動的に再生されます。空でない場合は、選択した言語のみが自動的に再生されます。"
-    },
-    "optionsSelectAutoPlayLanguageClear": {
-        "message": "選択された言語はすべて削除されます。"
     },
     "optionsSourceLanguage": {
         "message": "ソース言語"

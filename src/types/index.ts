@@ -166,7 +166,6 @@ export type DefaultOptions = {
     autoInsertResult: boolean;
     textPreprocessingRegExpList: TextPreprocessingRegExp[];
     textPreprocessingPreset: TextPreprocessingPreset;
-    customizeStyleText: string;
     translateButtons: string[];
     webPageTranslateSource: string;
     webPageTranslateTo: string;

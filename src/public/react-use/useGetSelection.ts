@@ -5,7 +5,9 @@ import { selectedTextPreprocessing } from '../text-preprocessing';
 import { isTextBox } from '../utils';
 import { getSelectedText } from '../utils/get-selection';
 
-const useGetSelection = (selectCallback: (params: { pos: Position, text: string }) => void, unselectCallback: () => void) => {
+export type GetSelectionCallbackParams = { pos: Position; text: string; mouseEvent: MouseEvent };
+
+const useGetSelection = (selectCallback: (params: GetSelectionCallbackParams) => void, unselectCallback: () => void) => {
     const selectRef = useRef<typeof selectCallback>(undefined);
     const unselectRef = useRef<() => void>(undefined);
     const lastSelectionTextRef = useRef('');
@@ -37,7 +39,8 @@ const useGetSelection = (selectCallback: (params: { pos: Position, text: string 
 
                 selectRef.current?.({
                     pos: { x: e.clientX, y: e.clientY },
-                    text
+                    text,
+                    mouseEvent: e
                 });
             }, 0);
         };

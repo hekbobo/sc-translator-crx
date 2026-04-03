@@ -89,12 +89,6 @@
     "optionsShowButtonAfterSelectDescription": {
         "message": "當你選擇一些文本並釋放鼠標左鍵後，將顯示你在下方所勾選的按鈕。按鈕的順序與你勾選的順序相關。如果你不想顯示任何按鈕，只需取消勾選所有按鈕即可。"
     },
-    "optionsAudio": {
-        "message": "朗讀"
-    },
-    "optionsDefaultAudioOptions": {
-        "message": "默認朗讀選項"
-    },
     "optionsTranslateWithKeyPress": {
         "message": "按住 Ctrl 鍵並選擇文本後翻譯"
     },
@@ -140,15 +134,6 @@
     "optionsButtonsPosition": {
         "message": "按鈕的位置"
     },
-    "optionsVolume": {
-        "message": "音量"
-    },
-    "optionsPlaybackRate": {
-        "message": "播放速率"
-    },
-    "optionsPlayTestAudio": {
-        "message": "播放測試音訊"
-    },
     "optionsHideButtonAfterFixedTime": {
         "message": "在固定時間後隱藏按鈕"
     },
@@ -184,18 +169,6 @@
     },
     "optionsTranslatePanel": {
         "message": "翻譯面板"
-    },
-    "optionsMaxHeightOfTranslatePanel": {
-        "message": "翻譯面板的最大高度"
-    },
-    "optionsPercentage": {
-        "message": "百分比"
-    },
-    "optionsWidthOfTranslatePanel": {
-        "message": "翻譯面板的寬度"
-    },
-    "optionsFontSizeOfTranslatePanel": {
-        "message": "翻譯面板的字體大小"
     },
     "optionsStwAutoRespondDescription": {
         "message": "獨立翻譯視窗會自動回應你在擴充功能不可用的頁面中點擊右鍵功能表中的「翻譯」項後產生的翻譯請求。"
@@ -259,15 +232,6 @@
     },
     "optionsModify": {
         "message": "修改"
-    },
-    "optionsCustomizeStyle": {
-        "message": "自定義樣式"
-    },
-    "optionsCustomizeStyleDescription": {
-        "message": "在此輸入的 CSS 將會注入到除了設置頁外的所有頁面。"
-    },
-    "optionsCustomizeStyleNotice": {
-        "message": "注意：不能保證元素和類名不會更改。一旦元素和類名被更改了，你在此輸入的 CSS 可能會造成樣式錯亂，然後你可能會需要調整你所輸入的 CSS。"
     },
     "optionsPreview": {
         "message": "預覽："
@@ -386,9 +350,6 @@
     "optionsTogglePageTranslationStateDescription": {
         "message": "在擴充功能已啟用的網頁中使用此快捷鍵時，你可以在網頁翻譯未激活時激活它，或在已激活時關閉它。"
     },
-    "optionsKeepUsingDefaultAudioSource": {
-        "message": "在其他翻譯源中使用此朗讀源"
-    },
     "optionsParagraphWrap": {
         "message": "檢測到段落時換行展示譯文"
     },
@@ -451,21 +412,6 @@
     },
     "optionsNotValidSelectorError": {
         "message": "這不是一個有效的選擇器。"
-    },
-    "optionsAutoplayAudio": {
-        "message": "翻譯完成後自動播放音頻"
-    },
-    "optionsAutoplayAudioDescription": {
-        "message": "當原文的字元數在 30 個以下且翻譯請求中有已完成的翻譯時，自動播放原文的音訊。"
-    },
-    "optionsSelectAutoplayLanguage": {
-        "message": "選擇自動播放的語言"
-    },
-    "optionsSelectAutoplayLanguageDescription": {
-        "message": "如果為空，將自動播放所有語言。如果不為空，則只會自動播放你選擇的語言。"
-    },
-    "optionsSelectAutoPlayLanguageClear": {
-        "message": "所有已選擇的語言將被清除。"
     },
     "optionsSourceLanguage": {
         "message": "源語言"

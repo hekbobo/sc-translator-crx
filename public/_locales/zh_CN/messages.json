@@ -89,12 +89,6 @@
     "optionsShowButtonAfterSelectDescription": {
         "message": "当你选择一些文本并释放鼠标左键后，将显示你在下方所勾选的按钮。按钮的顺序与你勾选的顺序相关。如果你不想显示任何按钮，只需取消勾选所有按钮即可。"
     },
-    "optionsAudio": {
-        "message": "朗读"
-    },
-    "optionsDefaultAudioOptions": {
-        "message": "默认朗读选项"
-    },
     "optionsTranslateWithKeyPress": {
         "message": "按住 Ctrl 键并选择文本后翻译"
     },
@@ -140,15 +134,6 @@
     "optionsButtonsPosition": {
         "message": "按钮的位置"
     },
-    "optionsVolume": {
-        "message": "音量"
-    },
-    "optionsPlaybackRate": {
-        "message": "播放速率"
-    },
-    "optionsPlayTestAudio": {
-        "message": "播放测试音频"
-    },
     "optionsHideButtonAfterFixedTime": {
         "message": "在固定时间后隐藏按钮"
     },
@@ -184,18 +169,6 @@
     },
     "optionsTranslatePanel": {
         "message": "翻译面板"
-    },
-    "optionsMaxHeightOfTranslatePanel": {
-        "message": "翻译面板的最大高度"
-    },
-    "optionsPercentage": {
-        "message": "百分比"
-    },
-    "optionsWidthOfTranslatePanel": {
-        "message": "翻译面板的宽度"
-    },
-    "optionsFontSizeOfTranslatePanel": {
-        "message": "翻译面板的字体大小"
     },
     "optionsStwAutoRespondDescription": {
         "message": "独立翻译窗口会自动响应你在扩展不可用的页面中点击右键菜单中的“翻译”项后产生的翻译请求。"
@@ -259,15 +232,6 @@
     },
     "optionsModify": {
         "message": "修改"
-    },
-    "optionsCustomizeStyle": {
-        "message": "自定义样式"
-    },
-    "optionsCustomizeStyleDescription": {
-        "message": "在此输入的 CSS 将会注入到除了设置页外的所有页面。"
-    },
-    "optionsCustomizeStyleNotice": {
-        "message": "注意：不能保证元素和类名不会更改。一旦元素和类名被更改了，你在此输入的 CSS 可能会造成样式错乱，然后你可能会需要调整你所输入的 CSS。"
     },
     "optionsPreview": {
         "message": "预览："
@@ -386,9 +350,6 @@
     "optionsTogglePageTranslationStateDescription": {
         "message": "在扩展已启用的网页中使用此快捷键时，你可以在网页翻译未激活时激活它，或在已激活时关闭它。"
     },
-    "optionsKeepUsingDefaultAudioSource": {
-        "message": "在其他翻译源中使用此朗读源"
-    },
     "optionsParagraphWrap": {
         "message": "检测到段落时换行展示译文"
     },
@@ -451,21 +412,6 @@
     },
     "optionsNotValidSelectorError": {
         "message": "这不是一个有效的选择器。"
-    },
-    "optionsAutoplayAudio": {
-        "message": "翻译完成后自动播放音频"
-    },
-    "optionsAutoplayAudioDescription": {
-        "message": "当原文的字符数在 30 个以下且翻译请求中有已完成的翻译时，自动播放原文的音频。"
-    },
-    "optionsSelectAutoplayLanguage": {
-        "message": "选择自动播放的语言"
-    },
-    "optionsSelectAutoplayLanguageDescription": {
-        "message": "如果为空，将自动播放所有语言。如果不为空，则只会自动播放你选择的语言。"
-    },
-    "optionsSelectAutoPlayLanguageClear": {
-        "message": "所有已选择的语言将被清除。"
     },
     "optionsSourceLanguage": {
         "message": "源语言"
