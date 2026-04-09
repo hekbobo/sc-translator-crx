@@ -1,9 +1,9 @@
 {
     "extName": {
-        "message": "可可翻译 - 翻译，页面翻译，词典"
+        "message": "极简翻译"
     },
     "extDescription": {
-        "message": "可高度自定义的网页内划词翻译、提供更多展示选择的网页翻译、能方便地对单词进行分类的翻译收藏，可可翻译专注于提供更好的翻译体验。"
+        "message": "可高度自定义的网页内划词翻译、提供更多展示选择的网页翻译、能方便地对单词进行分类的翻译收藏，极简翻译专注于提供更好的翻译体验。"
     },
     "extActivateExtensionDescription": {
         "message": "激活扩展"
@@ -339,7 +339,7 @@
         "message": "在此网站不可用"
     },
     "popupOpenOptionsPage": {
-        "message": "打开选项页面"
+        "message": "打开设置页面"
     },
     "popupEnableDarkMode": {
         "message": "启用黑夜模式"
