@@ -8,6 +8,17 @@
     cursor: pointer;
     --ripple-max-opa: 0.16
 }
+.panel-icon-btn.panel-icon-btn--collect-available {
+    color: rgb(25, 118, 210);
+}
+.panel-icon-btn.panel-icon-btn--collect-available .iconfont {
+    opacity: 1;
+}
+.panel-icon-btn.panel-icon-btn--active {
+    background: rgba(25, 118, 210, 0.14);
+    color: rgb(25, 118, 210);
+    border-radius: 6px;
+}
 .panel-icon-btn:not(.panel-icon-btn--disabled):hover .ripple::before {
     opacity: 0.08;
 }
@@ -20,6 +31,8 @@
 }
 .panel-icon-btn.panel-icon-btn--disabled {
     cursor: default;
+    opacity: 0.35;
+    filter: grayscale(1);
 }
 .panel-icon-btn .iconfont {
     pointer-events: none;
@@ -27,4 +40,7 @@
 }
 .panel-icon-btn.panel-icon-btn--disabled .iconfont, .panel-icon-btn.panel-icon-btn--icon-grey .iconfont {
     opacity: 0.4;
+}
+.panel-icon-btn.panel-icon-btn--active .iconfont {
+    opacity: 1;
 }

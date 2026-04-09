@@ -1,8 +1,9 @@
 .popup-header {
     color: var(--text-icon);
     padding: 2px 4px;
+    justify-content: flex-end;
 }
-.popup-header__icons .iconfont, .popup-header__left .iconfont {
+.popup-header__icons .iconfont {
     font-size: 20px !important;
     color: var(--text-icon);
 }

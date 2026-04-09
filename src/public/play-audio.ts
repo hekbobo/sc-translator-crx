@@ -1,4 +1,3 @@
-import { serviceDefaultValueMap } from '../constants/thirdPartyServiceValues';
 import { BROWSER_AI, GOOGLE_COM } from '../constants/translateSource';
 import { GetStorageKeys } from '../types';
 import scOptions from './sc-options';
@@ -53,7 +52,7 @@ export const playAudio = ({ text, source, from = '', auto }: { text: string; sou
 
     audioCache.useUtter = false;
 
-    if (source === BROWSER_AI || serviceDefaultValueMap.has(source ?? '')) {
+    if (source === BROWSER_AI) {
         audioCache.useUtter = true;
     }
 

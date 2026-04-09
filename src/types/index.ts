@@ -1,6 +1,5 @@
 import { StyleVarsList } from "../constants/defaultStyleVars";
 import { SourceParams } from "../constants/sourceParams";
-import { EnabledThirdPartyServices } from "./thirdPartyValue";
 
 declare global {
     interface Window {
@@ -147,9 +146,6 @@ export type DefaultOptions = {
     // 'stw' means 'Separate translate Window'
     rememberStwSizeAndPosition: boolean;
     stwSizeAndPosition: { width: number; height: number; left: number; top: number };
-    pinThePanelWhileOpeningIt: boolean;
-    rememberPositionOfPinnedPanel: boolean;
-    positionOfPinnedPanel: Position;
     translatePanelMaxHeight: { percentage: boolean; px: number; percent: number };
     translatePanelWidth: { percentage: boolean; px: number; percent: number };
     translatePanelFontSize: number;
@@ -162,8 +158,6 @@ export type DefaultOptions = {
     autoTranslateAfterInput: boolean;
     contextMenus: OptionsContextMenu[];
     autoPasteInTheInputBox: boolean;
-    enableInsertResult: boolean;
-    autoInsertResult: boolean;
     textPreprocessingRegExpList: TextPreprocessingRegExp[];
     textPreprocessingPreset: TextPreprocessingPreset;
     translateButtons: string[];
@@ -175,7 +169,6 @@ export type DefaultOptions = {
     afterSelectingTextRegExpList: TextPreprocessingRegExp[];
     translateButtonsTL: TranslateButtonsTL;
     sourceParamsCache: SourceParams;
-    customTranslateSourceList: CustomTranslateSource[];
     displayOfTranslation: DisplayOfTranslation;
     displayModeEnhancement: DisplayModeEnhancement;
     customWebpageTranslateSourceList: CustomTranslateSource[];
@@ -188,9 +181,6 @@ export type DefaultOptions = {
     translateRedirectedSameDomainPage: boolean;
     autoPlayAudio: boolean;
     autoPlayAudioLangs: string[];
-    highlightCollectedText: boolean;
-    enabledThirdPartyServices: EnabledThirdPartyServices;
-    hoverHighlighted: boolean;
 };
 
 // Only work in "src/entry/background/install.ts".

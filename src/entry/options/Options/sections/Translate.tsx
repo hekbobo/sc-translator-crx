@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Slider, { SliderFormat, SliderMarks } from '../../../../components/Slider';
 import Switch from '../../../../components/Switch';
 import { getMessage } from '../../../../public/i18n';
 import { useOptions } from '../../../../public/react-use';
 import { GetStorageKeys } from '../../../../types';
-import BetaIcon from '../../components/BetaIcon';
 import BtnPostion from '../../components/BtnPosition';
 import HostList from '../../components/HostList';
 import TranslateButtonDisplay from '../../components/TranslateButtonDisplay';
@@ -30,13 +29,9 @@ const useOptionsDependency: GetStorageKeys<
     'respondToSeparateWindow' |
     'translateDirectlyWhilePinning' |
     'doNotRespondInTextBox' |
-    'enableInsertResult' |
-    'autoInsertResult' |
     'translateButtons' |
     'translateButtonsTL' |
-    'userLanguage' |
-    'highlightCollectedText' |
-    'hoverHighlighted'
+    'userLanguage'
 > = [
     'translateWithKeyPress',
     'translateDirectly',
@@ -48,13 +43,9 @@ const useOptionsDependency: GetStorageKeys<
     'respondToSeparateWindow',
     'translateDirectlyWhilePinning',
     'doNotRespondInTextBox',
-    'enableInsertResult',
-    'autoInsertResult',
     'translateButtons',
     'translateButtonsTL',
-    'userLanguage',
-    'highlightCollectedText',
-    'hoverHighlighted'
+    'userLanguage'
 ];
 
 const Translate: React.FC = () => {
@@ -69,16 +60,10 @@ const Translate: React.FC = () => {
         respondToSeparateWindow,
         translateDirectlyWhilePinning,
         doNotRespondInTextBox,
-        enableInsertResult,
-        autoInsertResult,
         translateButtons,
         translateButtonsTL,
-        userLanguage,
-        highlightCollectedText,
-        hoverHighlighted
+        userLanguage
     } = useOptions(useOptionsDependency);
-
-    const [highlightMessage, setHighlightMessage] = useState('');
 
     return (
         <div className='opt-section'>
@@ -156,53 +141,6 @@ const Translate: React.FC = () => {
                     onChange={v => scOptions.set({ doNotRespondInTextBox: v })}
                 />
                 <div className='item-description'>{getMessage('optionsDoNotRespondInTextBoxDescription')}</div>
-            </div>
-            <div className='opt-section-row'>
-                <div className='flex-align-items-center'>
-                    <Switch
-                        label={getMessage('optionsEnableInsertResult')}
-                        checked={enableInsertResult}
-                        onChange={v => scOptions.set({ enableInsertResult: v })}
-                    />
-                    <BetaIcon />
-                </div>
-                <div className='item-description'>{getMessage('optionsEnableInsertResultDescription')}</div>
-                <div className='mt10-ml30'>
-                    <Switch
-                        label={getMessage('optionsAutoInsertResult')}
-                        checked={autoInsertResult}
-                        onChange={v => scOptions.set({ autoInsertResult: v })}
-                    />
-                    <div className='item-description'>{getMessage('optionsAutoInsertResultDescription')}</div>
-                </div>
-            </div>
-            <div className='opt-section-row'>
-                <div className='flex-align-items-center'>
-                    <Switch
-                        label={getMessage('highlightCollectedText')}
-                        checked={highlightCollectedText}
-                        onChange={v => {
-                            try {
-                                new Highlight();
-                                scOptions.set({ highlightCollectedText: v });
-                                setHighlightMessage('');
-                            }
-                            catch {
-                                setHighlightMessage('Your browser does not support "Highlight" API.')
-                            }
-                        }}
-                    />
-                    <BetaIcon />
-                </div>
-                {highlightMessage && <div className='item-description'>{highlightMessage}</div>}
-                <div className='mt10-ml30'>
-                    <Switch
-                        label={getMessage('hoverHighlighted')}
-                        checked={hoverHighlighted}
-                        onChange={v => scOptions.set({ hoverHighlighted: v })}
-                    />
-                    <BetaIcon />
-                </div>
             </div>
             <div className='opt-section-row'>
                 <div className='options-mode'>

@@ -55,7 +55,8 @@ const CollectButton: React.FC = () => {
             disabled={!modifiable}
             onClick={onCollectButtonClick}
             title={isCollected ? collectionMessage.updateToCollection : collectionMessage.addToCollection}
-            iconGrey={!isCollected}
+            active={isCollected}
+            className={modifiable && !isCollected ? 'panel-icon-btn--collect-available' : undefined}
         >
             <IconFont
                 iconName='#icon-collect'

@@ -21,9 +21,9 @@ export const panelStatusSlice = createSlice({
     name: 'panelStatus',
     initialState,
     reducers: {
-        showPanelAndSetPosition: (state, { payload }: PayloadAction<{ position: Position; pinThePanelWhileOpeningIt: boolean; }>) => {
+        showPanelAndSetPosition: (state, { payload }: PayloadAction<{ position: Position }>) => {
             if (!state.show) {
-                state.pinning = payload.pinThePanelWhileOpeningIt;
+                state.pinning = false;
             }
 
             state.show = true;
@@ -37,9 +37,9 @@ export const panelStatusSlice = createSlice({
             state.focusFlag += 1;
             state.displayEditArea = true;
         },
-        callOutPanelInContentScript: (state, { payload }: PayloadAction<{ pinThePanelWhileOpeningIt: boolean }>) => {
+        callOutPanelInContentScript: (state) => {
             if (!state.show) {
-                state.pinning = payload.pinThePanelWhileOpeningIt;
+                state.pinning = false;
             }
 
             state.show = true;

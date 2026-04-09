@@ -44,9 +44,6 @@
     "sc-close": {
       "description": "__MSG_extCloseCommandDescription__"
     },
-    "sc-toggle-auto-insert-result": {
-      "description": "__MSG_extToggleAutoInsertResultDescription__"
-    },
     "sc-translate-current-page": {
       "description": "__MSG_extTranslateCurrentPageDescription__"
     },

@@ -44,7 +44,6 @@ const useOptionsDependency: GetStorageKeys<
     'doNotRespondInTextBox' |
     'translateButtons' |
     'translateButtonsTL' |
-    'pinThePanelWhileOpeningIt' |
     'btnPosition'
 > = [
     'translateDirectly',
@@ -56,7 +55,6 @@ const useOptionsDependency: GetStorageKeys<
     'doNotRespondInTextBox',
     'translateButtons',
     'translateButtonsTL',
-    'pinThePanelWhileOpeningIt',
     'btnPosition'
 ];
 
@@ -100,7 +98,6 @@ const TsBtn: React.FC = () => {
         doNotRespondInTextBox,
         translateButtons,
         translateButtonsTL,
-        pinThePanelWhileOpeningIt,
         btnPosition
     } = useOptions(useOptionsDependency);
 
@@ -133,11 +130,11 @@ const TsBtn: React.FC = () => {
                 }
             }
 
-            dispatch(showPanelAndSetPosition({ position, pinThePanelWhileOpeningIt }));
+            dispatch(showPanelAndSetPosition({ position }));
 
             dispatch(nextTranslaion({ text, to }));
         })();
-    }, [dispatch, doNotRespondInTextBox, respondToSeparateWindow, pinThePanelWhileOpeningIt]);
+    }, [dispatch, doNotRespondInTextBox, respondToSeparateWindow]);
 
     const handleTranslateButtonClick = (translateButton: string) => {
         setShowBtn(false);
@@ -206,7 +203,7 @@ const TsBtn: React.FC = () => {
                 break;
             }
             case SCTS_CALL_OUT_COMMAND_KEY_PRESSED: {
-                dispatch(callOutPanelInContentScript({ pinThePanelWhileOpeningIt }));
+                dispatch(callOutPanelInContentScript());
                 break;
             }
             case SCTS_CLOSE_COMMAND_KEY_PRESSED: {

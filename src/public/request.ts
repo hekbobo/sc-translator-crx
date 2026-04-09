@@ -7,10 +7,8 @@ import {
 import google from '../public/translate/google';
 import bing from '../public/translate/bing';
 import mojidict from '../public/translate/mojidict';
-import custom from '../public/translate/custom';
 import baidu from '../public/translate/baidu';
-import { translate as geminiTranslate } from '../public/translate/gemini/translate';
-import { translate as openaiTranslate } from '../public/translate/openai-compatibility/translate';
+import { SOURCE_ERROR } from '../constants/errorCodes';
 import { AudioResponse, DetectResponse, TranslateResponse } from './send';
 import { getError } from './translate/utils';
 
@@ -40,22 +38,12 @@ export const translate = async ({ source, ...requestParams }: TranslateRequestPa
 		case BAIDU_COM:
 			translate = baidu.translate;
 			break;
-		case 'Gemini':
-			translate = geminiTranslate;
-			break;
-		case 'ChatGPT':
-			translate = openaiTranslate;
-			break;
-		case 'OpenAI':
-			translate = openaiTranslate;
-			break;
 		default:
-			translate = custom.translate;
-			break;
+			return { code: SOURCE_ERROR };
 	}
 	
 	try {
-		const translation = await translate(requestParams, source);
+		const translation = await translate(requestParams);
 
 		return { translation };
 	}

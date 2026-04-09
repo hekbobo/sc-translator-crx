@@ -31,8 +31,7 @@ const MultipleTranslateResult: React.FC<MultipleTranslateResultProps> = React.me
     const {
         state: { translations, text, from, to },
         actions: { setText, setLanguage, retry, addSource, removeSource },
-        insertToggle
-    } = useTranslation({ recordTranslation: historyEnabled, insertTranslation: true });
+    } = useTranslation({ recordTranslation: historyEnabled });
 
     return (
         <>
@@ -63,7 +62,6 @@ const MultipleTranslateResult: React.FC<MultipleTranslateResultProps> = React.me
                             remove={() => removeSource(source)}
                             retry={() => retry(source)}
                             setText={setText}
-                            insertResult={insertToggle && (translation => insertToggle(source, translation))}
                         />
                     ))
                 )}

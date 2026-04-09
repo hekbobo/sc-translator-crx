@@ -9,16 +9,10 @@ import './style.css';
 import PinButton from '../../../components/PanelIconButtons/PinButton';
 import CloseButton from '../../../components/PanelIconButtons/CloseButton';
 import Logo from '../../../components/Logo';
-import scOptions from '../../../public/sc-options';
-
 const useOptionsDependency: GetStorageKeys<
-    'rememberPositionOfPinnedPanel' |
-    'positionOfPinnedPanel' |
     'translatePanelMaxHeight' |
     'translatePanelWidth'
 > = [
-    'rememberPositionOfPinnedPanel',
-    'positionOfPinnedPanel',
     'translatePanelMaxHeight',
     'translatePanelWidth'
 ];
@@ -33,22 +27,9 @@ const ResultBox: React.FC = () => {
 
     const { show, position, pinning, displayEditArea } = useAppSelector(state => state.panelStatus);
 
-    const {
-        rememberPositionOfPinnedPanel,
-        positionOfPinnedPanel,
-        translatePanelMaxHeight,
-        translatePanelWidth,
-    } = useOptions(useOptionsDependency);
+    const { translatePanelMaxHeight, translatePanelWidth } = useOptions(useOptionsDependency);
 
     const windowSize = useWindowSize();
-
-    useEffect(() => {
-        if (rememberPositionOfPinnedPanel && pinning && mtEle.current) {
-            setPanelPosition(calculatePosition(mtEle.current, positionOfPinnedPanel));
-
-            lastStablePanelPositionRef.current = { ...positionOfPinnedPanel };
-        }
-    }, [rememberPositionOfPinnedPanel, pinning, positionOfPinnedPanel]);
 
     useEffect(() => {
         mtEle.current && setPanelPosition(calculatePosition(mtEle.current, lastStablePanelPositionRef.current));
@@ -66,13 +47,9 @@ const ResultBox: React.FC = () => {
 
         const nextPosition = calculatePosition(mtEle.current, pos);
 
-        if (rememberPositionOfPinnedPanel && pinning && (panelPosition.x !== nextPosition.x || panelPosition.y !== nextPosition.y)) {
-            scOptions.set({ positionOfPinnedPanel: nextPosition });
-        }
-
         lastStablePanelPositionRef.current = nextPosition;
         setPanelPosition(nextPosition);
-    }, [rememberPositionOfPinnedPanel, pinning, panelPosition]);
+    }, []);
 
     useLayoutEffect(() => {
         if (oldPositionRef.current === position || !mtEle.current) { return; }

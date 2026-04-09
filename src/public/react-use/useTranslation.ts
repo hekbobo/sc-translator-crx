@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { useAppDispatch, useInsertResult, useTranslationActions } from '../../public/react-use';
+import { useAppDispatch, useTranslationActions } from '../../public/react-use';
 import { addHistory, updateHistoryError, updateHistoryFinish } from '../../redux/slice/translateHistorySlice';
 import { playAudio } from '../play-audio';
 import { TranslateResult } from '../../types';
@@ -7,9 +7,8 @@ import { textPreprocessing } from '../text-preprocessing';
 
 const translateResultCacheMap = new Map<string, TranslateResult>();
 
-const useTranslation = (extra?: { recordTranslation?: boolean; insertTranslation?: boolean; }) => {
+const useTranslation = (extra?: { recordTranslation?: boolean }) => {
     const recordTranslation = extra?.recordTranslation;
-    const insertTranslation = extra?.insertTranslation;
 
     const { state, actions } = useTranslationActions();
 
@@ -21,8 +20,6 @@ const useTranslation = (extra?: { recordTranslation?: boolean; insertTranslation
 
     const lastTranslateIdRef = useRef(translateId);
     const firstFinished = useRef(false);
-
-    const { insertable, confirmInsert, insertToggle: insertTranslationToggle, autoInsert } = useInsertResult();
 
     const translate = useCallback(async (source: string) => {
         const cacheKey = [textPreprocessing(text), source, from, to].join('&');
@@ -57,12 +54,8 @@ const useTranslation = (extra?: { recordTranslation?: boolean; insertTranslation
             const { text, from } = response.translation;
 
             text.length <= 30 && playAudio({ text, source, from, auto: true });
-
-            if (insertTranslation) {
-                autoInsert(response.translateId, source, response.translation.result);
-            }
         }
-    }, [fetchTranslationFromSource, autoInsert, dispatch, insertTranslation, recordTranslation, from, to, text, translateId, requestFinish]);
+    }, [fetchTranslationFromSource, dispatch, recordTranslation, from, to, text, translateId, requestFinish]);
 
     useEffect(() => {
         if (lastTranslateIdRef.current === translateId) { return; }
@@ -78,20 +71,11 @@ const useTranslation = (extra?: { recordTranslation?: boolean; insertTranslation
         firstFinished.current = false;
 
         translations.forEach(({ source }) => translate(source));
-
-        if (insertTranslation) {
-            confirmInsert(text, translateId);
-        }
-    }, [translateId, translations, text, recordTranslation, insertTranslation, confirmInsert, dispatch, translate]);
-
-    const insertToggle = useCallback((source: string, translation: string) => {
-        insertTranslationToggle(translateId, source, translation);
-    }, [translateId, insertTranslationToggle]);
+    }, [translateId, translations, text, recordTranslation, translate, dispatch]);
 
     return {
         state,
-        actions,
-        insertToggle: insertable ? insertToggle : undefined
+        actions
     };
 };
 

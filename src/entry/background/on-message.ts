@@ -6,8 +6,6 @@ import {
     AudioResponse,
     ChromeRuntimeMessage,
     DetectResponse,
-    GetAllCollectedTextResponse,
-    GetCollectedByTextResponse,
     I18nDetectLanguageResponse,
     IsCollectResponse,
     TranslateResponse
@@ -15,7 +13,7 @@ import {
 import scOptions from '../../public/sc-options';
 
 type TypedSendResponse = (
-    response: TranslateResponse | AudioResponse | DetectResponse | IsCollectResponse | GetAllCollectedTextResponse | GetCollectedByTextResponse | I18nDetectLanguageResponse
+    response: TranslateResponse | AudioResponse | DetectResponse | IsCollectResponse | I18nDetectLanguageResponse
 ) => void;
 
 chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sendResponse: TypedSendResponse) => {
@@ -104,25 +102,6 @@ chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sen
             text && scIndexedDB.delete(DB_STORE_COLLECTION, text);
 
             return false;
-        }
-        case types.SCTS_GET_ALL_COLLECTED_TEXT: {
-            scIndexedDB.getAllKeys('collection').then(data => sendResponse(data as string[]));
-
-            return true;
-        }
-        case types.SCTS_GET_COLLECTED_BY_TEXT: {
-            const { text } = message.payload;
-
-            scIndexedDB.get('collection', text).then((data) => {
-                if (data) {
-                    sendResponse({ translations: data.translations });
-                }
-                else {
-                    sendResponse({ code: 'NOT_COLLECTED' });
-                }
-            }).catch(() => sendResponse({ code: '' }));
-
-            return true;
         }
         default: return;
     }

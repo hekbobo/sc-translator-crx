@@ -16,10 +16,9 @@ type MtResultProps = {
     remove: () => void;
     retry: () => void;
     setText: (text: string) => void;
-    insertResult?: (result: string) => void;
 };
 
-const MtResult: React.FC<MtResultProps> = ({ source, translateRequest, remove, retry, setText, insertResult }) => {
+const MtResult: React.FC<MtResultProps> = ({ source, translateRequest, remove, retry, setText }) => {
     const [fold, setFold] = useState(false);
 
     return (
@@ -66,13 +65,11 @@ const MtResult: React.FC<MtResultProps> = ({ source, translateRequest, remove, r
                 source={source}
                 style={fold ? {display: 'none'} : {}}
                 retry={retry}
-                insertResult={insertResult}
             /> : <TranslateResult
                 translateRequest={translateRequest}
                 source={source}
                 style={fold ? {display: 'none'} : {}}
                 retry={retry}
-                insertResult={insertResult}
                 setText={setText}
             />}
         </div>

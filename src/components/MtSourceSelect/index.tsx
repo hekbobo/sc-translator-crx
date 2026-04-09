@@ -6,7 +6,6 @@ import SelectOptions from '../SelectOptions';
 import SourceFavicon from '../SourceFavicon';
 import PanelIconButtonWrapper from '../PanelIconButtons/PanelIconButtonWrapper';
 import { useMouseEventOutside, useTranslationActions } from '../../public/react-use';
-import scOptions from '../../public/sc-options';
 import './style.css';
 
 type SourceSelectProps = {
@@ -20,8 +19,7 @@ const MtSourceSelect: React.FC<SourceSelectProps> = ({ source }) => {
 
     const sources = useMemo(() => {
         const addedSourceSet = new Set(translations.map(translation => translation.source));
-        const { customTranslateSourceList, enabledThirdPartyServices } = scOptions.getInit();
-        return translateSource.concat(customTranslateSourceList).map(v => v.source).concat(enabledThirdPartyServices.map(v => v.name)).filter(v => !addedSourceSet.has(v));
+        return translateSource.map(v => v.source).filter(v => !addedSourceSet.has(v));
     }, [translations]);
 
     const sourceSelectEltRef = useRef<HTMLDivElement>(null);

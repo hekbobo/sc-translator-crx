@@ -6,7 +6,7 @@ import { DefaultOptions, DeprecatedOptions } from '../../types';
 import { TRANSLATE_BUTTON_TRANSLATE } from '../../constants/translateButtonTypes';
 import { initContextMenus } from './context-menus';
 import { initSourceParams } from '../../constants/sourceParams';
-import { BING_COM, MICROSOFT_COM, webPageTranslateSource } from '../../constants/translateSource';
+import { BING_COM, MICROSOFT_COM, translateSource, webPageTranslateSource } from '../../constants/translateSource';
 import scOptions from '../../public/sc-options';
 
 const initStorageOnInstalled = (userLang: string, update: boolean) => {
@@ -98,6 +98,25 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
             merged.customWebpageTranslateSourceList = [];
             merged.enableAutoTranslateWebpage = false;
             merged.autoTranslateWebpageHostList = [];
+            merged.historyHostList = [];
+            merged.historyBlackListMode = false;
+            const legacy = data as Record<string, unknown>;
+            delete legacy.pinThePanelWhileOpeningIt;
+            delete legacy.rememberPositionOfPinnedPanel;
+            delete legacy.positionOfPinnedPanel;
+            delete legacy.customTranslateSourceList;
+            delete legacy.enabledThirdPartyServices;
+            delete legacy.enableInsertResult;
+            delete legacy.autoInsertResult;
+            delete legacy.highlightCollectedText;
+            delete legacy.hoverHighlighted;
+            const builtInSources = new Set(translateSource.map(s => s.source));
+            merged.multipleTranslateSourceList = merged.multipleTranslateSourceList.filter(
+                s => builtInSources.has(s)
+            );
+            if (merged.multipleTranslateSourceList.length === 0) {
+                merged.multipleTranslateSourceList = [...defaultSet.multipleTranslateSourceList];
+            }
             const validWpSources = new Set(webPageTranslateSource.map(s => s.source));
             if (!validWpSources.has(merged.webPageTranslateSource)) {
                 merged.webPageTranslateSource = defaultSet.webPageTranslateSource;

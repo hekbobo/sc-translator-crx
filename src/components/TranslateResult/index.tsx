@@ -14,11 +14,10 @@ type TranslateResultProps = {
     translateRequest: TranslateRequest;
     source: string;
     retry?: () => void;
-    insertResult?: (result: string) => void;
     setText?: (text: string) => void;
 } & Pick<React.HTMLAttributes<HTMLDivElement>, 'style' | 'className'>;
 
-const TranslateResult: React.FC<TranslateResultProps> = ({ translateRequest, source, style, className, retry, insertResult, setText }) => {
+const TranslateResult: React.FC<TranslateResultProps> = ({ translateRequest, source, style, className, retry, setText }) => {
     const { displayOfTranslation } = scOptions.getInit();
 
     return (
@@ -56,11 +55,6 @@ const TranslateResult: React.FC<TranslateResultProps> = ({ translateRequest, sou
                     >
                         {item}
                         {index === translateRequest.result.result.length - 1 && (<>
-                            {insertResult && <IconFont
-                                className='iconbutton button'
-                                iconName='#icon-insert'
-                                onClick={() => insertResult(resultToString(translateRequest.result.result))}
-                            />}
                             <IconFont
                                 className='iconbutton button'
                                 iconName='#icon-copy'

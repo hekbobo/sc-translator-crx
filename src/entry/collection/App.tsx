@@ -11,7 +11,7 @@ import IconFont from '../../components/IconFont';
 import ConfirmDelete from './components/ConfirmDelete';
 import ManageTags from './components/ManageTags';
 import scFile from '../../public/sc-file';
-import { checkResultFromCustomSource } from '../../public/translate/custom/check-result';
+import { assertValidTranslateResultShape } from '../../public/translate/validate-translate-result';
 import CollectionValueCard from './components/CollectionValueCard';
 import TranslationsContainer from './components/TranslationsContainer';
 
@@ -265,7 +265,7 @@ const Collection: React.FC = () => {
                                                     if (!value.translateRequest && typeof value.translateRequest !== 'object') { return true; }
                                                     if (value.translateRequest.status !== 'finished') { return true; }
                                                     try {
-                                                        checkResultFromCustomSource(value.translateRequest.result);
+                                                        assertValidTranslateResultShape(value.translateRequest.result);
                                                         if (typeof value.translateRequest.result.text !== 'string') { return true; }
                                                     }
                                                     catch {

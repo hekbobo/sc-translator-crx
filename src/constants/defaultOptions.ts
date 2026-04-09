@@ -33,9 +33,6 @@ const defaultOptions: DefaultOptions = {
     // 'stw' means 'Separate translate Window'
     rememberStwSizeAndPosition: true,
     stwSizeAndPosition: { width: 286, height: 439, left: 550, top: 250 },
-    pinThePanelWhileOpeningIt: false,
-    rememberPositionOfPinnedPanel: false,
-    positionOfPinnedPanel: { x: 5, y: 5 },
     translatePanelMaxHeight: { percentage: false, px: 500, percent: 50 },
     translatePanelWidth: { percentage: false, px: 250, percent: 10 },
     translatePanelFontSize: 14,
@@ -48,8 +45,6 @@ const defaultOptions: DefaultOptions = {
     autoTranslateAfterInput: true,
     contextMenus: defaultContextMenus,
     autoPasteInTheInputBox: false,
-    enableInsertResult: false,
-    autoInsertResult: false,
     textPreprocessingRegExpList: [],
     textPreprocessingPreset: { convertCamelCase: false },
     translateButtons: defaultTranslateButtons,
@@ -61,7 +56,6 @@ const defaultOptions: DefaultOptions = {
     afterSelectingTextRegExpList: [],
     translateButtonsTL: { first: '', second: LANG_EN, third: LANG_EN },
     sourceParamsCache: initSourceParams,
-    customTranslateSourceList: [],
     displayOfTranslation: {
         result: true,
         dict: true,
@@ -90,10 +84,7 @@ const defaultOptions: DefaultOptions = {
     translateIframeContent: false,
     translateRedirectedSameDomainPage: false,
     autoPlayAudio: false,
-    autoPlayAudioLangs: [],
-    highlightCollectedText: false,
-    enabledThirdPartyServices: [],
-    hoverHighlighted: false
+    autoPlayAudioLangs: []
 };
 
 export default defaultOptions;

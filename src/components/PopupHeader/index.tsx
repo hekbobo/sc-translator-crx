@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { getCurrentTabHost } from '../../public/utils';
+import React from 'react';
 import './style.css';
 import CollectButton from '../PanelIconButtons/CollectButton';
-import ToggleTranslateButton from '../PanelIconButtons/ToggleTranslateButton';
-import ToggleHistoryButton from '../PanelIconButtons/ToggleHistoryButton';
 import OpenOptionsPageButton from '../PanelIconButtons/OpenOptionsPageButton';
 import OpenCollectionPageButton from '../PanelIconButtons/OpenCollectionPageButton';
-import PageTranslationButton from '../PanelIconButtons/PageTranslationButton';
 
 const PopupHeader: React.FC = () => {
-    const [host, setHost] = useState('');
-
-    useEffect(() => {
-        getCurrentTabHost().then(tabHost => setHost(tabHost));
-    }, []);
-
     return (
-        <div className="popup-header flex-justify-content-space-between">
-            <div className='popup-header__left flex-align-items-center'>
-                <PageTranslationButton host={host} />
-            </div>
+        <div className="popup-header flex-align-items-center">
             <div className='popup-header__icons flex-align-items-center'>
                 <CollectButton />
                 <OpenCollectionPageButton />
-                <ToggleTranslateButton host={host} />
-                <ToggleHistoryButton host={host} />
                 <OpenOptionsPageButton />
             </div>
         </div>

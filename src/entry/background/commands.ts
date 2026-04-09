@@ -5,7 +5,6 @@ import {
     SC_CALL_OUT,
     SC_OPEN_SEPARATE_WINDOW,
     SC_CLOSE,
-    SC_TOGGLE_AUTO_INSERT_RESULT,
     SC_TRANSLATE_CURRENT_PAGE,
     SC_SWITCH_WT_DISPLAY_MODE,
     SC_TOGGLE_PAGE_TRANSLATION_STATE
@@ -38,9 +37,6 @@ chrome.commands.onCommand.addListener((cmd) => {
             break;
         case SC_CLOSE:
             getCurrentTab(tab => tab?.id !== undefined && sendTabsCloseCommandKeyPressed(tab.id));
-            break;
-        case SC_TOGGLE_AUTO_INSERT_RESULT:
-            scOptions.get(['autoInsertResult']).then(data => scOptions.set({ autoInsertResult: !data.autoInsertResult }));
             break;
         case SC_TRANSLATE_CURRENT_PAGE:
             getCurrentTab(tab => tab?.id !== undefined && sendTabsTranslateCurrentPage(tab.id));

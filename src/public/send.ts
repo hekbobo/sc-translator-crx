@@ -19,10 +19,6 @@ export type IsCollectResponse = GenericResponse<{
     text: string;
     isCollected: boolean;
 }>;
-export type GetAllCollectedTextResponse = GenericResponse<string[]>;
-export type GetCollectedByTextResponse = GenericResponse<{
-    translations: Translation[];
-}>;
 export type I18nDetectLanguageResponse = GenericResponse<{
     languages: chrome.i18n.LanguageDetectionResult['languages'];
     isReliable: boolean;
@@ -90,14 +86,6 @@ export type ChromeRuntimeMessage = GenericMessage<
     {
         host: string;
     }
-> | GenericMessage<
-    typeof types.SCTS_GET_ALL_COLLECTED_TEXT,
-    Record<string, never>
-> | GenericMessage<
-    typeof types.SCTS_GET_COLLECTED_BY_TEXT,
-    {
-        text: string;
-    }
 >;
 
 export const sendTranslate = async (params: { text: string, source: string, from: string, to: string }, translateId: number) => {
@@ -140,14 +128,6 @@ export const sendUpdatePageTranslationState = (host: string, translating: boolea
 
 export const sendShouldAutoTranslateThisPage = (host: string) => {
     return chromeRuntimeSendMessage<'Yes' | 'No'>({ type: types.SCTS_SHOULD_AUTO_TRANSLATE_THIS_PAGE, payload: { host } });
-};
-
-export const sendGetAllCollectedText = () => {
-    return chromeRuntimeSendMessage<GetAllCollectedTextResponse>({ type: types.SCTS_GET_ALL_COLLECTED_TEXT, payload: {} });
-};
-
-export const sendGetCollectedByText = (text: string) => {
-    return chromeRuntimeSendMessage<GetCollectedByTextResponse>({ type: types.SCTS_GET_COLLECTED_BY_TEXT, payload: { text } });
 };
 
 const chromeRuntimeSendMessage = <T = null>(message: ChromeRuntimeMessage): Promise<T | ErrorResponse> => {

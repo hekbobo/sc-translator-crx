@@ -5,41 +5,13 @@ import { useOptions } from '../../../../public/react-use';
 import { GetStorageKeys } from '../../../../types';
 import scOptions from '../../../../public/sc-options';
 
-const useOptionsDependency: GetStorageKeys<
-    'pinThePanelWhileOpeningIt' |
-    'rememberPositionOfPinnedPanel' |
-    'autoTranslateAfterInput'
-> = [
-    'pinThePanelWhileOpeningIt',
-    'rememberPositionOfPinnedPanel',
-    'autoTranslateAfterInput'
-];
+const useOptionsDependency: GetStorageKeys<'autoTranslateAfterInput'> = ['autoTranslateAfterInput'];
 
 const TranslatePanel: React.FC = () => {
-    const {
-        pinThePanelWhileOpeningIt,
-        rememberPositionOfPinnedPanel,
-        autoTranslateAfterInput
-    } = useOptions(useOptionsDependency);
+    const { autoTranslateAfterInput } = useOptions(useOptionsDependency);
 
     return (
         <div className='opt-section'>
-            <div className='opt-section-row'>
-                <Switch
-                    label={getMessage('optionsPinThePanelWhileOpeningIt')}
-                    checked={pinThePanelWhileOpeningIt}
-                    onChange={v => scOptions.set({ pinThePanelWhileOpeningIt: v })}
-                />
-                <div className='item-description'>{getMessage('optionsPinThePanelWhileOpeningItDescription')}</div>
-            </div>
-            <div className='opt-section-row'>
-                <Switch
-                    label={getMessage('optionsRememberPositionOfPinnedPanel')}
-                    checked={rememberPositionOfPinnedPanel}
-                    onChange={v => scOptions.set({ rememberPositionOfPinnedPanel: v })}
-                />
-                <div className='item-description'>{getMessage('optionsRememberPositionOfPinnedPanelDescription')}</div>
-            </div>
             <div className='opt-section-row'>
                 <Switch
                     label={getMessage('optionsAutoTranslateAfterInput')}

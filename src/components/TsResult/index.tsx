@@ -14,10 +14,9 @@ type TsResultProps = {
     source: string;
     retry: () => void;
     setText: (text: string) => void;
-    insertResult?: (result: string) => void;
 };
 
-const TsResult: React.FC<TsResultProps> = ({ translateRequest, source, retry, setText, insertResult }) => {
+const TsResult: React.FC<TsResultProps> = ({ translateRequest, source, retry, setText }) => {
     const { displayOfTranslation } = scOptions.getInit();
 
     return (
@@ -36,11 +35,6 @@ const TsResult: React.FC<TsResultProps> = ({ translateRequest, source, retry, se
                     >
                         {item}
                         {index === translateRequest.result.result.length - 1 && (<>
-                            {insertResult && <IconFont
-                                className='iconbutton button'
-                                iconName='#icon-insert'
-                                onClick={() => insertResult(resultToString(translateRequest.result.result))}
-                            />}
                             <IconFont
                                 className='iconbutton button'
                                 iconName='#icon-copy'

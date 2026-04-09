@@ -6,7 +6,6 @@ import PanelIconButtonWrapper from '../PanelIconButtons/PanelIconButtonWrapper';
 import SelectOptions from '../SelectOptions';
 import SourceFavicon from '../SourceFavicon';
 import './style.css';
-import scOptions from '../../public/sc-options';
 import { useMouseEventOutside } from '../../public/react-use';
 
 type MtAddSourceProps = {
@@ -19,8 +18,7 @@ const MtAddSource: React.FC<MtAddSourceProps> = ({ translations, addSource }) =>
 
     const sources = useMemo(() => {
         const addedSourceSet = new Set(translations.map(translation => translation.source));
-        const { customTranslateSourceList, enabledThirdPartyServices } = scOptions.getInit();
-        return translateSource.concat(customTranslateSourceList).map(v => v.source).concat(enabledThirdPartyServices.map(v => v.name)).filter(v => !addedSourceSet.has(v));
+        return translateSource.map(v => v.source).filter(v => !addedSourceSet.has(v));
     }, [translations]);
 
     const onAddSource = useCallback((source: string) => {

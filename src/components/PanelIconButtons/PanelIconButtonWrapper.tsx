@@ -5,14 +5,16 @@ import './style.css';
 type PanelIconButtonWrapperProps = {
     disabled?: boolean;
     iconGrey?: boolean;
+    active?: boolean;
+    className?: string;
 } & Pick<React.HtmlHTMLAttributes<HTMLSpanElement>, 'onClick' | 'children' | 'title'>
 
-const PanelIconButtonWrapper: React.FC<PanelIconButtonWrapperProps> = ({ onClick, disabled, children, title, iconGrey }) => {
+const PanelIconButtonWrapper: React.FC<PanelIconButtonWrapperProps> = ({ onClick, disabled, children, title, iconGrey, active, className }) => {
     const [activationClassName, onActivate] = useRippleActivationClassName(' panel-icon-btn--activation', ' panel-icon-btn--deactivation');
 
     return (
         <span
-            className={`panel-icon-btn${activationClassName}${disabled ? ' panel-icon-btn--disabled' : ''}${iconGrey ? ' panel-icon-btn--icon-grey' : ''}`}
+            className={`panel-icon-btn${activationClassName}${disabled ? ' panel-icon-btn--disabled' : ''}${iconGrey ? ' panel-icon-btn--icon-grey' : ''}${active ? ' panel-icon-btn--active' : ''}${className ? ` ${className}` : ''}`}
             onMouseDown={(e) => {
                 if (disabled) { return; }
 
