@@ -1,72 +1,38 @@
 import React from 'react';
-import Slider, { SliderFormat, SliderMarks } from '../../../../components/Slider';
-import Switch from '../../../../components/Switch';
-import { getMessage } from '../../../../public/i18n';
-import { useOptions } from '../../../../public/react-use';
-import { GetStorageKeys } from '../../../../types';
-import BtnPostion from '../../components/BtnPosition';
-import HostList from '../../components/HostList';
-import TranslateButtonDisplay from '../../components/TranslateButtonDisplay';
-import scOptions from '../../../../public/sc-options';
 
-const marksHideButtonFixedTime: SliderMarks = [
-    { value: 500, label: '0.50s' },
-    { value: 1000, label: '1.00s' },
-    { value: 2000, label: '2.00s' },
-    { value: 3000, label: '3.00s' },
-    { value: 4000, label: '4.00s' }
-];
-const hideButtonFixedTimeLabelFormat: SliderFormat = v => `${(v / 1000).toFixed(2)}s`
+import Switch from '../../../../components/Switch';
+
+import { getMessage } from '../../../../public/i18n';
+
+import { useOptions } from '../../../../public/react-use';
+
+import { GetStorageKeys } from '../../../../types';
+
+import scOptions from '../../../../public/sc-options';
 
 const useOptionsDependency: GetStorageKeys<
     'translateWithKeyPress' |
     'translateDirectly' |
-    'btnPosition' |
-    'hideButtonAfterFixedTime' |
-    'hideButtonFixedTime' |
-    'translateBlackListMode' |
-    'translateHostList' |
-    'respondToSeparateWindow' |
-    'translateDirectlyWhilePinning' |
-    'doNotRespondInTextBox' |
-    'translateButtons' |
-    'translateButtonsTL' |
-    'userLanguage'
+    'doNotRespondInTextBox'
 > = [
     'translateWithKeyPress',
     'translateDirectly',
-    'btnPosition',
-    'hideButtonAfterFixedTime',
-    'hideButtonFixedTime',
-    'translateBlackListMode',
-    'translateHostList',
-    'respondToSeparateWindow',
-    'translateDirectlyWhilePinning',
-    'doNotRespondInTextBox',
-    'translateButtons',
-    'translateButtonsTL',
-    'userLanguage'
+    'doNotRespondInTextBox'
 ];
 
-const Translate: React.FC = () => {
+type TranslateProps = {
+    noCard?: boolean;
+};
+
+const Translate: React.FC<TranslateProps> = ({ noCard = false }) => {
     const {
         translateWithKeyPress,
         translateDirectly,
-        btnPosition,
-        hideButtonAfterFixedTime,
-        hideButtonFixedTime,
-        translateBlackListMode,
-        translateHostList,
-        respondToSeparateWindow,
-        translateDirectlyWhilePinning,
-        doNotRespondInTextBox,
-        translateButtons,
-        translateButtonsTL,
-        userLanguage
+        doNotRespondInTextBox
     } = useOptions(useOptionsDependency);
 
-    return (
-        <div className='opt-section'>
+    const rows = (
+        <>
             <div className='opt-section-row'>
                 <Switch
                     label={getMessage('optionsTranslateWithKeyPress')}
@@ -82,59 +48,6 @@ const Translate: React.FC = () => {
                 />
             </div>
             <div className='opt-section-row'>
-                {getMessage('optionsShowButtonAfterSelect')}
-                <div className='item-description'>{getMessage('optionsShowButtonAfterSelectDescription')}</div>
-                <div className='mt10-ml30'>
-                    <TranslateButtonDisplay
-                        translateButtons={translateButtons}
-                        translateButtonsTL={translateButtonsTL}
-                        onTranslateButtonsUpdate={value => scOptions.set({ translateButtons: value })}
-                        onTranslateButtonsTLUpdate={value => scOptions.set({ translateButtonsTL: value })}
-                        userLanguage={userLanguage}
-                    />
-                </div>
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsButtonsPosition')}
-                <div className='mt10-ml30'>
-                    <BtnPostion currentPos={btnPosition} updateBtnPosition={pos => scOptions.set({ btnPosition: pos })} />
-                </div>
-            </div>
-            <div className='opt-section-row'>
-                <Switch
-                    label={getMessage('optionsHideButtonAfterFixedTime')}
-                    checked={hideButtonAfterFixedTime}
-                    onChange={v => scOptions.set({ hideButtonAfterFixedTime: v })}
-                />
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsTheFixedTimeOfHidingButton')}
-                <Slider
-                    defaultValue={hideButtonFixedTime}
-                    min={500}
-                    max={4000}
-                    step={250}
-                    marks={marksHideButtonFixedTime}
-                    valueLabelDisplay
-                    valueLabelFormat={hideButtonFixedTimeLabelFormat}
-                    mouseUpCallback={v => scOptions.set({ hideButtonFixedTime: v })}
-                />
-            </div>
-            <div className='opt-section-row'>
-                <Switch
-                    label={getMessage('optionsRespondToSeparateWindow')}
-                    checked={respondToSeparateWindow}
-                    onChange={v => scOptions.set({ respondToSeparateWindow: v })}
-                />
-            </div>
-            <div className='opt-section-row'>
-                <Switch
-                    label={getMessage('optionsTranslateDirectlyWhilePinning')}
-                    checked={translateDirectlyWhilePinning}
-                    onChange={v => scOptions.set({ translateDirectlyWhilePinning: v })}
-                />
-            </div>
-            <div className='opt-section-row'>
                 <Switch
                     label={getMessage('optionsDoNotRespondInTextBox')}
                     checked={doNotRespondInTextBox}
@@ -142,24 +55,10 @@ const Translate: React.FC = () => {
                 />
                 <div className='item-description'>{getMessage('optionsDoNotRespondInTextBoxDescription')}</div>
             </div>
-            <div className='opt-section-row'>
-                <div className='options-mode'>
-                    {getMessage('optionsDomainfilter')}
-                    <Switch
-                        label={getMessage('optionsTranslateBlackListMode')}
-                        checked={translateBlackListMode}
-                        onChange={v => scOptions.set({ translateBlackListMode: v })}
-                    />
-                </div>
-                <div className='mt10-ml30'>
-                    <HostList
-                        list={translateHostList}
-                        updateList={list => scOptions.set({ translateHostList: list })}
-                    />
-                </div>
-            </div>
-        </div>
+        </>
     );
+
+    return noCard ? rows : <div className='opt-section'>{rows}</div>;
 };
 
 export default Translate;

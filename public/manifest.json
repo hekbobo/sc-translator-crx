@@ -25,38 +25,8 @@
         "default": "Alt+Z"
       },
       "description": "__MSG_extTranslateCommandDescription__"
-    },
-    "sc-audio": {
-      "suggested_key": {
-        "default": "Alt+X"
-      },
-      "description": "__MSG_extListenCommandDescription__"
-    },
-    "sc-call-out": {
-      "suggested_key": {
-        "default": "Alt+C"
-      },
-      "description": "__MSG_extCallOutCommandDescription__"
-    },
-    "sc-open-separate-window": {
-      "description": "__MSG_extOpenSeparateWindowDescription__"
-    },
-    "sc-close": {
-      "description": "__MSG_extCloseCommandDescription__"
-    },
-    "sc-translate-current-page": {
-      "description": "__MSG_extTranslateCurrentPageDescription__"
-    },
-    "sc-switch-wt-display-mode": {
-      "description": "__MSG_extSwitchWTDisplayModeDescription__"
-    },
-    "sc-toggle-page-translation-state": {
-      "description": "__MSG_extTogglePageTranslationStateDescription__"
     }
   },
-  "optional_permissions": [
-    "webNavigation"
-  ],
   "permissions": [
     "storage",
     "contextMenus"
@@ -64,16 +34,26 @@
   "host_permissions": [
     "<all_urls>"
   ],
-  "content_scripts" : [
+  "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["/static/js/content.js"]
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "/static/js/content.js"
+      ]
     }
   ],
-  "web_accessible_resources":[
+  "web_accessible_resources": [
     {
-      "resources": ["/static/css/content.css"],
-      "matches": ["http://*/*", "https://*/*"]
+      "resources": [
+        "/static/css/content.css"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
     }
   ],
   "content_security_policy": {

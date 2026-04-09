@@ -67,10 +67,7 @@ export type Position = {
     y: number;
 };
 
-export type HistoryPanelStatus = { pin: boolean; width: number };
-
 export type OptionsContextMenuId =
-    | 'OPEN_SEPARATE_WINDOW'
     | 'TRANSLATE_SELECTION_TEXT'
     | 'LISTEN_SELECTION_TEXT'
     | 'TRANSLATE_CURRENT_PAGE';
@@ -128,7 +125,7 @@ export type DefaultOptions = {
     defaultAudioSource: string;
     translateWithKeyPress: boolean;
     useDotCn: boolean;
-    /** When true, only translate if source language is English (selection / popup / separate window). */
+    /** When true, only translate if source language is English (selection / popup). */
     translateEnglishOnly: boolean;
     multipleTranslateSourceList: string[];
     multipleTranslateFrom: string;
@@ -137,48 +134,30 @@ export type DefaultOptions = {
     secondPreferredLanguage: string;
     styleVarsList: StyleVarsList;
     styleVarsIndex: number;
-    btnPosition: Position;
     audioVolume: number;
     audioPlaybackRate: number;
-    hideButtonAfterFixedTime: boolean;
-    hideButtonFixedTime: number;
-    respondToSeparateWindow: boolean;
-    // 'stw' means 'Separate translate Window'
-    rememberStwSizeAndPosition: boolean;
-    stwSizeAndPosition: { width: number; height: number; left: number; top: number };
     translatePanelMaxHeight: { percentage: boolean; px: number; percent: number };
     translatePanelWidth: { percentage: boolean; px: number; percent: number };
     translatePanelFontSize: number;
     recentTranslateFromList: string[];
     recentTranslateToList: string[];
-    rememberHistoryPanelStatus: boolean;
-    historyPanelStatus: HistoryPanelStatus;
-    translateDirectlyWhilePinning: boolean;
     doNotRespondInTextBox: boolean;
     autoTranslateAfterInput: boolean;
     contextMenus: OptionsContextMenu[];
-    autoPasteInTheInputBox: boolean;
     textPreprocessingRegExpList: TextPreprocessingRegExp[];
     textPreprocessingPreset: TextPreprocessingPreset;
     translateButtons: string[];
     webPageTranslateSource: string;
     webPageTranslateTo: string;
     webPageTranslateDisplayMode: number;
-    webPageTranslateDirectly: boolean;
-    noControlBarWhileFirstActivating: boolean;
     afterSelectingTextRegExpList: TextPreprocessingRegExp[];
     translateButtonsTL: TranslateButtonsTL;
     sourceParamsCache: SourceParams;
     displayOfTranslation: DisplayOfTranslation;
-    displayModeEnhancement: DisplayModeEnhancement;
     customWebpageTranslateSourceList: CustomTranslateSource[];
-    translateDynamicContent: boolean;
     autoTranslateWebpageHostList: string[];
     enableAutoTranslateWebpage: boolean;
     keepUsingDefaultAudioSource: boolean;
-    comparisonCustomization: ComparisonCustomization;
-    translateIframeContent: boolean;
-    translateRedirectedSameDomainPage: boolean;
     autoPlayAudio: boolean;
     autoPlayAudioLangs: string[];
 };

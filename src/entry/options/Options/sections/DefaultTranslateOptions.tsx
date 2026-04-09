@@ -1,102 +1,40 @@
 import React from 'react';
 import Switch from '../../../../components/Switch';
-import { mtLangCode, preferredLangCode, userLangs } from '../../../../constants/langCode';
-import { translateSource } from '../../../../constants/translateSource';
+import { mtLangCode } from '../../../../constants/langCode';
 import { getMessage } from '../../../../public/i18n';
 import { useOptions } from '../../../../public/react-use';
 import { GetStorageKeys } from '../../../../types';
-import MultipleSourcesDisplay from '../../components/MultipleSourcesDisplay';
-import TranslationDisplay from '../../components/TranslationDisplay';
 import scOptions from '../../../../public/sc-options';
 import LanguageSelect from '../../../../components/LanguageSelect';
 
 const useOptionsDependency: GetStorageKeys<
     'userLanguage' |
-    'preferredLanguage' |
-    'secondPreferredLanguage' |
-    'multipleTranslateSourceList' |
     'multipleTranslateFrom' |
     'multipleTranslateTo' |
-    'useDotCn' |
-    'translateEnglishOnly' |
-    'displayOfTranslation'
+    'translateEnglishOnly'
 > = [
     'userLanguage',
-    'preferredLanguage',
-    'secondPreferredLanguage',
-    'multipleTranslateSourceList',
     'multipleTranslateFrom',
     'multipleTranslateTo',
-    'useDotCn',
-    'translateEnglishOnly',
-    'displayOfTranslation'
+    'translateEnglishOnly'
 ];
 
 const DefaultTranslateOptions: React.FC = () => {
     const {
         userLanguage,
-        preferredLanguage,
-        secondPreferredLanguage,
-        multipleTranslateSourceList,
         multipleTranslateFrom,
         multipleTranslateTo,
-        useDotCn,
-        translateEnglishOnly,
-        displayOfTranslation
+        translateEnglishOnly
     } = useOptions(useOptionsDependency);
 
     return (
         <div className='opt-section'>
             <div className='opt-section-row'>
                 <Switch
-                    label={getMessage('optionsUseDotCn')}
-                    checked={useDotCn}
-                    onChange={v => scOptions.set({ useDotCn: v })}
-                />
-            </div>
-            <div className='opt-section-row'>
-                <Switch
                     label={getMessage('optionsTranslateEnglishOnly')}
                     checked={translateEnglishOnly}
                     onChange={v => scOptions.set({ translateEnglishOnly: v })}
                 />
-                <div className='item-description'>{getMessage('optionsTranslateEnglishOnlyDescription')}</div>
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsLanguage')}
-                <LanguageSelect
-                    value={userLanguage}
-                    onChange={value => scOptions.set({ userLanguage: value })}
-                    langCodes={userLangs}
-                />
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsPreferredLanguage')}
-                <LanguageSelect
-                    value={preferredLanguage}
-                    onChange={value => scOptions.set({ preferredLanguage: value })}
-                    langCodes={preferredLangCode[userLanguage]}
-                />
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsSecondPreferredLanguage')}
-                <LanguageSelect
-                    value={secondPreferredLanguage}
-                    onChange={value => scOptions.set({ secondPreferredLanguage: value })}
-                    langCodes={preferredLangCode[userLanguage]}
-                />
-                <div className='item-description'>{getMessage('optionsPreferredLanguageDescription')}</div>
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsSourceList')}
-                <div className='item-description'>{getMessage('optionsMultipleTranslateSourceListDescription')}</div>
-                <div className='mt10-ml30'>
-                    <MultipleSourcesDisplay
-                        enabledSources={multipleTranslateSourceList}
-                        sources={translateSource.map(v => v.source)}
-                        onChange={value => scOptions.set({ multipleTranslateSourceList: value })}
-                    />
-                </div>
             </div>
             <div className='opt-section-row'>
                 {getMessage('optionsFrom')}
@@ -113,16 +51,6 @@ const DefaultTranslateOptions: React.FC = () => {
                     onChange={value => scOptions.set({ multipleTranslateTo: value })}
                     langCodes={mtLangCode[userLanguage]}
                 />
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsDisplayOfTranslation')}
-                <div className='item-description'>{getMessage('optionsDisplayOfTranslationDescription')}</div>
-                <div className='mt10-ml30'>
-                    <TranslationDisplay
-                        displayOfTranslation={displayOfTranslation}
-                        onChange={v => scOptions.set({ displayOfTranslation: v })}
-                    />
-                </div>
             </div>
         </div>
     );

@@ -68,21 +68,26 @@ let errorCallback: ((errorReason: string) => void) | undefined;
 let requestStartCallback: (() => void) | undefined;
 let requestFinishCallback: (() => void) | undefined;
 
-let displayModeEnhancement: DisplayModeEnhancement = {
-    o_Hovering: false,
-    oAndT_Underline: false,
+/** Fixed webpage translation display behavior (options UI removed). */
+const DEFAULT_DISPLAY_MODE_ENHANCEMENT: DisplayModeEnhancement = {
+    o_Hovering: true,
+    oAndT_Underline: true,
     oAndT_NonDiscrete: false,
-    oAndT_paragraphWrap: false,
+    oAndT_paragraphWrap: true,
     oAndT_hideSameLanguage: false,
-    t_Hovering: false,
+    t_Hovering: true,
     t_hoveringWithKeyPressing: false
 };
 
-let comparisonCustomization: ComparisonCustomization = {
+const DEFAULT_COMPARISON_CUSTOMIZATION: ComparisonCustomization = {
     color: 'currentcolor',
     underlineColor: 'rgba(144,236,233,1)',
     underlineStyle: 'solid'
 };
+
+let displayModeEnhancement: DisplayModeEnhancement = { ...DEFAULT_DISPLAY_MODE_ENHANCEMENT };
+
+let comparisonCustomization: ComparisonCustomization = { ...DEFAULT_COMPARISON_CUSTOMIZATION };
 
 let pageTranslateItemMap: { [key: number]: PageTranslateItemEnity; } = {};
 let itemMapIndex = 0;
@@ -105,10 +110,6 @@ const clearAllTimeout = () => {
 };
 
 let checkedNodes: WeakSet<Node> = new WeakSet();
-
-let translateDynamicContent = false;
-
-let translateIframeContent = false;
 
 let observeRootSet: Set<HTMLElement> = new Set();
 
@@ -234,35 +235,7 @@ const observer = new MutationObserver((records) => {
     targets.size > 0 && translateInViewPortParagraphs();
 });
 
-const startObserving = () => {
-    if (!translateDynamicContent) {
-        return;
-    }
-
-    observeRootSet.forEach(root => observer.observe(root, {
-        characterData: true,
-        childList: true,
-        subtree: true
-    }));
-};
-
-const addObservationTarget = (target: HTMLElement) => {
-    if (!translateDynamicContent) {
-        return;
-    }
-
-    if (observeRootSet.has(target)) {
-        return;
-    }
-
-    observeRootSet.add(target);
-
-    observer.observe(target, {
-        characterData: true,
-        childList: true,
-        subtree: true
-    });
-};
+const startObserving = () => {};
 
 const stopObserving = () => {
     observer.disconnect();
@@ -358,6 +331,10 @@ const newPageTranslateItem = (text: string, textNodes: Text[], codeTexts: PageTr
 };
 
 const getAllParagraph = (element: HTMLElement) => {
+    if (element.nodeName === 'IFRAME') {
+        return;
+    }
+
     let texts: Text[] = [];
     let codeTexts: PageTranslateItemEnity['codeTexts'] = [];
     let nodeStack: { node: Node; index: number; isInline: boolean; }[] = [{ node: element, index: 0, isInline: getComputedStyle(element).display === 'inline' }];
@@ -376,36 +353,6 @@ const getAllParagraph = (element: HTMLElement) => {
         texts = [];
         codeTexts = [];
     };
-
-    if (element.nodeName === 'IFRAME' && translateIframeContent) {
-        try {
-            if (new URL((element as HTMLIFrameElement).src).host !== location.host) {
-                return;
-            }
-        }
-        catch {
-            return;
-        }
-
-        const contentBody = (element as HTMLIFrameElement).contentDocument?.body;
-
-        if (contentBody) {
-            currentNode = { node: contentBody, index: 0, isInline: false };
-
-            addObservationTarget(contentBody);
-
-            if ((wayOfFontsDisplaying === 0 && displayModeEnhancement.o_Hovering) || (wayOfFontsDisplaying === 2 && displayModeEnhancement.t_Hovering)) {
-                contentBody.ownerDocument.defaultView?.addEventListener('mousemove', onWindowMouseMove);
-            }
-
-            displayModeEnhancement.t_hoveringWithKeyPressing && startCtrlKeyPressingListener();
-
-            contentBody.ownerDocument.defaultView?.addEventListener('scroll', onWindowScroll, true);
-        }
-        else {
-            return;
-        }
-    }
 
     while (currentNode) {
         let { index } = currentNode;
@@ -510,8 +457,6 @@ const getAllParagraph = (element: HTMLElement) => {
             }
 
             if (node.nodeName === 'IFRAME') {
-                intersectionObserver.observe(node as HTMLIFrameElement);
-
                 nextParagraph();
                 continue;
             }
@@ -640,10 +585,6 @@ export const startWebPageTranslating = ({
     element,
     translateSource,
     targetLanguage,
-    enhancement,
-    translateDynamicContent: translateDC,
-    translateIframeContent: translateIC,
-    customization,
     specifySelectors,
     onError,
     onRequestStart,
@@ -652,10 +593,6 @@ export const startWebPageTranslating = ({
     element: HTMLElement;
     translateSource: string;
     targetLanguage: string;
-    enhancement: DisplayModeEnhancement;
-    translateDynamicContent: boolean;
-    translateIframeContent: boolean;
-    customization: ComparisonCustomization;
     specifySelectors: { includeSelectors: string; excludeSelectors: string; };
     onError?: (errorReason: string) => void;
     onRequestStart?: () => void;
@@ -675,10 +612,6 @@ export const startWebPageTranslating = ({
 
     observeRootSet = new Set([document.body]);
 
-    translateDynamicContent = translateDC;
-
-    translateIframeContent = translateIC;
-
     errorCallback = onError;
     requestStartCallback = onRequestStart;
     requestFinishCallback = onRequestFinish;
@@ -691,9 +624,9 @@ export const startWebPageTranslating = ({
         resultCacheSource = source;
     }
 
-    displayModeEnhancement = enhancement;
+    displayModeEnhancement = { ...DEFAULT_DISPLAY_MODE_ENHANCEMENT };
 
-    comparisonCustomization = customization;
+    comparisonCustomization = { ...DEFAULT_COMPARISON_CUSTOMIZATION };
 
     const { includeSelectors, excludeSelectors } = specifySelectors;
     if (includeSelectors) {

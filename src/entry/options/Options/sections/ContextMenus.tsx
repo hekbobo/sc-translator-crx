@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { defaultContextMenus } from '../../../../constants/contextMenusIds';
 import { useOptions } from '../../../../public/react-use';
-import { GetStorageKeys } from '../../../../types';
+import { GetStorageKeys, OptionsContextMenu } from '../../../../types';
 import ContextMenusDraggable from '../../components/ContextMenusDraggable';
 import scOptions from '../../../../public/sc-options';
 
@@ -10,17 +11,48 @@ const useOptionsDependency: GetStorageKeys<
     'contextMenus'
 ];
 
+const sanitizeContextMenus = (menus: OptionsContextMenu[]) => {
+    const validIds = new Set(defaultContextMenus.map(v => v.id));
+    const seenIds = new Set<string>();
+    const nextMenus: OptionsContextMenu[] = [];
+
+    menus.forEach((menu) => {
+        if (!validIds.has(menu.id) || seenIds.has(menu.id)) { return; }
+        seenIds.add(menu.id);
+        nextMenus.push(menu);
+    });
+
+    defaultContextMenus.forEach((menu) => {
+        if (!seenIds.has(menu.id)) {
+            nextMenus.push(menu);
+        }
+    });
+
+    return nextMenus;
+};
+
 const ContextMenus: React.FC = () => {
     const {
         contextMenus
     } = useOptions(useOptionsDependency);
 
+    const sanitizedContextMenus = useMemo(
+        () => sanitizeContextMenus(contextMenus),
+        [contextMenus]
+    );
+
+    useEffect(() => {
+        if (JSON.stringify(sanitizedContextMenus) !== JSON.stringify(contextMenus)) {
+            scOptions.set({ contextMenus: sanitizedContextMenus });
+        }
+    }, [contextMenus, sanitizedContextMenus]);
+
     return (
         <div className='opt-section'>
             <div className='opt-section-row'>
                 <ContextMenusDraggable
-                    contextMenus={contextMenus}
-                    update={newContextMenus => scOptions.set({ contextMenus: newContextMenus })}
+                    contextMenus={sanitizedContextMenus}
+                    update={newContextMenus => scOptions.set({ contextMenus: sanitizeContextMenus(newContextMenus) })}
                 />
             </div>
         </div>

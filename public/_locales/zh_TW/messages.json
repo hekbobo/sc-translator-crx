@@ -23,9 +23,6 @@
     "extTranslateCurrentPageDescription": {
         "message": "翻譯當前頁面"
     },
-    "extOpenSeparateWindowDescription": {
-        "message": "打開獨立翻譯視窗"
-    },
     "extCloseCommandDescription": {
         "message": "在網頁中關閉擴充功能"
     },
@@ -35,17 +32,11 @@
     "extTogglePageTranslationStateDescription": {
         "message": "切換當前網頁的網頁翻譯狀態"
     },
-    "titleSeparateWindow": {
-        "message": "獨立翻譯視窗"
-    },
     "optionsTitle": {
         "message": "常規選項"
     },
     "optionsTranslate": {
         "message": "翻譯"
-    },
-    "optionsHistory": {
-        "message": "翻譯歷史"
     },
     "optionsLanguage": {
         "message": "語言"
@@ -77,9 +68,6 @@
     "optionsHistoryBlackListMode": {
         "message": "黑名單模式"
     },
-    "optionsMoreFeaturesOrBugReports": {
-        "message": "更多功能或錯誤報告"
-    },
     "optionsDarkMode": {
         "message": "黑夜模式"
     },
@@ -105,7 +93,7 @@
         "message": "僅翻譯英文"
     },
     "optionsTranslateEnglishOnlyDescription": {
-        "message": "啟用後，僅當劃選文字被辨識為英文（或來源語言設為英語）時才翻譯，適用於浮動按鈕、擴充功能彈窗與獨立翻譯視窗；網頁整頁翻譯不受影響。若手動指定了來源語言，則僅當來源語言為「英語」時翻譯。"
+        "message": "啟用後，僅當劃選文字被辨識為英文（或來源語言設為英語）時才翻譯，適用於浮動按鈕與擴充功能彈窗；網頁整頁翻譯不受影響。若手動指定了來源語言，則僅當來源語言為「英語」時翻譯。"
     },
     "optionsMode": {
         "message": "模式"
@@ -131,27 +119,6 @@
     "optionsCallOutCommandDescription": {
         "message": "當擴充功能在網頁中啟用時，點擊此快捷鍵可以直接喚出擴充功能。當在已喚出擴充功能的狀態下點擊此快捷鍵時，將會聚焦文本框。"
     },
-    "optionsButtonsPosition": {
-        "message": "按鈕的位置"
-    },
-    "optionsHideButtonAfterFixedTime": {
-        "message": "在固定時間後隱藏按鈕"
-    },
-    "optionsTheFixedTimeOfHidingButton": {
-        "message": "隱藏按鈕的固定時間"
-    },
-    "optionsRespondToSeparateWindow": {
-        "message": "響應到獨立翻譯視窗"
-    },
-    "optionsRememberStwSizeAndPosition": {
-        "message": "記住獨立翻譯視窗的大小與位置"
-    },
-    "optionsStwDescription": {
-        "message": "獨立翻譯視窗使用「複數翻譯模式」的翻譯面板，與其共用同一套翻譯設置。獨立翻譯視窗也可以響應鍵盤快速鍵。"
-    },
-    "optionsResetSizeAndPosition": {
-        "message": "重置大小與位置"
-    },
     "optionsSecondPreferredLanguage": {
         "message": "次選語言"
     },
@@ -170,26 +137,11 @@
     "optionsTranslatePanel": {
         "message": "翻譯面板"
     },
-    "optionsStwAutoRespondDescription": {
-        "message": "獨立翻譯視窗會自動回應你在擴充功能不可用的頁面中點擊右鍵功能表中的「翻譯」項後產生的翻譯請求。"
-    },
-    "optionsRememberHistoryPanelStatus": {
-        "message": "記住翻譯歷史面板的狀態"
-    },
-    "optionsTranslateDirectlyWhilePinning": {
-        "message": "翻譯面板固定時直接翻譯"
-    },
     "optionsDoNotRespondInTextBox": {
         "message": "輸入框內不翻譯"
     },
     "optionsDoNotRespondInTextBoxDescription": {
         "message": "在輸入框、文字區域或可編輯區域內選取文字時，不顯示翻譯按鈕，也不觸發自動翻譯與快捷鍵翻譯。"
-    },
-    "optionsMore": {
-        "message": "其它"
-    },
-    "optionsChangeLog": {
-        "message": "更新日誌"
     },
     "optionsAutoTranslateAfterInput": {
         "message": "在輸入框輸入後自動翻譯"
@@ -199,21 +151,6 @@
     },
     "optionsContextMenus": {
         "message": "右鍵菜單"
-    },
-    "optionsClipboard": {
-        "message": "剪貼板"
-    },
-    "optionsAllowExtensionToReadClipboard": {
-        "message": "允許擴充功能讀取剪貼板"
-    },
-    "optionsAllowExtensionToReadClipboardDescription": {
-        "message": "部分功能需要你允許擴充功能去讀取剪貼板來獲取最後的文本。 如：自動粘貼到輸入框中。"
-    },
-    "optionsReadClipboardAutomatically": {
-        "message": "自動粘貼到輸入框中"
-    },
-    "optionsReadClipboardAutomaticallyDescription": {
-        "message": "打開彈出頁面或獨立翻譯視窗時，最後的剪貼板文本將自動粘貼到輸入框中。"
     },
     "optionsEnableInsertResult": {
         "message": "允許擴充功能在網頁中插入翻譯結果"
@@ -260,23 +197,8 @@
     "optionsWebPageTranslatingDescription": {
         "message": "「網頁翻譯」是一種可以用你想要的語言翻譯整個網頁的功能。你可以通過右鍵菜單或鍵盤快捷鍵啟動網頁翻譯。啟動網頁翻譯後，頁面右下角會出現一個控制欄。"
     },
-    "optionsWebPageTranslateDirectly": {
-        "message": "啟動網頁翻譯後直接翻譯"
-    },
-    "optionsWebPageTranslateDirectlyDescription": {
-        "message": "啟用此選項並啟動網頁翻譯后，你無需點擊「開始網頁翻譯」按鈕，網頁將被自動翻譯。"
-    },
-    "optionsNoControlBarWhileFirstActivating": {
-        "message": "首次啟動時不顯示控制欄"
-    },
-    "optionsNoControlBarWhileFirstActivatingDescription": {
-        "message": "只有當「啟動網頁翻譯後直接翻譯」選項啟用後此選項才會生效。啟用此選項後，首次啟動「網頁翻譯」將不會展示控制欄。首次啟動後，再次啟動「網頁翻譯」可以展示或隱藏控制欄。"
-    },
     "optionsTranslateToTargetLanguage": {
         "message": "翻譯為目標語言"
-    },
-    "optionsAutoPasteInTheInputBoxErrorDescription": {
-        "message": "錯誤：未能獲得讀取剪貼板的許可。你需要允許該擴充功能讀取剪貼板。你可以點擊 URL 欄右邊的圖標來允許該擴充功能訪問剪貼板。同樣你可以通過以下鏈接來管理剪貼板權限："
     },
     "optionsMultipleTranslateSourceListDescription": {
         "message": "你勾選的源將默認被展示在面板中。源的順序與你勾選的順序相關。"
@@ -293,29 +215,11 @@
     "optionsURLCanNotBeEmpty": {
         "message": "URL 不能為空。"
     },
-    "optionsEncourage": {
-        "message": "如果覺得「Sc翻譯」對你有幫助，可以通過在擴充功能商店給出五星評價或者點擊 GitHub 頁面上的 Star 按鈕來鼓勵開發者，非常感謝！"
-    },
     "optionsDisplayOfTranslation": {
         "message": "翻譯結果的展示"
     },
     "optionsDisplayOfTranslationDescription": {
         "message": "你可以決定在翻譯面板上顯示哪些內容。"
-    },
-    "optionsEnhancementOfDisplay": {
-        "message": "增強展示"
-    },
-    "optionsAddUnderlineToTranslations": {
-        "message": "將下劃線添加到譯文"
-    },
-    "optionsMouseHoverOverTranslation": {
-        "message": "滑鼠懸停在譯文上時顯示原文"
-    },
-    "optionsMouseHoverOverOriginalText": {
-        "message": "滑鼠懸停在原文上時顯示譯文"
-    },
-    "optionsNotDisplayingTheTranslationsDiscretely": {
-        "message": "非離散地展示譯文"
     },
     "optionsCustomWebpageTranslateSource": {
         "message": "自定義網頁翻譯源"
@@ -329,12 +233,6 @@
     "optionsWebpageTranslatingInstructions": {
         "message": "網頁翻譯說明"
     },
-    "optionsTranslateDynamicContent": {
-        "message": "翻譯動態生成的內容"
-    },
-    "optionsTranslateDynamicContentDescription": {
-        "message": "在某些不斷創建新文本內容的網站中使用網頁翻譯可能會導致擴展程序不斷發送翻譯請求。"
-    },
     "optionsEnterDomainNameHere": {
         "message": "在此輸入網域名稱"
     },
@@ -342,46 +240,13 @@
         "message": "啟用自動翻譯網頁"
     },
     "optionsEnableAutoTranslateWebpageDescription": {
-        "message": "只有當“翻譯動態生成的內容”選項啟用後此選項才會生效。啟用此選項後，“在此網站上啟用/禁用自動翻譯” 按鈕將會被展示在控制欄中。當你訪問在下方域名列表中的網站時，網頁將會自動被翻譯。"
+        "message": "啟用後，控制欄會顯示「在此網站上啟用/禁用自動翻譯」按鈕。當你訪問下方域名列表中的網站時，網頁將自動被翻譯。"
     },
     "optionsMaintainParagraphStructure": {
         "message": "保持段落結構"
     },
     "optionsTogglePageTranslationStateDescription": {
         "message": "在擴充功能已啟用的網頁中使用此快捷鍵時，你可以在網頁翻譯未激活時激活它，或在已激活時關閉它。"
-    },
-    "optionsParagraphWrap": {
-        "message": "檢測到段落時換行展示譯文"
-    },
-    "optionsSameLanguageHide": {
-        "message": "當原文的語言與目標語言相同時不展示譯文"
-    },
-    "optionsTranslationStyleCustomization": {
-        "message": "譯文樣式自定義"
-    },
-    "optionsColor": {
-        "message": "顏色"
-    },
-    "optionsUnderlineColor": {
-        "message": "下劃線顏色"
-    },
-    "optionsUnderlineStyle": {
-        "message": "下劃線樣式"
-    },
-    "optionsUnset": {
-        "message": "取消設置"
-    },
-    "optionsClose": {
-        "message": "關閉"
-    },
-    "optionsTranslateIframeContent": {
-        "message": "翻譯 iframe 內的內容"
-    },
-    "optionsTranslateRedirectedSameDomainPage": {
-        "message": "跳轉頁面的網域名稱與原頁面相同時自動翻譯"
-    },
-    "optionsDisplayOriginalTextWhenCtrlPressed": {
-        "message": "僅在同時按住「Ctrl」鍵時顯示原文"
     },
     "optionsSpecifyTranslate": {
         "message": "指定要翻譯或不翻譯的內容"
@@ -427,9 +292,6 @@
     },
     "contentResult": {
         "message": "結果"
-    },
-    "contentHistoryTitle": {
-        "message": "翻譯歷史"
     },
     "contentNoRecord": {
         "message": "無記錄"
@@ -487,6 +349,12 @@
     },
     "popupOpenCollectionPage": {
         "message": "打開收藏頁面"
+    },
+    "popupOpenHistoryPage": {
+        "message": "打開翻譯歷史"
+    },
+    "historyTitle": {
+        "message": "翻譯歷史"
     },
     "collectionTitle": {
         "message": "收藏"
@@ -616,9 +484,6 @@
     },
     "sentenceBingHttp429": {
         "message": "（請求過多）你可能需要前往官網進行翻譯並完成驗證後才能繼續使用。官網："
-    },
-    "contextMenus_OPEN_SEPARATE_WINDOW": {
-        "message": "打開獨立翻譯視窗"
     },
     "contextMenus_TRANSLATE_SELECTION_TEXT": {
         "message": "翻譯您選擇的文字"

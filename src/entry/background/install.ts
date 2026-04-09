@@ -39,6 +39,7 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
         // To honor "默认打开", force-enable on updates as well.
         if (update) {
             data.doNotRespondInTextBox = true;
+            data.autoTranslateAfterInput = true;
         }
         // in new version, use 'useDotCn' instead of 'xxx.cn'
         if (update && (data.defaultTranslateSource === 'google.cn' || data.defaultTranslateSource === 'bing.cn' || data.defaultAudioSource === 'google.cn')) {
@@ -60,7 +61,9 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
             if (index === -1) {
                 data.contextMenus = data.contextMenus.concat({ id: TRANSLATE_CURRENT_PAGE, enabled: false });
             }
+            data.contextMenus = data.contextMenus.filter(v => v.id !== TRANSLATE_SELECTION_TEXT);
             data.contextMenus = data.contextMenus.filter(v => (v.id as string) !== 'OPEN_THIS_PAGE_WITH_PDF_VIEWER');
+            data.contextMenus = data.contextMenus.filter(v => (v.id as string) !== 'OPEN_SEPARATE_WINDOW');
         }
 
         if (update && 'enablePdfViewer' in data) {
@@ -78,10 +81,6 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
 
         if (update && data.displayOfTranslation) {
             data.displayOfTranslation = { ...defaultSet.displayOfTranslation, ...data.displayOfTranslation };
-        }
-
-        if (update && data.displayModeEnhancement) {
-            data.displayModeEnhancement = { ...defaultSet.displayModeEnhancement, ...data.displayModeEnhancement };
         }
 
         if (update && data.styleVarsList?.[0]?.styleVars) {
@@ -110,6 +109,23 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
             delete legacy.autoInsertResult;
             delete legacy.highlightCollectedText;
             delete legacy.hoverHighlighted;
+            delete legacy.displayModeEnhancement;
+            delete legacy.comparisonCustomization;
+            delete legacy.translateIframeContent;
+            delete legacy.translateRedirectedSameDomainPage;
+            delete legacy.noControlBarWhileFirstActivating;
+            delete legacy.webPageTranslateDirectly;
+            delete legacy.translateDynamicContent;
+            delete legacy.respondToSeparateWindow;
+            delete legacy.rememberStwSizeAndPosition;
+            delete legacy.stwSizeAndPosition;
+            delete legacy.btnPosition;
+            delete legacy.rememberHistoryPanelStatus;
+            delete legacy.historyPanelStatus;
+            delete legacy.autoPasteInTheInputBox;
+            delete legacy.hideButtonAfterFixedTime;
+            delete legacy.hideButtonFixedTime;
+            delete legacy.translateDirectlyWhilePinning;
             const builtInSources = new Set(translateSource.map(s => s.source));
             merged.multipleTranslateSourceList = merged.multipleTranslateSourceList.filter(
                 s => builtInSources.has(s)

@@ -38,8 +38,8 @@ module.exports = (env) => {
             content: [path.resolve(paths.appSrc, 'entry', 'content')],
             background: { import: path.resolve(paths.appSrc, 'entry', 'background'), filename: '[name].js' },
             options:  [path.resolve(paths.appSrc, 'entry', 'options')],
-            separate: [path.resolve(paths.appSrc, 'entry', 'separate')],
             collection: [path.resolve(paths.appSrc, 'entry', 'collection')],
+            history: [path.resolve(paths.appSrc, 'entry', 'history')],
         },
         output: {
             path: paths.appBuild,
@@ -79,7 +79,7 @@ module.exports = (env) => {
                         from: paths.appPublic,
                         to: paths.appBuild,
                         filter: (path) => {
-                            return !/(popup|options|separate|collection)\.html/.test(path);
+                            return !/(popup|options|collection|history)\.html/.test(path);
                         },
                     },
                 ],
@@ -98,15 +98,15 @@ module.exports = (env) => {
             }),
             new HtmlWebpackPlugin({
                 inject: true,
-                template: path.resolve(paths.appPublic, 'separate.html'),
-                chunks: ['separate'],
-                filename: 'separate.html',
-            }),
-            new HtmlWebpackPlugin({
-                inject: true,
                 template: path.resolve(paths.appPublic, 'collection.html'),
                 chunks: ['collection'],
                 filename: 'collection.html',
+            }),
+            new HtmlWebpackPlugin({
+                inject: true,
+                template: path.resolve(paths.appPublic, 'history.html'),
+                chunks: ['history'],
+                filename: 'history.html',
             }),
             new MiniCssExtractPlugin({
                 filename: 'static/css/[name].css'

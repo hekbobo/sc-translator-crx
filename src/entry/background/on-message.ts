@@ -1,6 +1,5 @@
 import * as types from '../../constants/chromeSendMessageTypes';
 import { translate, audio, detect } from '../../public/request';
-import { createSeparateWindow } from './separate-window';
 import scIndexedDB, { DB_STORE_COLLECTION } from '../../public/sc-indexed-db';
 import {
     AudioResponse,
@@ -50,13 +49,6 @@ chrome.runtime.onMessage.addListener((message: ChromeRuntimeMessage, sender, sen
             });
 
             return true;
-        }
-        case types.SCTS_SEND_TEXT_TO_SEPARATE_WINDOW: {
-            const { text } = message.payload;
-
-            text && createSeparateWindow(text);
-
-            return false;
         }
         case types.SCTS_IS_COLLECTED: {
             let { text } = message.payload;

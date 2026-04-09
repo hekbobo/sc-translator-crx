@@ -8,7 +8,6 @@ import { mtLangCode } from '../../../constants/langCode';
 import { getMessage } from '../../../public/i18n';
 import { useAppDispatch, useEffectOnce, useTranslation } from '../../../public/react-use';
 import { callOutPanel } from '../../../redux/slice/panelStatusSlice';
-import scOptions from '../../../public/sc-options';
 
 const MultipleTranslateResult: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -19,13 +18,11 @@ const MultipleTranslateResult: React.FC = () => {
     } = useTranslation();
 
     useEffectOnce(() => {
-        const readClipboardText = async () => {
-            const clipboardText = await navigator.clipboard.readText();
-            clipboardText && setText(clipboardText);
-            dispatch(callOutPanel());
-        };
-
-        scOptions.getInit().autoPasteInTheInputBox && readClipboardText();
+        const urlText = new URL(window.location.href).searchParams.get('text');
+        if (urlText !== null && urlText !== '') {
+            setText(urlText);
+        }
+        dispatch(callOutPanel());
     });
 
     return (

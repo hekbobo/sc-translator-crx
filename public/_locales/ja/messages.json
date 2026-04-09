@@ -23,9 +23,6 @@
     "extTranslateCurrentPageDescription": {
         "message": "現在のページを翻訳する"
     },
-    "extOpenSeparateWindowDescription": {
-        "message": "スタンドアロン翻訳ウィンドウを開く"
-    },
     "extCloseCommandDescription": {
         "message": "ウェブページで拡張機能を閉じる"
     },
@@ -35,17 +32,11 @@
     "extTogglePageTranslationStateDescription": {
         "message": "現在のページのページ翻訳状態を切り替える"
     },
-    "titleSeparateWindow": {
-        "message": "スタンドアロン翻訳ウィンドウ"
-    },
     "optionsTitle": {
         "message": "オプション"
     },
     "optionsTranslate": {
         "message": "翻訳"
-    },
-    "optionsHistory": {
-        "message": "翻訳記録"
     },
     "optionsLanguage": {
         "message": "言語"
@@ -77,9 +68,6 @@
     "optionsHistoryBlackListMode": {
         "message": "ブラックリストモード"
     },
-    "optionsMoreFeaturesOrBugReports": {
-        "message": "その他の機能またはバグレポート"
-    },
     "optionsDarkMode": {
         "message": "ダークモード"
     },
@@ -105,7 +93,7 @@
         "message": "英語のみ翻訳する"
     },
     "optionsTranslateEnglishOnlyDescription": {
-        "message": "有効にすると、選択テキストが英語と判定された場合（またはソース言語が英語に設定されている場合）のみ翻訳します。フローティングボタン、拡張機能のポップアップ、スタンドアロン翻訳ウィンドウに適用されます。ページ全体の翻訳には影響しません。ソース言語を手動で指定している場合は「英語」のときのみ翻訳します。"
+        "message": "有効にすると、選択テキストが英語と判定された場合（またはソース言語が英語に設定されている場合）のみ翻訳します。フローティングボタンと拡張機能のポップアップに適用されます。ページ全体の翻訳には影響しません。ソース言語を手動で指定している場合は「英語」のときのみ翻訳します。"
     },
     "optionsMode": {
         "message": "モード"
@@ -131,27 +119,6 @@
     "optionsCallOutCommandDescription": {
         "message": "このキーボードショートカットでは、ウェブページで拡張機能を有効にしている場合に、ウェブページ内の拡張機能を呼び出すことができます。拡張機能をもう呼び出した状態でこのキーボードショートカットをクリックすると、テキストボックスにフォーカスします。"
     },
-    "optionsButtonsPosition": {
-        "message": "ボタンの位置"
-    },
-    "optionsHideButtonAfterFixedTime": {
-        "message": "一定時間後にボタンを非表示にする"
-    },
-    "optionsTheFixedTimeOfHidingButton": {
-        "message": "ボタンを非表示にするの固定時間"
-    },
-    "optionsRespondToSeparateWindow": {
-        "message": "スタンドアロン翻訳ウィンドウに応答する"
-    },
-    "optionsRememberStwSizeAndPosition": {
-        "message": "スタンドアロン翻訳ウィンドウのサイズと位置を記憶する"
-    },
-    "optionsStwDescription": {
-        "message": "スタンドアロン翻訳ウィンドウでは、「複数翻訳モード」の翻訳パネルを使用して、同じ翻訳設定を共有します。スタンドアロン翻訳ウィンドウはキーボードショートカットにも応答できます。"
-    },
-    "optionsResetSizeAndPosition": {
-        "message": "サイズと位置をリセットする"
-    },
     "optionsSecondPreferredLanguage": {
         "message": "第二優先言語"
     },
@@ -170,26 +137,11 @@
     "optionsTranslatePanel": {
         "message": "翻訳パネル"
     },
-    "optionsStwAutoRespondDescription": {
-        "message": "スタンドアロン翻訳ウィンドウは、拡張機能が利用できないページのコンテキストメニューの「翻訳」項目をクリックした翻訳リクエストに自動的に応答します。"
-    },
-    "optionsRememberHistoryPanelStatus": {
-        "message": "翻訳記録パネルのステータスを記憶する"
-    },
-    "optionsTranslateDirectlyWhilePinning": {
-        "message": "翻訳パネルの固定中に直接翻訳する"
-    },
     "optionsDoNotRespondInTextBox": {
         "message": "入力欄内では翻訳しない"
     },
     "optionsDoNotRespondInTextBoxDescription": {
         "message": "入力欄・テキストエリア・contenteditable にフォーカスがあるときは、翻訳ボタンの表示・自動翻訳・ショートカット翻訳を行いません。"
-    },
-    "optionsMore": {
-        "message": "その他"
-    },
-    "optionsChangeLog": {
-        "message": "更新ログ"
     },
     "optionsAutoTranslateAfterInput": {
         "message": "入力ボックスに入力した後に自動翻訳する"
@@ -199,21 +151,6 @@
     },
     "optionsContextMenus": {
         "message": "コンテキストメニュー"
-    },
-    "optionsClipboard": {
-        "message": "クリップボード"
-    },
-    "optionsAllowExtensionToReadClipboard": {
-        "message": "拡張機能にクリップボードの読み取りを許可する"
-    },
-    "optionsAllowExtensionToReadClipboardDescription": {
-        "message": "一部の機能では、拡張機能がクリップボードを読み取って最後のテキストを取得できるようにする必要があります。例えば：入力ボックスに自動的に貼り付け。"
-    },
-    "optionsReadClipboardAutomatically": {
-        "message": "入力ボックスに自動的に貼り付け"
-    },
-    "optionsReadClipboardAutomaticallyDescription": {
-        "message": "ポップアップページまたはスタンドアロン翻訳ウィンドウを開くときに、最後のクリップボードのテキストが入力ボックスに自動的に貼り付けられます。"
     },
     "optionsEnableInsertResult": {
         "message": "拡張機能が翻訳結果をWebページ内で挿入を許可する"
@@ -260,23 +197,8 @@
     "optionsWebPageTranslatingDescription": {
         "message": "「Webページ翻訳」は、Webページ全体を選択した言語に翻訳できる機能です。コンテキストメニューまたはキーボードショートカットを使用して、「Webページ翻訳」をアクティブ化できます。「Webページ翻訳」をアクティブ化にすると、ページの右下隅にコントロールバーが表示されます。"
     },
-    "optionsWebPageTranslateDirectly": {
-        "message": "「Webページ翻訳」をアクティブ化にした直後に翻訳する"
-    },
-    "optionsWebPageTranslateDirectlyDescription": {
-        "message": "このオプションを有効にして「Webページ翻訳」をアクティブ化にした後、「Webページ翻訳を開始する」ボタンをクリックする必要はありません。Webページは自動的に翻訳されます。"
-    },
-    "optionsNoControlBarWhileFirstActivating": {
-        "message": "初アクティブ化にしたときにコントロールバーを表示しない"
-    },
-    "optionsNoControlBarWhileFirstActivatingDescription": {
-        "message": "このオプションは、「『Webページ翻訳』をアクティブ化にした直後に翻訳する」オプションを有効にした場合にのみ使用できます。このオプションを有効にすると、「Webページ翻訳」が初アクティブ化にしたときにコントロールバーが表示されなくなります。初アクティブ化後、「Webページ翻訳」を再びアクティブにすると、コントロールバーを表示または非表示にできます。"
-    },
     "optionsTranslateToTargetLanguage": {
         "message": "目標言語に翻訳します"
-    },
-    "optionsAutoPasteInTheInputBoxErrorDescription": {
-        "message": "エラー：クリップボードの読み取り許可を取得できませんでした。クリップボードを読み取りの許可はこの拡張機能にとっては必要でございます。URLバーの右側のアイコンをクリックして拡張機能のクリップボードへのアクセスを許可できます。次のリンクでも許可を管理できます："
     },
     "optionsMultipleTranslateSourceListDescription": {
         "message": "チェックしたソースは、デフォルトでパネルに表示されます。ソースの順序は、チェックした順序に関連しています。"
@@ -293,29 +215,11 @@
     "optionsURLCanNotBeEmpty": {
         "message": "URLを空にすることはできません。"
     },
-    "optionsEncourage": {
-        "message": "もし「サイ翻訳」が役に立つと思ったら、拡張機能ストアで星五つの評価をするか、GitHubページの「Star」ボタンをクリックして、開発者を励むことができます、ありがとうございます！"
-    },
     "optionsDisplayOfTranslation": {
         "message": "翻訳結果の表示"
     },
     "optionsDisplayOfTranslationDescription": {
         "message": "どのようなコンテンツは、翻訳パネルに表示されるかを決めることができます。"
-    },
-    "optionsEnhancementOfDisplay": {
-        "message": "表示の強化"
-    },
-    "optionsAddUnderlineToTranslations": {
-        "message": "訳文に下線を追加します"
-    },
-    "optionsMouseHoverOverTranslation": {
-        "message": "訳文の上にマウスを置いたときに原文を表示します"
-    },
-    "optionsMouseHoverOverOriginalText": {
-        "message": "原文の上にマウスを置いたときに訳文を表示します"
-    },
-    "optionsNotDisplayingTheTranslationsDiscretely": {
-        "message": "訳文を非離散的に表示します"
     },
     "optionsCustomWebpageTranslateSource": {
         "message": "カスタムWebページ翻訳ソース"
@@ -329,12 +233,6 @@
     "optionsWebpageTranslatingInstructions": {
         "message": "Webページ翻訳説明"
     },
-    "optionsTranslateDynamicContent": {
-        "message": "動的に生成されたコンテンツを翻訳する"
-    },
-    "optionsTranslateDynamicContentDescription": {
-        "message": "新しいテキストコンテンツを継続的に作成する一部のサイトでWebページ翻訳を使用すると、拡張機能が翻訳要求を送信し続ける可能性があります。"
-    },
     "optionsEnterDomainNameHere": {
         "message": "ここにドメイン名を入力"
     },
@@ -342,46 +240,13 @@
         "message": "ウェブページの自動翻訳を有効にする"
     },
     "optionsEnableAutoTranslateWebpageDescription": {
-        "message": "このオプションは、「動的に生成されたコンテンツを翻訳する」オプションを有効にした場合にのみ使用できます。このオプションを有効にすると、「このサイトで自動翻訳を有効/無効にする」ボタンがコントロールバーに表示されます。下記のドメイン名リストにあるウェブサイトにアクセスすると、そのページが自動的に翻訳されます。"
+        "message": "有効にすると、コントロールバーに「このサイトで自動翻訳を有効/無効にする」ボタンが表示されます。下記のドメイン名リストにあるウェブサイトにアクセスすると、そのページが自動的に翻訳されます。"
     },
     "optionsMaintainParagraphStructure": {
         "message": "段落構造を維持する"
     },
     "optionsTogglePageTranslationStateDescription": {
         "message": "拡張機能が有効なページでこのキーボードショートカットを使用すると、ページ翻訳がアクティブしない状態でアクティブにしたり、アクティブした状態で閉じたりすることができます。"
-    },
-    "optionsParagraphWrap": {
-        "message": "段落検出時に改行で訳文を表示する"
-    },
-    "optionsSameLanguageHide": {
-        "message": "原文の言語が目標言語と同じ場合に訳文を表示しない"
-    },
-    "optionsTranslationStyleCustomization": {
-        "message": "訳文スタイルのカスタマイズ"
-    },
-    "optionsColor": {
-        "message": "色"
-    },
-    "optionsUnderlineColor": {
-        "message": "下線色"
-    },
-    "optionsUnderlineStyle": {
-        "message": "下線スタイル"
-    },
-    "optionsUnset": {
-        "message": "設定解除"
-    },
-    "optionsClose": {
-        "message": "閉じる"
-    },
-    "optionsTranslateIframeContent": {
-        "message": "iframe内の内容を翻訳する"
-    },
-    "optionsTranslateRedirectedSameDomainPage": {
-        "message": "リダイレクトされたページのドメイン名が元のページと同じ場合に自動的に翻訳する"
-    },
-    "optionsDisplayOriginalTextWhenCtrlPressed": {
-        "message": "「Ctrl」キーを同時に押したときのみ原文を表示する"
     },
     "optionsSpecifyTranslate": {
         "message": "翻訳するかしないかを指定する"
@@ -427,9 +292,6 @@
     },
     "contentResult": {
         "message": "結果"
-    },
-    "contentHistoryTitle": {
-        "message": "翻訳記録"
     },
     "contentNoRecord": {
         "message": "記録なし"
@@ -487,6 +349,12 @@
     },
     "popupOpenCollectionPage": {
         "message": "コレクションページを開く"
+    },
+    "popupOpenHistoryPage": {
+        "message": "翻訳履歴を開く"
+    },
+    "historyTitle": {
+        "message": "翻訳履歴"
     },
     "collectionTitle": {
         "message": "コレクション"
@@ -616,9 +484,6 @@
     },
     "sentenceBingHttp429": {
         "message": "（リクエストが多すぎます）利用を継続する前に、公式サイトで翻訳し、検証を完了する必要があるかもしれない。公式サイト："
-    },
-    "contextMenus_OPEN_SEPARATE_WINDOW": {
-        "message": "スタンドアロン翻訳ウィンドウを開く"
     },
     "contextMenus_TRANSLATE_SELECTION_TEXT": {
         "message": "選択したテキストを翻訳する"

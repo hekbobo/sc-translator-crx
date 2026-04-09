@@ -13,6 +13,8 @@ type TranslationState = {
     translations: Translation[];
 };
 
+const allocateTranslateId = (): number => Date.now() * 100000 + Math.floor(Math.random() * 99999);
+
 const initialState: TranslationState = {
     text: '',
     from: '',
@@ -75,7 +77,7 @@ export const translationSlice = createSlice({
                     ...translation,
                     translateRequest: { status: 'init' }
                 }));
-                state.translateId += 1;
+                state.translateId = allocateTranslateId();
             }
         },
         requestStart: (state, { payload }: PayloadAction<{ source: string }>) => {
@@ -122,7 +124,7 @@ export const translationSlice = createSlice({
             state.translations = [{ source: payload.source, translateRequest: { status: 'init' } }];
             state.from = payload.from;
             state.to = payload.to;
-            state.translateId += 1;
+            state.translateId = allocateTranslateId();
         },
         replaceSource: (state, { payload }: PayloadAction<{ originalSource: string; nextSource: string; }>) => {
             state.translations = state.translations.map((translation) => {
@@ -139,6 +141,7 @@ export const translationSlice = createSlice({
                 source,
                 translateRequest: { status: 'init' }
             }));
+            state.translateId = allocateTranslateId();
         }
     }
 });

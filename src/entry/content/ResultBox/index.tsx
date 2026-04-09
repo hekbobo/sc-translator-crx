@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import CollectButton from '../../../components/PanelIconButtons/CollectButton';
+import OpenHistoryPageButton from '../../../components/PanelIconButtons/OpenHistoryPageButton';
 import DisplayEditAreaButton from '../../../components/PanelIconButtons/DisplayEditAreaButton';
 import { useAppSelector, useOptions, useWindowSize } from '../../../public/react-use';
 import { calculatePosition, drag } from '../../../public/utils';
@@ -86,6 +87,7 @@ const ResultBox: React.FC = () => {
                 </span>
                 <span className='panel__header-icons flex-align-items-center'>
                     <CollectButton />
+                    <OpenHistoryPageButton />
                     <DisplayEditAreaButton />
                     <PinButton />
                     <CloseButton />

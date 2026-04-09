@@ -1,7 +1,6 @@
 import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import TsBtn from '../../components/TsBtn';
-import TsHistory from '../../components/TsHistory';
 import ResultBox from './ResultBox';
 import { Provider } from 'react-redux';
 import store from '../../redux/store';
@@ -10,12 +9,35 @@ import '../../styles/global.css';
 import { appendColorVarsStyle, appendFontSizeStyle } from '../../public/inject-style';
 import WebPageTranslate from './WebPageTranslate';
 import scOptions from '../../public/sc-options';
-scOptions.init().then((options) => {
+import { TRANSLATION_HISTORY_STORAGE_KEY } from '../../constants/translationHistoryStorage';
+import { replaceHistory } from '../../redux/slice/translateHistorySlice';
+import type { TranslateHistoryItem } from '../../redux/slice/translateHistorySlice';
+
+chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName !== 'local' || !(TRANSLATION_HISTORY_STORAGE_KEY in changes)) { return; }
+
+    const next = changes[TRANSLATION_HISTORY_STORAGE_KEY].newValue;
+    if (Array.isArray(next)) {
+        store.dispatch(replaceHistory(next as TranslateHistoryItem[]));
+    }
+});
+
+Promise.all([
+    scOptions.init(),
+    new Promise<Record<string, unknown>>((resolve) => {
+        chrome.storage.local.get(TRANSLATION_HISTORY_STORAGE_KEY, resolve);
+    })
+]).then(([options, stored]) => {
     initTranslation({
         sourceList: options.multipleTranslateSourceList,
         from: options.multipleTranslateFrom,
         to: options.multipleTranslateTo
     });
+
+    const raw = stored[TRANSLATION_HISTORY_STORAGE_KEY];
+    if (Array.isArray(raw)) {
+        store.dispatch(replaceHistory(raw as TranslateHistoryItem[]));
+    }
 
     const root = document.createElement('div');
     root.id = 'sc-translator-shadow';
@@ -45,7 +67,6 @@ scOptions.init().then((options) => {
     contentStyle.onload = () => ReactDOMClient.createRoot(rootElement).render(
         <Provider store={store}>
             <TsBtn />
-            <TsHistory />
             <ResultBox />
             {enableWebpageTranslation && <WebPageTranslate />}
         </Provider>

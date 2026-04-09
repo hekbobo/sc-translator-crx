@@ -68,10 +68,11 @@ export const translateHistorySlice = createSlice({
         removeHistory: (state, { payload }: PayloadAction<{ translateId: number }>) => {
             state = state.filter(historyItem => historyItem.translateId !== payload.translateId);
             return state;
-        }
+        },
+        replaceHistory: (_state, { payload }: PayloadAction<TranslateHistoryItem[]>) => payload
     }
 });
 
-export const { addHistory, updateHistoryFinish, updateHistoryError, removeHistory } = translateHistorySlice.actions;
+export const { addHistory, updateHistoryFinish, updateHistoryError, removeHistory, replaceHistory } = translateHistorySlice.actions;
 
 export default translateHistorySlice.reducer;

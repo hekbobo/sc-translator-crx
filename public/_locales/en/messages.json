@@ -23,9 +23,6 @@
     "extTranslateCurrentPageDescription": {
         "message": "Translate the current page"
     },
-    "extOpenSeparateWindowDescription": {
-        "message": "Open separate translate window"
-    },
     "extCloseCommandDescription": {
         "message": "Close extension in web page"
     },
@@ -35,17 +32,11 @@
     "extTogglePageTranslationStateDescription": {
         "message": "Toggle the page translation state of current page"
     },
-    "titleSeparateWindow": {
-        "message": "Separate translate window"
-    },
     "optionsTitle": {
         "message": "Options"
     },
     "optionsTranslate": {
         "message": "Translate"
-    },
-    "optionsHistory": {
-        "message": "History"
     },
     "optionsLanguage": {
         "message": "Language"
@@ -77,9 +68,6 @@
     "optionsHistoryBlackListMode": {
         "message": "Black list mode"
     },
-    "optionsMoreFeaturesOrBugReports": {
-        "message": "More features or bug reports"
-    },
     "optionsDarkMode": {
         "message": "Dark Mode"
     },
@@ -105,7 +93,7 @@
         "message": "Translate English only"
     },
     "optionsTranslateEnglishOnlyDescription": {
-        "message": "When enabled, only text detected as English is translated (floating button, popup, and separate window). Webpage translation is not affected. If source language is set explicitly, only \"English\" is translated."
+        "message": "When enabled, only text detected as English is translated (floating button and popup). Webpage translation is not affected. If source language is set explicitly, only \"English\" is translated."
     },
     "optionsMode": {
         "message": "Mode"
@@ -131,27 +119,6 @@
     "optionsCallOutCommandDescription": {
         "message": "You can call out extension in web page when the extension is enabled in web page with this keyboard shortcut. When you click this keyboard shortcut with the extension called out, it focuses on the text box."
     },
-    "optionsButtonsPosition": {
-        "message": "Button's position"
-    },
-    "optionsHideButtonAfterFixedTime": {
-        "message": "Hide button after fixed time"
-    },
-    "optionsTheFixedTimeOfHidingButton": {
-        "message": "The fixed time of hiding button"
-    },
-    "optionsRespondToSeparateWindow": {
-        "message": "Respond to separate translate window"
-    },
-    "optionsRememberStwSizeAndPosition": {
-        "message": "Remember separate translate window's size and position"
-    },
-    "optionsStwDescription": {
-        "message": "The separate translate window uses the \"Multiple translate mode\" translate panel, which shares the same set of translation settings. The separate translate window can also respond to keyboard shortcuts."
-    },
-    "optionsResetSizeAndPosition": {
-        "message": "Reset size and position"
-    },
     "optionsSecondPreferredLanguage": {
         "message": "Second preferred Language"
     },
@@ -170,26 +137,11 @@
     "optionsTranslatePanel": {
         "message": "Translate panel"
     },
-    "optionsStwAutoRespondDescription": {
-        "message": "Separate translate window will auto respond to the translate request which you click the \"translate\" item of context menus in the extension unavailable page."
-    },
-    "optionsRememberHistoryPanelStatus": {
-        "message": "Remember the status of translate history panel"
-    },
-    "optionsTranslateDirectlyWhilePinning": {
-        "message": "Translate directly while translate panel pinning"
-    },
     "optionsDoNotRespondInTextBox": {
         "message": "Do not translate inside input fields"
     },
     "optionsDoNotRespondInTextBoxDescription": {
         "message": "When focus is in an input, textarea, or contenteditable area, the extension will not show the translate button, auto-translate, or keyboard-shortcut translate."
-    },
-    "optionsMore": {
-        "message": "More"
-    },
-    "optionsChangeLog": {
-        "message": "Change log"
     },
     "optionsAutoTranslateAfterInput": {
         "message": "Auto translate after input in input box"
@@ -199,21 +151,6 @@
     },
     "optionsContextMenus": {
         "message": "Context menus"
-    },
-    "optionsClipboard": {
-        "message": "Clipboard"
-    },
-    "optionsAllowExtensionToReadClipboard": {
-        "message": "Allow extension to read clipboard"
-    },
-    "optionsAllowExtensionToReadClipboardDescription": {
-        "message": "Some features require you to allow the extension to read the clipboard to get the lase text. For example: Paste in the input box automatically."
-    },
-    "optionsReadClipboardAutomatically": {
-        "message": "Paste in the input box automatically"
-    },
-    "optionsReadClipboardAutomaticallyDescription": {
-        "message": "The last clipboard text will be automatically pasted in the input box while opening popup page or separate translate window."
     },
     "optionsEnableInsertResult": {
         "message": "Allow extension to insert translate results in web pages"
@@ -260,23 +197,8 @@
     "optionsWebPageTranslatingDescription": {
         "message": "\"Webpage translating\" is a feature that can translate the whole webpage with the language you want. You can activate webpage translating through context menu or keyboard shortcut. After activating webpage translating, there will be a control bar in the bottom right corner of the page."
     },
-    "optionsWebPageTranslateDirectly": {
-        "message": "Translate directly after activating webpage translating"
-    },
-    "optionsWebPageTranslateDirectlyDescription": {
-        "message": "After enabling this option and you activating webpage translating, you don't need to click the \"Start webpage translating\" button, the webpage will be automatically translated."
-    },
-    "optionsNoControlBarWhileFirstActivating": {
-        "message": "Not displaying control bar while first activating"
-    },
-    "optionsNoControlBarWhileFirstActivatingDescription": {
-        "message": "This option is only available when you enable the \"Translate directly after activating webpage translating\" option. After enabling this option, the control bar will not be displayed while the first time of \"Webpage translating\" activating. After first activating, you can activate \"Webpage translating\" again to display or hide the control bar."
-    },
     "optionsTranslateToTargetLanguage": {
         "message": "Translate to target language"
-    },
-    "optionsAutoPasteInTheInputBoxErrorDescription": {
-        "message": "Error: Failed to get the permission of reading clipboard. You need to allow extension to read your clipboard. You can click on the icon on the right of the URL bar to allow this extension to read the clipboard. You can also allow the requestion in the following link:"
     },
     "optionsMultipleTranslateSourceListDescription": {
         "message": "The source you check will be displayed in panel by default. The order of the sources is related to the order in which you checked."
@@ -293,29 +215,11 @@
     "optionsURLCanNotBeEmpty": {
         "message": "URL can not be empty."
     },
-    "optionsEncourage": {
-        "message": "If you find \"ScTranslator\" helpful, you can encourage the developer by giving a five-star rating on the extension store or clicking the \"Star\" button on the GitHub page, thank you very much!"
-    },
     "optionsDisplayOfTranslation": {
         "message": "Display of translation"
     },
     "optionsDisplayOfTranslationDescription": {
         "message": "You can decide what content will be displayed on the translation panel."
-    },
-    "optionsEnhancementOfDisplay": {
-        "message": "Enhancement of display"
-    },
-    "optionsAddUnderlineToTranslations": {
-        "message": "Add underline to translations"
-    },
-    "optionsMouseHoverOverTranslation": {
-        "message": "Display the original text when the mouse hovers over the translation"
-    },
-    "optionsMouseHoverOverOriginalText": {
-        "message": "Display the translation when the mouse hovers over the original text"
-    },
-    "optionsNotDisplayingTheTranslationsDiscretely": {
-        "message": "Not displaying the translations discretely"
     },
     "optionsCustomWebpageTranslateSource": {
         "message": "Custom webpage translate source"
@@ -329,12 +233,6 @@
     "optionsWebpageTranslatingInstructions": {
         "message": "Webpage translating instructions"
     },
-    "optionsTranslateDynamicContent": {
-        "message": "Translate dynamically generated content"
-    },
-    "optionsTranslateDynamicContentDescription": {
-        "message": "Using webpage translating in some websites that continually create new text content may cause the extension to keep sending translate requests."
-    },
     "optionsEnterDomainNameHere": {
         "message": "Enter domain name here"
     },
@@ -342,46 +240,13 @@
         "message": "Enable automatic translation of webpages"
     },
     "optionsEnableAutoTranslateWebpageDescription": {
-        "message": "This option is only available when you enable the \"Enable automatic translation of webpages\" option. After enabling this option, the \"Enable/Disable automatic translation on this website\" button will be displayed on the control bar. When you visit a website in the domain name list below, the page will be automatically translated."
+        "message": "When enabled, the \"Enable/Disable automatic translation on this website\" button appears on the control bar. When you visit a website in the domain name list below, the page will be automatically translated."
     },
     "optionsMaintainParagraphStructure": {
         "message": "Maintain paragraph structure"
     },
     "optionsTogglePageTranslationStateDescription": {
         "message": "When this keyboard shortcut is used on an extension enabled page, you can activate page translation while it is not activated, or close it while it is activated."
-    },
-    "optionsParagraphWrap": {
-        "message": "Display translation in a new line when paragraph is detected"
-    },
-    "optionsSameLanguageHide": {
-        "message": "Not displaying translation when the language of original text is the same as the target language"
-    },
-    "optionsTranslationStyleCustomization": {
-        "message": "Translation style customization"
-    },
-    "optionsColor": {
-        "message": "Color"
-    },
-    "optionsUnderlineColor": {
-        "message": "Underline color"
-    },
-    "optionsUnderlineStyle": {
-        "message": "Underline style"
-    },
-    "optionsUnset": {
-        "message": "Unset"
-    },
-    "optionsClose": {
-        "message": "Close"
-    },
-    "optionsTranslateIframeContent": {
-        "message": "Translate the content inside iframe"
-    },
-    "optionsTranslateRedirectedSameDomainPage": {
-        "message": "Automatically translate when the domain name of the redirected page is the same as the original page"
-    },
-    "optionsDisplayOriginalTextWhenCtrlPressed": {
-        "message": "Display original text only when \"Ctrl\" key is pressed at the same time"
     },
     "optionsSpecifyTranslate": {
         "message": "Specify what to translate or not translate"
@@ -427,9 +292,6 @@
     },
     "contentResult": {
         "message": "Result"
-    },
-    "contentHistoryTitle": {
-        "message": "History"
     },
     "contentNoRecord": {
         "message": "No record"
@@ -487,6 +349,12 @@
     },
     "popupOpenCollectionPage": {
         "message": "Open collection page"
+    },
+    "popupOpenHistoryPage": {
+        "message": "Open translation history"
+    },
+    "historyTitle": {
+        "message": "Translation history"
     },
     "collectionTitle": {
         "message": "Collection"
@@ -616,9 +484,6 @@
     },
     "sentenceBingHttp429": {
         "message": "(Too Many Requests) You may need to go to the official website to translate and complete the verification before you can continue to use it. Official website:"
-    },
-    "contextMenus_OPEN_SEPARATE_WINDOW": {
-        "message": "Open separate translate window"
     },
     "contextMenus_TRANSLATE_SELECTION_TEXT": {
         "message": "Translate the text you select"

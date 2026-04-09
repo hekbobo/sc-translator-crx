@@ -1,82 +1,35 @@
 import React from 'react';
-import Checkbox from '../../../../components/Checkbox';
-import SourceSelect from '../../../../components/SourceSelect';
-import Switch from '../../../../components/Switch';
 import { preferredLangCode } from '../../../../constants/langCode';
-import { webPageTranslateSource as webPageTranslateSourceList } from '../../../../constants/translateSource';
 import { getMessage } from '../../../../public/i18n';
 import { useOptions } from '../../../../public/react-use';
 import { GetStorageKeys } from '../../../../types';
-import BetaIcon from '../../components/BetaIcon';
 import WebPageTranslateDisplayMode from '../../components/WebPageTranslateDisplayMode';
-import CustomizeTranslation from '../../components/CustomizeTranslation';
 import scOptions from '../../../../public/sc-options';
 import LanguageSelect from '../../../../components/LanguageSelect';
 
 const useOptionsDependency: GetStorageKeys<
-    'webPageTranslateSource' |
     'webPageTranslateTo' |
     'webPageTranslateDisplayMode' |
-    'userLanguage' |
-    'webPageTranslateDirectly' |
-    'noControlBarWhileFirstActivating' |
-    'displayModeEnhancement' |
-    'translateDynamicContent' |
-    'comparisonCustomization' |
-    'translateIframeContent' |
-    'translateRedirectedSameDomainPage'
+    'userLanguage'
 > = [
-    'webPageTranslateSource',
     'webPageTranslateTo',
     'webPageTranslateDisplayMode',
-    'userLanguage',
-    'webPageTranslateDirectly',
-    'noControlBarWhileFirstActivating',
-    'displayModeEnhancement',
-    'translateDynamicContent',
-    'comparisonCustomization',
-    'translateIframeContent',
-    'translateRedirectedSameDomainPage'
+    'userLanguage'
 ];
 
-const WebPageTranslating: React.FC = () => {
+type WebPageTranslatingProps = {
+    noCard?: boolean;
+};
+
+const WebPageTranslating: React.FC<WebPageTranslatingProps> = ({ noCard = false }) => {
     const {
-        webPageTranslateSource,
         webPageTranslateTo,
         userLanguage,
-        webPageTranslateDisplayMode,
-        webPageTranslateDirectly,
-        noControlBarWhileFirstActivating,
-        displayModeEnhancement,
-        translateDynamicContent,
-        comparisonCustomization,
-        translateIframeContent,
-        translateRedirectedSameDomainPage
+        webPageTranslateDisplayMode
     } = useOptions(useOptionsDependency);
 
-    return (
-        <div className='opt-section'>
-            <div className='opt-section-row'>
-                <div className='item-description'>
-                    {getMessage('optionsWebPageTranslatingDescription')}
-                    <a
-                        target='_blank'
-                        href='https://github.com/chunibyocola/sc-translator-crx/discussions/56'
-                        rel='noreferrer'
-                    >
-                        {getMessage('optionsWebpageTranslatingInstructions')}
-                    </a>
-                </div>
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsSource')}
-                <SourceSelect
-                    className='border-bottom-select opt-source-select'
-                    sourceList={webPageTranslateSourceList}
-                    source={webPageTranslateSource}
-                    onChange={value => scOptions.set({ webPageTranslateSource: value })}
-                />
-            </div>
+    const rows = (
+        <>
             <div className='opt-section-row'>
                 {getMessage('optionsTo')}
                 <LanguageSelect
@@ -94,136 +47,10 @@ const WebPageTranslating: React.FC = () => {
                     />
                 </div>
             </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsEnhancementOfDisplay')}
-                <BetaIcon />
-                <div className='mt10-ml30'>
-                    {getMessage('optionsOriginalText')}
-                    <div className='mt10-ml30'>
-                        <Checkbox
-                            label={getMessage('optionsMouseHoverOverOriginalText')}
-                            checked={displayModeEnhancement.o_Hovering}
-                            onChange={v => scOptions.set({ displayModeEnhancement: { ...displayModeEnhancement, o_Hovering: v } })}
-                        />
-                    </div>
-                </div>
-                <div className='mt10-ml30'>
-                    {`${getMessage('optionsOriginalText')} + ${getMessage('optionsTranslation')}`}
-                    <div className='mt10-ml30'>
-                        <Checkbox
-                            label={getMessage('optionsNotDisplayingTheTranslationsDiscretely')}
-                            checked={displayModeEnhancement.oAndT_NonDiscrete}
-                            onChange={v => scOptions.set({ displayModeEnhancement: { ...displayModeEnhancement, oAndT_NonDiscrete: v } })}
-                        />
-                    </div>
-                    <div className='mt10-ml30'>
-                        <Checkbox
-                            label={getMessage('optionsParagraphWrap')}
-                            checked={displayModeEnhancement.oAndT_paragraphWrap}
-                            onChange={v => scOptions.set({ displayModeEnhancement: { ...displayModeEnhancement, oAndT_paragraphWrap: v } })}
-                        />
-                    </div>
-                    <div className='mt10-ml30'>
-                        <Checkbox
-                            label={getMessage('optionsSameLanguageHide')}
-                            checked={displayModeEnhancement.oAndT_hideSameLanguage}
-                            onChange={v => scOptions.set({ displayModeEnhancement: { ...displayModeEnhancement, oAndT_hideSameLanguage: v } })}
-                        />
-                    </div>
-                    <div className='mt10-ml30'>
-                        {getMessage('optionsTranslationStyleCustomization')}
-                        <div className='mt10-ml30'>
-                            <CustomizeTranslation
-                                comparisonCustomization={comparisonCustomization}
-                                addUnderline={displayModeEnhancement.oAndT_Underline}
-                                onChange={v => scOptions.set({ comparisonCustomization: v })}
-                            >
-                                <Checkbox
-                                    label={getMessage('optionsAddUnderlineToTranslations')}
-                                    checked={displayModeEnhancement.oAndT_Underline}
-                                    onChange={v => scOptions.set({ displayModeEnhancement: { ...displayModeEnhancement, oAndT_Underline: v } })}
-                                />
-                            </CustomizeTranslation>
-                        </div>
-                    </div>
-                </div>
-                <div className='mt10-ml30'>
-                    {getMessage('optionsTranslation')}
-                    <div className='mt10-ml30'>
-                        <Checkbox
-                            label={getMessage('optionsMouseHoverOverTranslation')}
-                            checked={displayModeEnhancement.t_Hovering}
-                            onChange={v => scOptions.set({ displayModeEnhancement: { ...displayModeEnhancement, t_Hovering: v } })}
-                        />
-                        <div className='mt10-ml30'>
-                            <Checkbox
-                                label={getMessage('optionsDisplayOriginalTextWhenCtrlPressed')}
-                                checked={displayModeEnhancement.t_hoveringWithKeyPressing}
-                                onChange={v => scOptions.set({ displayModeEnhancement: { ...displayModeEnhancement, t_hoveringWithKeyPressing: v } })}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='opt-section-row'>
-                <Switch
-                    label={getMessage('optionsTranslateIframeContent')}
-                    checked={translateIframeContent}
-                    onChange={v => scOptions.set({ translateIframeContent: v })}
-                />
-                <BetaIcon />
-            </div>
-            <div className='opt-section-row flex-align-items-center'>
-                <Switch
-                    label={getMessage('optionsTranslateRedirectedSameDomainPage')}
-                    checked={translateRedirectedSameDomainPage}
-                    onChange={(v) => {
-                        if (v) {
-                            chrome.permissions.request({ permissions: ['webNavigation'] }, (granted) => {
-                                granted && scOptions.set({ translateRedirectedSameDomainPage: v });
-                            });
-                        }
-                        else {
-                            scOptions.set({ translateRedirectedSameDomainPage: v });
-                            chrome.permissions.remove({ permissions: ['webNavigation'] });
-                        }
-                    }}
-                />
-                <BetaIcon />
-            </div>
-            <div className='opt-section-row'>
-                <Switch
-                    label={getMessage('optionsWebPageTranslateDirectly')}
-                    checked={webPageTranslateDirectly}
-                    onChange={v => scOptions.set({ webPageTranslateDirectly: v })}
-                />
-                <div className='item-description'>
-                    {getMessage('optionsWebPageTranslateDirectlyDescription')}
-                </div>
-                <div className='mt10-ml30'>
-                    <Switch
-                        label={getMessage('optionsNoControlBarWhileFirstActivating')}
-                        checked={noControlBarWhileFirstActivating}
-                        onChange={v => scOptions.set({ noControlBarWhileFirstActivating: v })}
-                    />
-                    <div className='item-description'>
-                        {getMessage('optionsNoControlBarWhileFirstActivatingDescription')}
-                    </div>
-                </div>
-            </div>
-            <div className='opt-section-row'>
-                <Switch
-                    label={getMessage('optionsTranslateDynamicContent')}
-                    checked={translateDynamicContent}
-                    onChange={v => scOptions.set({ translateDynamicContent: v })}
-                />
-                <BetaIcon />
-                <div className='item-description'>
-                    {getMessage('optionsTranslateDynamicContentDescription')}
-                </div>
-            </div>
-        </div>
+        </>
     );
+
+    return noCard ? rows : <div className='opt-section'>{rows}</div>;
 };
 
 export default WebPageTranslating;

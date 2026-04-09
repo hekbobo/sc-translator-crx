@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import ErrorMessage from '../../../components/ErrorMessage';
 import IconFont from '../../../components/IconFont';
 import LanguageSelect from '../../../components/LanguageSelect';
@@ -8,13 +8,11 @@ import { SCTS_SWITCH_WT_DISPLAY_MODE, SCTS_TOGGLE_PAGE_TRANSLATION_STATE, SCTS_T
 import { preferredLangCode } from '../../../constants/langCode';
 import { webPageTranslateSource as webPageTranslateSourceList } from '../../../constants/translateSource';
 import { getMessage } from '../../../public/i18n';
-import { useOnRuntimeMessage, useOptions } from '../../../public/react-use';
+import { useOnRuntimeMessage } from '../../../public/react-use';
 import useEffectOnce from '../../../public/react-use/useEffectOnce';
 import { closeWebPageTranslating, errorRetry, startWebPageTranslating, switchWayOfFontsDisplaying } from '../../../public/web-page-translate';
-import { GetStorageKeys } from '../../../types';
 import './style.css';
 import Logo from '../../../components/Logo';
-import { sendShouldAutoTranslateThisPage, sendUpdatePageTranslationState } from '../../../public/send';
 import scOptions from '../../../public/sc-options';
 
 const wPTI18nCache = {
@@ -85,8 +83,6 @@ const wPTReducer = (state: WPTReducerState, action: WPTReducerAction): WPTReduce
     }
 };
 
-const useOptionsDependency: GetStorageKeys<'translateRedirectedSameDomainPage'> = ['translateRedirectedSameDomainPage'];
-
 const WebPageTranslate: React.FC = () => {
     const langCodes = useMemo(() => preferredLangCode[scOptions.getInit().userLanguage], []);
 
@@ -95,8 +91,6 @@ const WebPageTranslate: React.FC = () => {
         source: scOptions.getInit().webPageTranslateSource,
         targetLanguage: scOptions.getInit().webPageTranslateTo
     });
-
-    const { translateRedirectedSameDomainPage } = useOptions(useOptionsDependency);
 
     const handleError = useCallback((errorReason: string) => {
         errorReason && dispach({ type: 'change-error', error: errorReason });
@@ -121,10 +115,6 @@ const WebPageTranslate: React.FC = () => {
             element: document.body,
             translateSource: source,
             targetLanguage,
-            enhancement: scOptions.getInit().displayModeEnhancement,
-            translateDynamicContent: scOptions.getInit().translateDynamicContent,
-            translateIframeContent: scOptions.getInit().translateIframeContent,
-            customization: scOptions.getInit().comparisonCustomization,
             specifySelectors,
             onError: handleError,
             onRequestStart: handleRequestStart,
@@ -141,9 +131,9 @@ const WebPageTranslate: React.FC = () => {
 
     const activatePageTranslation = useCallback(() => {
         if (!working) {
-            dispach({ type: 'active-wpt', show: !(scOptions.getInit().webPageTranslateDirectly && scOptions.getInit().noControlBarWhileFirstActivating), auto: false });
+            dispach({ type: 'active-wpt', show: true, auto: false });
 
-            scOptions.getInit().webPageTranslateDirectly && startProcessing();
+            startProcessing();
         }
 
         if (!activated) { return; }
@@ -152,11 +142,7 @@ const WebPageTranslate: React.FC = () => {
             dispach({ type: 'show-control-bar' });
             return;
         }
-
-        if ((scOptions.getInit().webPageTranslateDirectly || auto) && scOptions.getInit().noControlBarWhileFirstActivating) {
-            dispach({ type: 'hide-control-bar' });
-        }
-    }, [working, activated, show, auto, startProcessing]);
+    }, [working, activated, show, startProcessing]);
 
     const closePageTranslation = useCallback(() => {
         closeWebPageTranslating();
@@ -165,16 +151,6 @@ const WebPageTranslate: React.FC = () => {
 
     useEffectOnce(() => {
         switchWayOfFontsDisplaying(scOptions.getInit().webPageTranslateDisplayMode);
-
-        if (!working && scOptions.getInit().translateRedirectedSameDomainPage) {
-            sendShouldAutoTranslateThisPage(location.host).then((response) => {
-                if (response === 'Yes') {
-                    dispach({ type: 'active-wpt', show: !scOptions.getInit().noControlBarWhileFirstActivating, auto: false });
-
-                    startProcessing();
-                }
-            });
-        }
     });
 
     useEffect(() => {
@@ -195,37 +171,8 @@ const WebPageTranslate: React.FC = () => {
 
         chrome.runtime.onMessage.addListener(onMessage);
 
-        return () => chrome.runtime.onMessage.removeListener(onMessage)
+        return () => chrome.runtime.onMessage.removeListener(onMessage);
     }, [activated, activatePageTranslation, closePageTranslation]);
-
-    const worked = useRef(false);
-    useEffect(() => {
-        if (!translateRedirectedSameDomainPage) { 
-            return;
-        }
-
-        if (!worked.current && !working) {
-            return;
-        }
-
-        worked.current = true;
-
-        let timeout: ReturnType<typeof setTimeout>;
-
-        const sendUpdateState = () => {
-            sendUpdatePageTranslationState(location.host, working);
-
-            if (working) {
-                timeout = setTimeout(sendUpdateState, 15000);
-            }
-        };
-
-        sendUpdateState();
-
-        return () => {
-            clearTimeout(timeout);
-        }
-    }, [working, translateRedirectedSameDomainPage]);
 
     useOnRuntimeMessage(({ type }) => {
         switch (type) {

@@ -8,15 +8,9 @@ import { cn } from '../../../../public/utils';
 import './style.css';
 
 const menusItems = [
-    { title: getMessage('optionsClipboard'), id: 'clipboard' },
-    { title: getMessage('optionsWebPageTranslating'), id: 'web-page-translating' },
-    { title: getMessage('titleSeparateWindow'), id: 'separate-window' },
-    { title: getMessage('optionsTranslatePanel'), id: 'translate-panel' },
     { title: getMessage('optionsDefaultTranslateOptions'), id: 'default-translate-options' },
-    { title: getMessage('optionsInWebPage'), id: 'in-web-page' },
-    { title: getMessage('optionsHistory'), id: 'history' },
-    { title: getMessage('optionsContextMenus'), id: 'context-menus' },
-    { title: getMessage('optionsMore'), id: 'more' }
+    { title: getMessage('optionsWebPageTranslating'), id: 'web-page-translating' },
+    { title: getMessage('optionsContextMenus'), id: 'context-menus' }
 ];
 
 const OptionsMenu: React.FC = () => {

@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 import { getSelectedText } from '../../public/utils/get-selection';
-import { useOptions, useGetSelection, useAppSelector, useAppDispatch, useOnRuntimeMessage, useIsTranslateEnabled, useDebounceFn } from '../../public/react-use';
+import { useOptions, useGetSelection, useAppDispatch, useOnRuntimeMessage, useIsTranslateEnabled } from '../../public/react-use';
 import {
     SCTS_CONTEXT_MENUS_CLICKED,
     SCTS_TRANSLATE_COMMAND_KEY_PRESSED,
@@ -10,7 +10,6 @@ import {
 } from '../../constants/chromeSendMessageTypes';
 import IconFont from '../IconFont';
 import './style.css';
-import { sendSeparate } from '../../public/send';
 import { isSelectionOrActiveInTextBox } from '../../public/utils';
 import { GetStorageKeys, Position } from '../../types';
 import { callOutPanelInContentScript, closePanel, requestToHidePanel, showPanelAndSetPosition } from '../../redux/slice/panelStatusSlice';
@@ -33,29 +32,20 @@ import PanelIconButtonWrapper from '../PanelIconButtons/PanelIconButtonWrapper';
 
 const initText = '';
 const initPos = { x: 5, y: 5 };
+const BTN_OFFSET_FROM_SELECTION: Position = { x: 5, y: 5 };
 
 const useOptionsDependency: GetStorageKeys<
     'translateDirectly' |
     'translateWithKeyPress' |
-    'hideButtonAfterFixedTime' |
-    'hideButtonFixedTime' |
-    'respondToSeparateWindow' |
-    'translateDirectlyWhilePinning' |
     'doNotRespondInTextBox' |
     'translateButtons' |
-    'translateButtonsTL' |
-    'btnPosition'
+    'translateButtonsTL'
 > = [
     'translateDirectly',
     'translateWithKeyPress',
-    'hideButtonAfterFixedTime',
-    'hideButtonFixedTime',
-    'respondToSeparateWindow',
-    'translateDirectlyWhilePinning',
     'doNotRespondInTextBox',
     'translateButtons',
-    'translateButtonsTL',
-    'btnPosition'
+    'translateButtonsTL'
 ];
 
 const calculateBtnPos = ({ x, y }: Position, translateButtonElement: HTMLDivElement | null) => {
@@ -86,22 +76,13 @@ const TsBtn: React.FC = () => {
     const ctrlPressing = useRef(false);
     const translateButtonEleRef = useRef<HTMLDivElement>(null);
 
-    const { pinning } = useAppSelector(state => state.panelStatus);
-
     const {
         translateDirectly,
         translateWithKeyPress,
-        hideButtonAfterFixedTime,
-        hideButtonFixedTime,
-        respondToSeparateWindow,
-        translateDirectlyWhilePinning,
         doNotRespondInTextBox,
         translateButtons,
-        translateButtonsTL,
-        btnPosition
+        translateButtonsTL
     } = useOptions(useOptionsDependency);
-
-    const debounceHideButtonAfterFixedTime = useDebounceFn(() => setShowBtn(false), hideButtonFixedTime, []);
 
     const translateEnabled = useIsTranslateEnabled(window.location.host);
 
@@ -110,11 +91,6 @@ const TsBtn: React.FC = () => {
     const handleForwardTranslate = useCallback((text: string, position: Position, to: undefined | string = undefined) => {
         void (async () => {
             if (doNotRespondInTextBox && isSelectionOrActiveInTextBox()) {
-                return;
-            }
-
-            if (respondToSeparateWindow) {
-                sendSeparate(text);
                 return;
             }
 
@@ -134,7 +110,7 @@ const TsBtn: React.FC = () => {
 
             dispatch(nextTranslaion({ text, to }));
         })();
-    }, [dispatch, doNotRespondInTextBox, respondToSeparateWindow]);
+    }, [dispatch, doNotRespondInTextBox]);
 
     const handleTranslateButtonClick = (translateButton: string) => {
         setShowBtn(false);
@@ -219,9 +195,9 @@ const TsBtn: React.FC = () => {
 
         if (doNotRespondInTextBox && isSelectionOrActiveInTextBox(mouseEvent)) { return; }
 
-        const posWithBtnPosition: Position = { x: pos.x + btnPosition.x, y: pos.y + btnPosition.y };
+        const posWithBtnPosition: Position = { x: pos.x + BTN_OFFSET_FROM_SELECTION.x, y: pos.y + BTN_OFFSET_FROM_SELECTION.y };
 
-        if ((translateWithKeyPress && ctrlPressing.current) || translateDirectly || (pinning && translateDirectlyWhilePinning)) {
+        if ((translateWithKeyPress && ctrlPressing.current) || translateDirectly) {
             handleForwardTranslate(text, calculateBtnPos(posWithBtnPosition, null));
             return;
         }
@@ -230,7 +206,6 @@ const TsBtn: React.FC = () => {
         if (translateButtons.length > 0) {
             setShowBtn(true);
             setPos(calculateBtnPos(posWithBtnPosition, translateButtonEleRef.current));
-            hideButtonAfterFixedTime && debounceHideButtonAfterFixedTime();
         }
         else {
             setPos(calculateBtnPos(posWithBtnPosition, null));

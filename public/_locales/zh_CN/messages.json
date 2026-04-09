@@ -23,9 +23,6 @@
     "extTranslateCurrentPageDescription": {
         "message": "翻译当前页面"
     },
-    "extOpenSeparateWindowDescription": {
-        "message": "打开独立翻译窗口"
-    },
     "extCloseCommandDescription": {
         "message": "在网页中关闭扩展"
     },
@@ -35,17 +32,11 @@
     "extTogglePageTranslationStateDescription": {
         "message": "切换当前网页的网页翻译状态"
     },
-    "titleSeparateWindow": {
-        "message": "独立翻译窗口"
-    },
     "optionsTitle": {
-        "message": "常规选项"
+        "message": "设置"
     },
     "optionsTranslate": {
         "message": "翻译"
-    },
-    "optionsHistory": {
-        "message": "翻译历史"
     },
     "optionsLanguage": {
         "message": "语言"
@@ -77,9 +68,6 @@
     "optionsHistoryBlackListMode": {
         "message": "黑名单模式"
     },
-    "optionsMoreFeaturesOrBugReports": {
-        "message": "更多功能或错误报告"
-    },
     "optionsDarkMode": {
         "message": "黑夜模式"
     },
@@ -105,7 +93,7 @@
         "message": "仅翻译英文"
     },
     "optionsTranslateEnglishOnlyDescription": {
-        "message": "开启后，仅当划选文本被识别为英文（或源语言设为英语）时才翻译，适用于浮动按钮、扩展弹窗与独立翻译窗口；网页整页翻译不受影响。若手动指定了源语言，则仅当源语言为「英语」时翻译。"
+        "message": "开启后，仅当划选文本被识别为英文（或源语言设为英语）时才翻译，适用于浮动按钮与扩展弹窗；网页整页翻译不受影响。若手动指定了源语言，则仅当源语言为「英语」时翻译。"
     },
     "optionsMode": {
         "message": "模式"
@@ -131,27 +119,6 @@
     "optionsCallOutCommandDescription": {
         "message": "当扩展在网页中启用时，点击此快捷键可以直接唤出扩展。当在已唤出扩展的状态下点击此快捷键时，将会聚焦文本框。"
     },
-    "optionsButtonsPosition": {
-        "message": "按钮的位置"
-    },
-    "optionsHideButtonAfterFixedTime": {
-        "message": "在固定时间后隐藏按钮"
-    },
-    "optionsTheFixedTimeOfHidingButton": {
-        "message": "隐藏按钮的固定时间"
-    },
-    "optionsRespondToSeparateWindow": {
-        "message": "响应到独立翻译窗口"
-    },
-    "optionsRememberStwSizeAndPosition": {
-        "message": "记住独立翻译窗口的大小与位置"
-    },
-    "optionsStwDescription": {
-        "message": "独立翻译窗口使用“复数翻译模式”的翻译面板，与其共用同一套翻译设置。独立翻译窗口也可以响应键盘快捷键。"
-    },
-    "optionsResetSizeAndPosition": {
-        "message": "重置大小与位置"
-    },
     "optionsSecondPreferredLanguage": {
         "message": "次选语言"
     },
@@ -170,26 +137,11 @@
     "optionsTranslatePanel": {
         "message": "翻译面板"
     },
-    "optionsStwAutoRespondDescription": {
-        "message": "独立翻译窗口会自动响应你在扩展不可用的页面中点击右键菜单中的“翻译”项后产生的翻译请求。"
-    },
-    "optionsRememberHistoryPanelStatus": {
-        "message": "记住翻译历史面板的状态"
-    },
-    "optionsTranslateDirectlyWhilePinning": {
-        "message": "翻译面板固定时直接翻译"
-    },
     "optionsDoNotRespondInTextBox": {
         "message": "输入框内不翻译"
     },
     "optionsDoNotRespondInTextBoxDescription": {
         "message": "在输入框、文本框或可编辑区域内选中文本时，不展示翻译按钮，也不触发自动翻译与快捷键翻译。"
-    },
-    "optionsMore": {
-        "message": "其它"
-    },
-    "optionsChangeLog": {
-        "message": "更新日志"
     },
     "optionsAutoTranslateAfterInput": {
         "message": "在输入框输入后自动翻译"
@@ -199,21 +151,6 @@
     },
     "optionsContextMenus": {
         "message": "右键菜单"
-    },
-    "optionsClipboard": {
-        "message": "剪贴板"
-    },
-    "optionsAllowExtensionToReadClipboard": {
-        "message": "允许扩展读取剪贴板"
-    },
-    "optionsAllowExtensionToReadClipboardDescription": {
-        "message": "部分功能需要你允许扩展去读取剪贴板来获取最后的文本。如：自动粘贴到输入框中。"
-    },
-    "optionsReadClipboardAutomatically": {
-        "message": "自动粘贴到输入框中"
-    },
-    "optionsReadClipboardAutomaticallyDescription": {
-        "message": "打开弹出页面或独立翻译窗口时，最后的剪贴板文本将自动粘贴到输入框中。"
     },
     "optionsEnableInsertResult": {
         "message": "允许扩展在网页中插入翻译结果"
@@ -260,23 +197,8 @@
     "optionsWebPageTranslatingDescription": {
         "message": "“网页翻译”是一种可以用你想要的语言翻译整个网页的功能。你可以通过右键菜单或键盘快捷键激活网页翻译。激活网页翻译后，页面右下角会出现一个控制栏。"
     },
-    "optionsWebPageTranslateDirectly": {
-        "message": "激活网页翻译后直接翻译"
-    },
-    "optionsWebPageTranslateDirectlyDescription": {
-        "message": "启用此选项并激活网页翻译后，你无需点击“开始网页翻译”按钮，网页将被自动翻译。"
-    },
-    "optionsNoControlBarWhileFirstActivating": {
-        "message": "首次激活时不显示控制栏"
-    },
-    "optionsNoControlBarWhileFirstActivatingDescription": {
-        "message": "只有当“激活网页翻译后直接翻译”选项启用后此选项才会生效。启用此选项后，首次激活“网页翻译”将不会展示控制栏。首次激活后，再次激活“网页翻译”可以展示或隐藏控制栏。"
-    },
     "optionsTranslateToTargetLanguage": {
         "message": "翻译为目标语言"
-    },
-    "optionsAutoPasteInTheInputBoxErrorDescription": {
-        "message": "错误：未能获得读取剪贴板的许可。你需要允许该扩展读取剪贴板。你可以点击 URL 栏右边的图标来允许该扩展访问剪贴板。同样你可以通过以下链接来管理剪贴板权限："
     },
     "optionsMultipleTranslateSourceListDescription": {
         "message": "你勾选的源将默认被展示在面板中。源的顺序与你勾选的顺序相关。"
@@ -293,29 +215,11 @@
     "optionsURLCanNotBeEmpty": {
         "message": "URL 不能为空。"
     },
-    "optionsEncourage": {
-        "message": "如果觉得“Sc翻译”对你有帮助，可以通过在扩展商店给出五星评价或者点击 GitHub 页面上的 Star 按钮来鼓励开发者，非常感谢！"
-    },
     "optionsDisplayOfTranslation": {
         "message": "翻译结果的展示"
     },
     "optionsDisplayOfTranslationDescription": {
         "message": "你可以决定在翻译面板上展示哪些内容。"
-    },
-    "optionsEnhancementOfDisplay": {
-        "message": "增强展示"
-    },
-    "optionsAddUnderlineToTranslations": {
-        "message": "将下划线添加到译文"
-    },
-    "optionsMouseHoverOverTranslation": {
-        "message": "鼠标悬停在译文上时显示原文"
-    },
-    "optionsMouseHoverOverOriginalText": {
-        "message": "鼠标悬停在原文上时显示译文"
-    },
-    "optionsNotDisplayingTheTranslationsDiscretely": {
-        "message": "非离散地展示译文"
     },
     "optionsCustomWebpageTranslateSource": {
         "message": "自定义网页翻译源"
@@ -329,12 +233,6 @@
     "optionsWebpageTranslatingInstructions": {
         "message": "网页翻译说明"
     },
-    "optionsTranslateDynamicContent": {
-        "message": "翻译动态生成的内容"
-    },
-    "optionsTranslateDynamicContentDescription": {
-        "message": "在某些不断创建新文本内容的网站中使用网页翻译可能会导致扩展程序不断发送翻译请求。"
-    },
     "optionsEnterDomainNameHere": {
         "message": "在此输入域名"
     },
@@ -342,46 +240,13 @@
         "message": "启用自动翻译网页"
     },
     "optionsEnableAutoTranslateWebpageDescription": {
-        "message": "只有当“翻译动态生成的内容”选项启用后此选项才会生效。启用此选项后，“在此网站上启用/禁用自动翻译” 按钮将会被展示在控制栏中。当你访问在下方域名列表中的网站时，网页将会自动被翻译。"
+        "message": "启用后，控制栏会显示「在此网站上启用/禁用自动翻译」按钮。当你访问下方域名列表中的网站时，网页将自动被翻译。"
     },
     "optionsMaintainParagraphStructure": {
         "message": "保持段落结构"
     },
     "optionsTogglePageTranslationStateDescription": {
         "message": "在扩展已启用的网页中使用此快捷键时，你可以在网页翻译未激活时激活它，或在已激活时关闭它。"
-    },
-    "optionsParagraphWrap": {
-        "message": "检测到段落时换行展示译文"
-    },
-    "optionsSameLanguageHide": {
-        "message": "当原文的语言与目标语言相同时不展示译文"
-    },
-    "optionsTranslationStyleCustomization": {
-        "message": "译文样式自定义"
-    },
-    "optionsColor": {
-        "message": "颜色"
-    },
-    "optionsUnderlineColor": {
-        "message": "下划线颜色"
-    },
-    "optionsUnderlineStyle": {
-        "message": "下划线样式"
-    },
-    "optionsUnset": {
-        "message": "取消设置"
-    },
-    "optionsClose": {
-        "message": "关闭"
-    },
-    "optionsTranslateIframeContent": {
-        "message": "翻译 iframe 内的内容"
-    },
-    "optionsTranslateRedirectedSameDomainPage": {
-        "message": "跳转页面的域名与原页面相同时自动翻译"
-    },
-    "optionsDisplayOriginalTextWhenCtrlPressed": {
-        "message": "仅在同时按住“Ctrl”键时显示原文"
     },
     "optionsSpecifyTranslate": {
         "message": "指定要翻译或不翻译的内容"
@@ -427,9 +292,6 @@
     },
     "contentResult": {
         "message": "结果"
-    },
-    "contentHistoryTitle": {
-        "message": "翻译历史"
     },
     "contentNoRecord": {
         "message": "无记录"
@@ -487,6 +349,12 @@
     },
     "popupOpenCollectionPage": {
         "message": "打开收藏页面"
+    },
+    "popupOpenHistoryPage": {
+        "message": "打开翻译历史"
+    },
+    "historyTitle": {
+        "message": "翻译历史"
     },
     "collectionTitle": {
         "message": "收藏"
@@ -616,9 +484,6 @@
     },
     "sentenceBingHttp429": {
         "message": "（请求过多）你可能需要前往官网进行翻译并完成验证后才能继续使用。官网："
-    },
-    "contextMenus_OPEN_SEPARATE_WINDOW": {
-        "message": "打开独立翻译窗口"
     },
     "contextMenus_TRANSLATE_SELECTION_TEXT": {
         "message": "翻译您选择的文本"

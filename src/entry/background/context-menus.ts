@@ -1,9 +1,8 @@
-import { createSeparateWindow } from './separate-window';
-import { getIsContentScriptEnabled, openCollectionPage } from '../../public/utils';
+import { getIsContentScriptEnabled, openCollectionPage, openHistoryPage } from '../../public/utils';
 import {
     contextMenusContexts,
+    defaultContextMenus,
     LISTEN_SELECTION_TEXT,
-    OPEN_SEPARATE_WINDOW,
     TRANSLATE_CURRENT_PAGE,
     TRANSLATE_SELECTION_TEXT
 } from '../../constants/contextMenusIds';
@@ -11,6 +10,12 @@ import { OptionsContextMenu } from '../../types';
 import { sendTabsAudioCommandKeyPressed, sendTabsContextMenusClicked, sendTabsTranslateCurrentPage } from '../../public/send';
 import scOptions from '../../public/sc-options';
 import { getMessage } from '../../public/i18n';
+
+const openPopupTabWithText = (text: string) => {
+    chrome.tabs.create({
+        url: `${chrome.runtime.getURL('popup.html')}?text=${encodeURIComponent(text)}`
+    });
+};
 
 type OnContextMenuClick = (info: chrome.contextMenus.OnClickData, tab?: chrome.tabs.Tab | undefined) => void;
 
@@ -24,11 +29,11 @@ const translateSelectionText: OnContextMenuClick = async ({ selectionText }, tab
             sendTabsContextMenusClicked(tab.id, selectionText);
         }
         else {
-            createSeparateWindow(selectionText);
+            openPopupTabWithText(selectionText);
         }
     }
     else {
-        createSeparateWindow(selectionText);
+        openPopupTabWithText(selectionText);
     }
 };
 
@@ -41,15 +46,14 @@ const listenSelectionText: OnContextMenuClick = async ({ selectionText }, tab) =
     }
 };
 
-const openSeparateTranslateWindow = () => {
-    createSeparateWindow();
-};
-
 const translateCurrentPage: OnContextMenuClick = (info, tab) => {
     tab?.id !== undefined && tab.id >= 0 && sendTabsTranslateCurrentPage(tab.id);
 };
 
 const updateContextMenus = (contextMenus: OptionsContextMenu[]) => {
+    const validIds = new Set(defaultContextMenus.map(v => v.id));
+    contextMenus = contextMenus.filter(v => validIds.has(v.id));
+
     // To fix the issue of context menus disappear after opening incognito page.
     // Replace chrome.contextMenus.removeAll() with the below codes.
     // Also, there is a better way, using contextMenus' visible.
@@ -76,24 +80,21 @@ const updateContextMenus = (contextMenus: OptionsContextMenu[]) => {
 
 export const initContextMenus = () => {
     chrome.contextMenus.removeAll(() => {
-        // open separate window
-        chrome.contextMenus.create({
-            id: 'action_separate_window',
-            title: getMessage('contextMenus_OPEN_SEPARATE_WINDOW'),
-            contexts: ['action']
-        }, () => { if (chrome.runtime.lastError) {} });
-
-        // translate current page
         chrome.contextMenus.create({
             id: 'action_translate_current_page',
             title: getMessage('contextMenus_TRANSLATE_CURRENT_PAGE'),
             contexts: ['action']
         }, () => { if (chrome.runtime.lastError) {} });
 
-        // open collection page
         chrome.contextMenus.create({
             id: 'action_open_collection_page',
             title: getMessage('popupOpenCollectionPage'),
+            contexts: ['action']
+        }, () => { if (chrome.runtime.lastError) {} });
+
+        chrome.contextMenus.create({
+            id: 'action_open_history_page',
+            title: getMessage('popupOpenHistoryPage'),
             contexts: ['action']
         }, () => { if (chrome.runtime.lastError) {} });
 
@@ -109,20 +110,17 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         case LISTEN_SELECTION_TEXT:
             listenSelectionText(info, tab);
             return;
-        case OPEN_SEPARATE_WINDOW:
-            openSeparateTranslateWindow();
-            return;
         case TRANSLATE_CURRENT_PAGE:
             translateCurrentPage(info, tab);
-            return;
-        case 'action_separate_window':
-            openSeparateTranslateWindow();
             return;
         case 'action_translate_current_page':
             translateCurrentPage(info, tab);
             return;
         case 'action_open_collection_page':
             openCollectionPage();
+            return;
+        case 'action_open_history_page':
+            openHistoryPage();
             return;
         default: return;
     }
