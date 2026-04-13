@@ -1,20 +1,47 @@
 .mt-result {
-    background: var(--bg-content);
+    background: #fff;
     width: 100%;
-    margin-bottom: 4px;
-    border-radius: 4px;
-    box-shadow: rgb(60 64 67 / 30%) 0 1px 2px 0, rgb(60 64 67 / 15%) 0 1px 3px 1px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+    overflow: hidden;
 }
 .mt-result__head {
-    padding: 4px;
+    padding: 10px 12px 8px 12px;
     color: var(--text-normal);
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+.mt-result__head:hover {
+    background: rgba(0,0,0,0.02);
 }
 .mt-result__head__left {
     display: flex;
     align-items: center;
     overflow: hidden;
+    gap: 6px;
+    flex: 1;
+}
+.mt-result__head__source-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mt-result__head__actions {
+    display: flex;
+    align-items: center;
     gap: 4px;
+    flex-shrink: 0;
+    color: #6b7280;
+}
+.mt-result__head__actions .iconfont {
+    font-size: 14px;
+    transition: transform 0.2s;
 }
 .mt-result__head__badge {
     overflow: hidden;
@@ -28,4 +55,9 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+.mt-result__body {
+    background: #f3f4f6;
+    border-radius: 0 0 14px 14px;
+    overflow: hidden;
 }

@@ -4,9 +4,10 @@ import IconFont from '../IconFont';
 import PanelIconButtonWrapper from './PanelIconButtonWrapper';
 import { openHistoryPage } from '../../public/utils';
 
-const OpenHistoryPageButton: React.FC = () => {
+const OpenHistoryPageButton: React.FC<{ text?: string }> = ({ text }) => {
     return (
         <PanelIconButtonWrapper
+            text={text}
             onClick={openHistoryPage}
             title={getMessage('popupOpenHistoryPage')}
         >

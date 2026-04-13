@@ -45,11 +45,11 @@ const FaviconImg = (src: string) => (<img className='favicon' src={src} alt='fav
 
 const getName = (source: string) => {
     switch (source) {
-        case GOOGLE_COM: return 'Google';
-        case BING_COM: return 'Bing';
+        case GOOGLE_COM: return 'Google Translate';
+        case BING_COM: return 'Bing Translate';
         case MOJIDICT_COM: return 'Mojidict';
-        case BAIDU_COM: return 'Baidu';
-        case MICROSOFT_COM: return 'Microsoft';
+        case BAIDU_COM: return 'Baidu Translate';
+        case MICROSOFT_COM: return 'Microsoft Translator';
         case BROWSER_AI: return 'Browser AI (Beta)';
         default: return source;
     }

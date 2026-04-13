@@ -1,9 +1,9 @@
 .popup-container {
-    width: 250px;
+    width: 320px;
     height: fit-content;
-    background: var(--bg-total);
+    background: #f1f3f5;
     color: var(--text-normal) !important;
 }
 .popup-container__content {
-    margin: 0 4px;
+    margin: 0;
 }

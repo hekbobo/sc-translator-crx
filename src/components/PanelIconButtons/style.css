@@ -44,3 +44,26 @@
 .panel-icon-btn.panel-icon-btn--active .iconfont {
     opacity: 1;
 }
+.panel-icon-btn.panel-icon-btn--with-text {
+    flex-direction: column;
+    padding: 6px 12px;
+    background-color: #f0f1f5;
+    border-radius: 8px;
+    margin-left: 8px;
+    gap: 4px;
+}
+.panel-icon-btn.panel-icon-btn--with-text .iconfont {
+    font-size: 18px !important;
+    opacity: 0.8;
+}
+.panel-icon-btn.panel-icon-btn--with-text .panel-icon-btn__text {
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 500;
+    pointer-events: none;
+    opacity: 0.8;
+}
+.panel-icon-btn.panel-icon-btn--with-text:hover {
+    background-color: #e5e7eb;
+}
+

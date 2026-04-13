@@ -37,7 +37,7 @@ const useIsCollected = (text: string) => {
     return { modifiable, isCollected, setIsCollected };
 };
 
-const CollectButton: React.FC = () => {
+const CollectButton: React.FC<{ text?: string }> = ({ text: textProp }) => {
     const { text, translations } = useAppSelector(state => state.translation);
 
     const { modifiable, isCollected, setIsCollected } = useIsCollected(text);
@@ -52,6 +52,7 @@ const CollectButton: React.FC = () => {
 
     return (
         <PanelIconButtonWrapper
+            text={textProp}
             disabled={!modifiable}
             onClick={onCollectButtonClick}
             title={isCollected ? collectionMessage.updateToCollection : collectionMessage.addToCollection}

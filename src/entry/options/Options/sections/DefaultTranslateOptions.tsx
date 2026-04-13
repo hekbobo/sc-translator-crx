@@ -9,12 +9,10 @@ import LanguageSelect from '../../../../components/LanguageSelect';
 
 const useOptionsDependency: GetStorageKeys<
     'userLanguage' |
-    'multipleTranslateFrom' |
     'multipleTranslateTo' |
     'translateEnglishOnly'
 > = [
     'userLanguage',
-    'multipleTranslateFrom',
     'multipleTranslateTo',
     'translateEnglishOnly'
 ];
@@ -22,7 +20,6 @@ const useOptionsDependency: GetStorageKeys<
 const DefaultTranslateOptions: React.FC = () => {
     const {
         userLanguage,
-        multipleTranslateFrom,
         multipleTranslateTo,
         translateEnglishOnly
     } = useOptions(useOptionsDependency);
@@ -34,14 +31,6 @@ const DefaultTranslateOptions: React.FC = () => {
                     label={getMessage('optionsTranslateEnglishOnly')}
                     checked={translateEnglishOnly}
                     onChange={v => scOptions.set({ translateEnglishOnly: v })}
-                />
-            </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsFrom')}
-                <LanguageSelect
-                    value={multipleTranslateFrom}
-                    onChange={value => scOptions.set({ multipleTranslateFrom: value })}
-                    langCodes={mtLangCode[userLanguage]}
                 />
             </div>
             <div className='opt-section-row'>

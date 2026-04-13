@@ -2,13 +2,42 @@
     position: relative;
     cursor: pointer;
     user-select: none;
-    max-width: 150px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
 }
 .mtss > .panel-icon-btn {
-    max-width: 70px;
+    max-width: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+}
+/* hide the ripple overlay inside card header source label */
+.mtss > .panel-icon-btn > .ripple {
+    display: none;
+}
+/* suppress the underline that border-bottom-select adds */
+.mtss.border-bottom-select::before {
+    display: none;
 }
 .mtss__favicon .favicon {
-    font-size: 16px;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.mtss .source-favicon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow: hidden;
+}
+.mtss .source-favicon span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .mtss__options {
     background: var(--bg-content);

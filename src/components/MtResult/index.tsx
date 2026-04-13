@@ -3,9 +3,6 @@ import './style.css';
 import IconFont from '../IconFont';
 import { TranslateRequest } from '../../types';
 import TranslateResult from '../TranslateResult';
-import ListenButton from '../ListenButton';
-import scOptions from '../../public/sc-options';
-import SourceLanguage from '../SourceLanguage';
 import MtSourceSelect from '../MtSourceSelect';
 import { BROWSER_AI } from '../../constants/translateSource';
 import BrowserAIResult from '../BrowserAIResult';
@@ -24,58 +21,38 @@ const MtResult: React.FC<MtResultProps> = ({ source, translateRequest, remove, r
     return (
         <div className='mt-result'>
             <div
-                className='mt-result__head button flex-justify-content-space-between'
+                className='mt-result__head flex-justify-content-space-between flex-align-items-center'
                 onClick={() => setFold(!fold)}
             >
                 <span className='mt-result__head__left'>
                     <MtSourceSelect source={source} />
                     {translateRequest.status === 'loading' && <IconsLoadingSkeleton />}
-                    {translateRequest.status === 'finished' && <>
-                        <div>
-                            <IconFont
-                                className='iconbutton'
-                                iconName='#icon-copy'
-                                style={{cursor: 'pointer'}}
-                                onClick={(e) => { e.stopPropagation(); navigator.clipboard.writeText(translateRequest.result.text); }}
-                            />
-                            <ListenButton
-                                text={translateRequest.result.text}
-                                source={source}
-                                from={translateRequest.result.from}
-                            />
-                        </div>
-                        {scOptions.getInit().displayOfTranslation?.sourceLanguage && <SourceLanguage lang={translateRequest.result.from} />}
-                    </>}
                 </span>
-                <span className='mt-result__head-icons flex-align-items-center'>
+                <span className='mt-result__head__actions'>
                     <IconFont
                         iconName='#icon-GoChevronDown'
-                        style={!fold ? {transform: 'rotate(180deg)'} : {}}
-                    />
-                    <IconFont
-                        iconName='#icon-GoX'
-                        onClick={remove}
-                        className='iconbutton'
+                        style={!fold ? {transform: 'rotate(180deg)', transition: 'transform 0.2s'} : {transition: 'transform 0.2s'}}
                     />
                 </span>
             </div>
-            <div className='dividing-line' style={fold ? {display: 'none'} : {}}></div>
-            {source === BROWSER_AI ? <BrowserAIResult
-                translateRequest={translateRequest}
-                source={source}
-                style={fold ? {display: 'none'} : {}}
-                retry={retry}
-            /> : <TranslateResult
-                translateRequest={translateRequest}
-                source={source}
-                style={fold ? {display: 'none'} : {}}
-                retry={retry}
-                setText={setText}
-            />}
+            {!fold && (
+                <div className='mt-result__body'>
+                    {source === BROWSER_AI ? <BrowserAIResult
+                        translateRequest={translateRequest}
+                        source={source}
+                        retry={retry}
+                    /> : <TranslateResult
+                        translateRequest={translateRequest}
+                        source={source}
+                        retry={retry}
+                        setText={setText}
+                    />}
+                </div>
+            )}
         </div>
     );
 };
 
 const IconsLoadingSkeleton: React.FC = () => (<div className='skeleton' style={{width: '2.6em', height: '1.3em', marginLeft: '5px'}}></div>);
 
-export default MtResult;
+export default MtResult;

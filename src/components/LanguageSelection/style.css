@@ -2,13 +2,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0 4px;
-    padding: 4px;
-    flex-wrap: wrap;
+    gap: 0 6px;
+    padding: 6px 10px 10px 10px;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 0;
 }
-.language-selection>.iconfont {
+.language-selection > .iconfont {
     cursor: pointer;
+    color: #6b7280;
+    flex-shrink: 0;
 }
 .language-selection__select {
-    width: 100px;
+    flex: 1;
+    min-width: 0;
 }
