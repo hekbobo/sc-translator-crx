@@ -17,6 +17,7 @@ const scOptions = (() => {
             });
         },
         set: (items: Partial<DefaultOptions>) => {
+            initOptions = { ...initOptions, ...items };
             chrome.storage.local.set(items);
         },
         init: async () => {

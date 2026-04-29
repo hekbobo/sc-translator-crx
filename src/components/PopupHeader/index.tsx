@@ -4,7 +4,6 @@ import Logo from '../Logo';
 import CollectButton from '../PanelIconButtons/CollectButton';
 import OpenOptionsPageButton from '../PanelIconButtons/OpenOptionsPageButton';
 import OpenHistoryPageButton from '../PanelIconButtons/OpenHistoryPageButton';
-import { getMessage } from '../../public/i18n';
 
 const PopupHeader: React.FC = () => {
     return (
@@ -13,9 +12,9 @@ const PopupHeader: React.FC = () => {
                 <Logo style={{ fontSize: '18px' }} />
             </div>
             <div className='popup-header__icons flex-align-items-center'>
-                <CollectButton text={getMessage('collectionTitle')} />
-                <OpenHistoryPageButton text={getMessage('historyTitle')} />
-                <OpenOptionsPageButton text={getMessage('optionsTitle')} />
+                <CollectButton text='收藏' />
+                <OpenHistoryPageButton text='History' />
+                <OpenOptionsPageButton text='设置' />
             </div>
         </div>
     );

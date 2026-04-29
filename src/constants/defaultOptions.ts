@@ -39,7 +39,7 @@ const defaultOptions: DefaultOptions = {
     translateButtons: defaultTranslateButtons,
     webPageTranslateSource: GOOGLE_COM,
     webPageTranslateTo: LANG_ZH_CN,
-    webPageTranslateDisplayMode: 1,
+    webPageTranslateDisplayMode: 2,
     afterSelectingTextRegExpList: [],
     translateButtonsTL: { first: '', second: LANG_EN, third: LANG_EN },
     sourceParamsCache: initSourceParams,

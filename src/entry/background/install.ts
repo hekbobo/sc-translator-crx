@@ -27,6 +27,7 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
     defaultSet.preferredLanguage === 'en' && (defaultSet.secondPreferredLanguage = 'es');
     defaultSet.multipleTranslateTo = LANG_ZH_CN;
     defaultSet.webPageTranslateTo = LANG_ZH_CN;
+    defaultSet.webPageTranslateDisplayMode = 2;
     defaultSet.translateButtonsTL = { first: '', second: defaultSet.preferredLanguage, third: defaultSet.secondPreferredLanguage };
 
     scOptions.get(null).then((d: any) => {
