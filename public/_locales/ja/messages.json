@@ -152,6 +152,9 @@
     "optionsContextMenus": {
         "message": "コンテキストメニュー"
     },
+    "optionsContextMenusDescription": {
+        "message": "ドラッグして並び替え、コンテキストメニュー項目を有効 / 無効にできます。"
+    },
     "optionsEnableInsertResult": {
         "message": "拡張機能が翻訳結果をWebページ内で挿入を許可する"
     },
@@ -185,6 +188,9 @@
     "optionsWebPageTranslating": {
         "message": "Webページ翻訳"
     },
+    "optionsAI": {
+        "message": "AI"
+    },
     "optionsDisplayMode": {
         "message": "翻訳結果の表示モード"
     },
@@ -196,6 +202,15 @@
     },
     "optionsWebPageTranslatingDescription": {
         "message": "「Webページ翻訳」は、Webページ全体を選択した言語に翻訳できる機能です。コンテキストメニューまたはキーボードショートカットを使用して、「Webページ翻訳」をアクティブ化できます。「Webページ翻訳」をアクティブ化にすると、ページの右下隅にコントロールバーが表示されます。"
+    },
+    "optionsBrowserAIBaseUrl": {
+        "message": "AI Base URL"
+    },
+    "optionsBrowserAIApiKey": {
+        "message": "AI API Key"
+    },
+    "optionsBrowserAIModel": {
+        "message": "AI モデル"
     },
     "optionsTranslateToTargetLanguage": {
         "message": "目標言語に翻訳します"
@@ -532,6 +547,12 @@
     },
     "browserAIUnavailable": {
         "message": "お使いのブラウザではブラウザAIをご利用いただけません。"
+    },
+    "optionsAbout": {
+        "message": "情報"
+    },
+    "optionsContactMe": {
+        "message": "連絡先"
     },
     "commonPrompt": {
         "message": "次のテキストを{target}に翻訳:\n\n{text}"

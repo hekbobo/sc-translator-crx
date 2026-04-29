@@ -3,19 +3,3 @@
     flex-wrap: wrap;
     column-gap: 8px;
 }
-.multiple-sources-display__preview {
-    display: grid;
-    grid-template-columns: max-content auto;
-    column-gap: 4px;
-    padding: 4px 0;
-}
-.multiple-sources-display__preview__content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 8px;
-}
-.multiple-sources-display__preview__content .multiple-sources-display__item {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}

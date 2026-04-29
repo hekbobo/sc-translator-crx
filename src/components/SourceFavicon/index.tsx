@@ -50,7 +50,7 @@ const getName = (source: string) => {
         case MOJIDICT_COM: return 'Mojidict';
         case BAIDU_COM: return 'Baidu Translate';
         case MICROSOFT_COM: return 'Microsoft Translator';
-        case BROWSER_AI: return 'Browser AI (Beta)';
+        case BROWSER_AI: return 'AI (Beta)';
         default: return source;
     }
 };

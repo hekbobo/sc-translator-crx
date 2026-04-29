@@ -6,15 +6,19 @@ import { GetStorageKeys } from '../../../../types';
 import WebPageTranslateDisplayMode from '../../components/WebPageTranslateDisplayMode';
 import scOptions from '../../../../public/sc-options';
 import LanguageSelect from '../../../../components/LanguageSelect';
+import SourceSelect from '../../../../components/SourceSelect';
+import { webPageTranslateSource as webPageTranslateSourceList } from '../../../../constants/translateSource';
 
 const useOptionsDependency: GetStorageKeys<
     'webPageTranslateTo' |
     'webPageTranslateDisplayMode' |
-    'userLanguage'
+    'userLanguage' |
+    'webPageTranslateSource'
 > = [
     'webPageTranslateTo',
     'webPageTranslateDisplayMode',
-    'userLanguage'
+    'userLanguage',
+    'webPageTranslateSource'
 ];
 
 type WebPageTranslatingProps = {
@@ -25,11 +29,21 @@ const WebPageTranslating: React.FC<WebPageTranslatingProps> = ({ noCard = false 
     const {
         webPageTranslateTo,
         userLanguage,
-        webPageTranslateDisplayMode
+        webPageTranslateDisplayMode,
+        webPageTranslateSource
     } = useOptions(useOptionsDependency);
 
     const rows = (
         <>
+            <div className='opt-section-row'>
+                {getMessage('optionsSource')}
+                <SourceSelect
+                    className='border-bottom-select opt-source-select'
+                    sourceList={webPageTranslateSourceList}
+                    source={webPageTranslateSource}
+                    onChange={value => scOptions.set({ webPageTranslateSource: value })}
+                />
+            </div>
             <div className='opt-section-row'>
                 {getMessage('optionsTo')}
                 <LanguageSelect
@@ -46,6 +60,9 @@ const WebPageTranslating: React.FC<WebPageTranslatingProps> = ({ noCard = false 
                         displayMode={webPageTranslateDisplayMode}
                     />
                 </div>
+            </div>
+            <div className='opt-section-row'>
+                <div className='item-description'>{getMessage('optionsWebPageTranslatingDescription')}</div>
             </div>
         </>
     );

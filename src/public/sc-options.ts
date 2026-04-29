@@ -20,7 +20,7 @@ const scOptions = (() => {
             chrome.storage.local.set(items);
         },
         init: async () => {
-            initOptions = await scOptions.get(null);
+            initOptions = { ...defaultOptions, ...(await scOptions.get(null)) };
 
             return initOptions;
         },

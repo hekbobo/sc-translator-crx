@@ -45,3 +45,25 @@ input[type=text] {
 .opt-section-row > .language-select, .translate-button-display__item > .language-select {
     margin-left: 10px;
 }
+.default-translate-options__label,
+.options-about__label {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.default-translate-options__source-wrap {
+    margin-top: 8px;
+}
+.default-translate-options__target-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.default-translate-options__ai-card {
+    margin-top: 8px;
+    display: grid;
+    gap: 12px;
+}
+.options-about__link {
+    color: inherit;
+    text-decoration: none;
+}

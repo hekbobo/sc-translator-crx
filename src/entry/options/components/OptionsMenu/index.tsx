@@ -10,7 +10,8 @@ import './style.css';
 const menusItems = [
     { title: getMessage('optionsDefaultTranslateOptions'), id: 'default-translate-options' },
     { title: getMessage('optionsWebPageTranslating'), id: 'web-page-translating' },
-    { title: getMessage('optionsContextMenus'), id: 'context-menus' }
+    { title: getMessage('optionsContextMenus'), id: 'context-menus' },
+    { title: getMessage('optionsAbout'), id: 'about' }
 ];
 
 const OptionsMenu: React.FC = () => {

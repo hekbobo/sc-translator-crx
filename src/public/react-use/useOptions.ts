@@ -11,9 +11,9 @@ const useOptions = <T extends keyof DefaultOptions>(keys: T[]) => {
 
     useEffectOnce(() => {
         scOptions.get(keys).then((data) => {
-            setCurOptions(data);
+            setCurOptions({ ...defaultOptions, ...data });
 
-            curOptionsRef.current = data;
+            curOptionsRef.current = { ...defaultOptions, ...data };
         });
 
         const removeListener = scOptions.listen(keys, (changes) => {

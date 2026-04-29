@@ -21,6 +21,13 @@ const Options: React.FC = () => {
             </div>
             <div className='sub-title' id='context-menus'>{getMessage('optionsContextMenus')}</div>
             <ContextMenus />
+            <div className='sub-title' id='about'>{getMessage('optionsAbout')}</div>
+            <div className='opt-section'>
+                <div className='opt-section-row'>
+                    <div className='options-about__label'>{getMessage('optionsContactMe')}</div>
+                    <a className='options-about__link' href='mailto:hekbobo@gmail.com'>hekbobo@gmail.com</a>
+                </div>
+            </div>
             <OverScroll />
         </div>
     );

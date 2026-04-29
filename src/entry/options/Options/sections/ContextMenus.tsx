@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { defaultContextMenus } from '../../../../constants/contextMenusIds';
+import { getMessage } from '../../../../public/i18n';
 import { useOptions } from '../../../../public/react-use';
 import { GetStorageKeys, OptionsContextMenu } from '../../../../types';
 import ContextMenusDraggable from '../../components/ContextMenusDraggable';
@@ -11,7 +12,11 @@ const useOptionsDependency: GetStorageKeys<
     'contextMenus'
 ];
 
-const sanitizeContextMenus = (menus: OptionsContextMenu[]) => {
+const sanitizeContextMenus = (menus: OptionsContextMenu[] | unknown) => {
+    if (!Array.isArray(menus)) {
+        return [...defaultContextMenus];
+    }
+
     const validIds = new Set(defaultContextMenus.map(v => v.id));
     const seenIds = new Set<string>();
     const nextMenus: OptionsContextMenu[] = [];
@@ -49,6 +54,9 @@ const ContextMenus: React.FC = () => {
 
     return (
         <div className='opt-section'>
+            <div className='opt-section-row'>
+                <div className='item-description'>{getMessage('optionsContextMenusDescription')}</div>
+            </div>
             <div className='opt-section-row'>
                 <ContextMenusDraggable
                     contextMenus={sanitizedContextMenus}

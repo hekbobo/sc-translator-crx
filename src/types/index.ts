@@ -160,6 +160,9 @@ export type DefaultOptions = {
     keepUsingDefaultAudioSource: boolean;
     autoPlayAudio: boolean;
     autoPlayAudioLangs: string[];
+    browserAIApiKey: string;
+    browserAIBaseUrl: string;
+    browserAIModel: string;
 };
 
 // Only work in "src/entry/background/install.ts".

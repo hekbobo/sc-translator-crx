@@ -152,6 +152,9 @@
     "optionsContextMenus": {
         "message": "Context menus"
     },
+    "optionsContextMenusDescription": {
+        "message": "Drag to reorder and enable or disable context menu items."
+    },
     "optionsEnableInsertResult": {
         "message": "Allow extension to insert translate results in web pages"
     },
@@ -185,6 +188,9 @@
     "optionsWebPageTranslating": {
         "message": "Web page translating"
     },
+    "optionsAI": {
+        "message": "AI"
+    },
     "optionsDisplayMode": {
         "message": "The display mode of translate results"
     },
@@ -196,6 +202,15 @@
     },
     "optionsWebPageTranslatingDescription": {
         "message": "\"Webpage translating\" is a feature that can translate the whole webpage with the language you want. You can activate webpage translating through context menu or keyboard shortcut. After activating webpage translating, there will be a control bar in the bottom right corner of the page."
+    },
+    "optionsBrowserAIBaseUrl": {
+        "message": "AI Base URL"
+    },
+    "optionsBrowserAIApiKey": {
+        "message": "AI API Key"
+    },
+    "optionsBrowserAIModel": {
+        "message": "AI Model"
     },
     "optionsTranslateToTargetLanguage": {
         "message": "Translate to target language"
@@ -532,6 +547,12 @@
     },
     "browserAIUnavailable": {
         "message": "Browser AI is unavailable for your browser."
+    },
+    "optionsAbout": {
+        "message": "About"
+    },
+    "optionsContactMe": {
+        "message": "Contact me"
     },
     "commonPrompt": {
         "message": "Translate the following text into {target}:\n\n{text}"

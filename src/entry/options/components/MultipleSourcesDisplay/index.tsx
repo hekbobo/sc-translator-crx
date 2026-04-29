@@ -1,9 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import Checkbox from '../../../../components/Checkbox';
-import IconFont from '../../../../components/IconFont';
 import SourceFavicon from '../../../../components/SourceFavicon';
-import { TranslateSource } from '../../../../constants/translateSource';
-import { getMessage } from '../../../../public/i18n';
 import './style.css';
 
 type MultipleSourcesDisplayProps = {
@@ -36,15 +33,6 @@ const MultipleSourcesDisplay: React.FC<MultipleSourcesDisplayProps> = ({ enabled
                         onChange={() => onSourceItemClick(source)}
                     />
                 </div>))}
-            </div>
-            <div className='multiple-sources-display__preview'>
-                <div>{getMessage('optionsPreview')}</div>
-                <div className='multiple-sources-display__preview__content'>
-                    {enabledSources.length > 0 ? enabledSources.map((source, index) => (<div className='multiple-sources-display__item' key={'msd_p_' + source}>
-                        {index !== 0 &&  <IconFont iconName='#icon-GoChevronDown' style={{transform: 'rotate(-90deg)'}} />}
-                        <SourceFavicon source={source} />
-                    </div>)) : <div>--</div>}
-                </div>
             </div>
         </div>
     );

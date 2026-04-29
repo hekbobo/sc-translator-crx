@@ -58,7 +58,10 @@ const defaultOptions: DefaultOptions = {
     enableAutoTranslateWebpage: false,
     keepUsingDefaultAudioSource: false,
     autoPlayAudio: false,
-    autoPlayAudioLangs: []
+    autoPlayAudioLangs: [],
+    browserAIApiKey: '',
+    browserAIBaseUrl: '',
+    browserAIModel: 'gpt-4o-mini'
 };
 
 export default defaultOptions;
