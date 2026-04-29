@@ -1,8 +1,9 @@
 import { SOURCE_ERROR } from '../../constants/errorCodes';
-import { GOOGLE_COM, MICROSOFT_COM } from '../../constants/translateSource';
+import { BROWSER_AI, GOOGLE_COM, MICROSOFT_COM } from '../../constants/translateSource';
 import { ComparisonCustomization, DisplayModeEnhancement } from '../../types';
 import { getMessage } from '../i18n';
 import { translate as googleWebTranslate } from './google/translate';
+import { translate as browserAIWebTranslate } from './ai/translate';
 import { translate as microsoftWebTranslate } from './microsoft/translate';
 import { getError } from '../translate/utils';
 export type WebpageTranslateResult = {
@@ -1113,6 +1114,9 @@ const translateProcess = ({ translateList, beforeTranslate, onSuccess, onError, 
 
     if (source === GOOGLE_COM) {
         translate = googleWebTranslate;
+    }
+    else if (source === BROWSER_AI) {
+        translate = browserAIWebTranslate;
     }
     else if (source === MICROSOFT_COM) {
         translate = microsoftWebTranslate;

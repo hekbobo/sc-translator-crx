@@ -212,6 +212,18 @@
     "optionsBrowserAIModel": {
         "message": "AI 模型"
     },
+    "optionsBrowserAITest": {
+        "message": "測試連線"
+    },
+    "optionsBrowserAITesting": {
+        "message": "測試中..."
+    },
+    "optionsBrowserAITestSuccess": {
+        "message": "連線成功。"
+    },
+    "optionsBrowserAITestFailed": {
+        "message": "連線失敗。"
+    },
     "optionsTranslateToTargetLanguage": {
         "message": "翻譯為目標語言"
     },

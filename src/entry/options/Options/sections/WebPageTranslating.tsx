@@ -34,9 +34,9 @@ const WebPageTranslating: React.FC<WebPageTranslatingProps> = ({ noCard = false 
     } = useOptions(useOptionsDependency);
 
     const rows = (
-        <>
-            <div className='opt-section-row'>
-                {getMessage('optionsSource')}
+        <div className='web-page-translating__content'>
+            <div className='opt-section-row web-page-translating__section'>
+                <div className='default-translate-options__label'>{getMessage('optionsSource')}</div>
                 <SourceSelect
                     className='border-bottom-select opt-source-select'
                     sourceList={webPageTranslateSourceList}
@@ -44,27 +44,27 @@ const WebPageTranslating: React.FC<WebPageTranslatingProps> = ({ noCard = false 
                     onChange={value => scOptions.set({ webPageTranslateSource: value })}
                 />
             </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsTo')}
+            <div className='opt-section-row web-page-translating__section'>
+                <div className='default-translate-options__label'>{getMessage('optionsTo')}</div>
                 <LanguageSelect
                     value={webPageTranslateTo}
                     onChange={value => scOptions.set({ webPageTranslateTo: value })}
                     langCodes={preferredLangCode[userLanguage]}
                 />
             </div>
-            <div className='opt-section-row'>
-                {getMessage('optionsDisplayMode')}
-                <div className='mt10-ml30'>
+            <div className='opt-section-row web-page-translating__section'>
+                <div className='default-translate-options__label'>{getMessage('optionsDisplayMode')}</div>
+                <div className='web-page-translating__display-card'>
                     <WebPageTranslateDisplayMode
                         update={displayMode => scOptions.set({ webPageTranslateDisplayMode: displayMode })}
                         displayMode={webPageTranslateDisplayMode}
                     />
                 </div>
             </div>
-            <div className='opt-section-row'>
+            <div className='opt-section-row web-page-translating__section'>
                 <div className='item-description'>{getMessage('optionsWebPageTranslatingDescription')}</div>
             </div>
-        </>
+        </div>
     );
 
     return noCard ? rows : <div className='opt-section'>{rows}</div>;

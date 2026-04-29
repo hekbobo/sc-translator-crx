@@ -11,7 +11,6 @@
     color: var(--text-normal);
     font-size: 13px;
     font-weight: 600;
-    cursor: pointer;
     user-select: none;
 }
 .mt-result__head:hover {
@@ -38,10 +37,19 @@
     gap: 4px;
     flex-shrink: 0;
     color: #6b7280;
+    border: 0;
+    background: transparent;
+    padding: 2px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 .mt-result__head__actions .iconfont {
     font-size: 14px;
     transition: transform 0.2s;
+}
+
+.mt-result__head__actions:hover {
+    background: rgba(0, 0, 0, 0.04);
 }
 .mt-result__head__badge {
     overflow: hidden;

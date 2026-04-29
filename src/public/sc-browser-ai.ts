@@ -1,149 +1,153 @@
 import scOptions from './sc-options';
+import { fetchData } from './translate/utils';
+
+type TranslateParams = {
+    text: string;
+    sourceLanguage: string;
+    targetLanguage: string;
+};
+
+type ChatCompletionMessage = {
+    role: 'system' | 'user' | 'assistant';
+    content: string;
+};
+
+type ChatCompletionsResponse = {
+    choices?: {
+        message?: {
+            content?: string;
+        };
+    }[];
+};
 
 const scBrowserAI = (() => {
-    let translator: typeof window.Translator | null = null;
-    let sourceLang = '';
-    let targetLang = '';
+    const normalizeLang = (lang: string) => (lang.includes('zh') ? 'zh' : lang);
 
-    let detector: typeof window.LanguageDetector | null = null;
+    const resolveApiUrl = (baseUrl: string) => {
+        const url = baseUrl.trim().replace(/\/+$/, '');
 
-    let available = ('LanguageDetector' in self) && ('Translator' in self);
+        if (!url) {
+            throw new Error('missing_base_url');
+        }
+
+        if (/\/chat\/completions$/i.test(url)) {
+            return url;
+        }
+
+        if (/\/v1$/i.test(url)) {
+            return `${url}/chat/completions`;
+        }
+
+        return `${url}/v1/chat/completions`;
+    };
+
+    const extractTranslation = (data: ChatCompletionsResponse) => {
+        const content = data.choices?.[0]?.message?.content;
+
+        if (typeof content !== 'string' || !content.trim()) {
+            throw new Error('invalid_response_shape');
+        }
+
+        return content.trim();
+    };
+
+    const getConfig = () => {
+        const { browserAIApiKey, browserAIBaseUrl, browserAIModel, preferredLanguage, secondPreferredLanguage } = scOptions.getInit();
+
+        const apiKey = browserAIApiKey.trim();
+        const model = browserAIModel.trim();
+        const baseUrl = browserAIBaseUrl.trim();
+
+        if (!apiKey || !baseUrl || !model) {
+            throw new Error('missing_config');
+        }
+
+        return {
+            apiKey,
+            baseUrl,
+            model,
+            preferredLanguage: normalizeLang(preferredLanguage),
+            secondPreferredLanguage: normalizeLang(secondPreferredLanguage)
+        };
+    };
+
+    const sendChatCompletion = async (baseUrl: string, apiKey: string, payload: Record<string, unknown>) => {
+        const url = resolveApiUrl(baseUrl);
+
+        const response = await fetchData(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify(payload)
+        });
+
+        return response.json() as Promise<ChatCompletionsResponse>;
+    };
+
+    const translate = async ({ text, sourceLanguage, targetLanguage }: TranslateParams) => {
+        const { apiKey, baseUrl, model, preferredLanguage, secondPreferredLanguage } = getConfig();
+
+        if (text.length > 4096) {
+            throw new Error('text_too_long');
+        }
+
+        let from = normalizeLang(sourceLanguage || '');
+        let to = normalizeLang(targetLanguage || '');
+        const preferred = normalizeLang(preferredLanguage);
+        const secondPreferred = normalizeLang(secondPreferredLanguage);
+
+        if (!from) {
+            const detection = await chrome.i18n.detectLanguage(text);
+            from = normalizeLang(detection.languages[0]?.language ?? '');
+        }
+
+        if (!to) {
+            to = from === preferred ? secondPreferred : preferred;
+        }
+
+        const systemPrompt = 'You are a precise translation engine. Translate the user text faithfully. Preserve the original meaning, formatting, markdown, code blocks, and line breaks. Output only the translated text.';
+        const userPrompt = `Translate the following text from ${from || 'auto'} to ${to}:\n\n${text}`;
+
+        const payload = {
+            model,
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: userPrompt }
+            ] as ChatCompletionMessage[],
+            temperature: 0.2
+        };
+
+        const data = await sendChatCompletion(baseUrl, apiKey, payload);
+        const translation = extractTranslation(data);
+
+        return { translation, from, to };
+    };
 
     return {
         detect: async (text: string) => {
-            if (!available) { throw new Error('unavailable'); }
-
-            // if (!detector) {
-            //     const availability = await self.LanguageDetector.availability();
-            //     if (availability !== 'available') {
-            //         if (availability === 'unavailable') {
-            //             available = false;
-            //             throw new Error('unavailable');
-            //         }
-
-            //         throw new Error(`target=LanguageDetector&availability=${availability}`);
-            //     }
-            // }
-
-            // detector = detector ?? await self.LanguageDetector.create();
-            // const result = await detector.detect(text);
-
-            // return result.at(0)?.detectedLanguage;
-            const availability = await self.LanguageDetector.availability();
-            if (availability === 'unavailable') {
-                available = false;
-                throw new Error('unavailable');
-            }
-
             const detection = await chrome.i18n.detectLanguage(text);
-            return detection.languages[0].language;
+            return detection.languages[0]?.language ?? '';
         },
-        translate: async (params: { text: string; sourceLanguage: string; targetLanguage: string; }) => {
-            if (!available) { throw new Error('unavailable'); }
+        test: async () => {
+            const { apiKey, baseUrl, model } = getConfig();
 
-            let { text, sourceLanguage, targetLanguage } = params;
-            let { preferredLanguage, secondPreferredLanguage } = scOptions.getInit();
+            const data = await sendChatCompletion(baseUrl, apiKey, {
+                model,
+                messages: [
+                    { role: 'system', content: 'You are a service checker. Reply with OK.' },
+                    { role: 'user', content: 'OK' }
+                ] as ChatCompletionMessage[],
+                temperature: 0
+            });
 
-            if (text.length > 4096) {
-                throw new Error('Error: The text length is too long. (text length > 4096)');
-            }
-
-            [sourceLanguage, targetLanguage, preferredLanguage, secondPreferredLanguage] = [sourceLanguage, targetLanguage, preferredLanguage, secondPreferredLanguage].map(v => v.includes('zh') ? 'zh' : v);
-
-            let from = 'en', to = targetLanguage;
-
-            if (sourceLanguage) {
-                from = sourceLanguage;
-            }
-            else {
-                const detectedLanguage = await scBrowserAI.detect(text);
-
-                if (detectedLanguage) {
-                    from = detectedLanguage;
-                }
-            }
-
-            if (!to) {
-                if (from === preferredLanguage) {
-                    to = secondPreferredLanguage;
-                }
-                else {
-                    to = preferredLanguage;
-                }
-            }
-
-            if (sourceLang === from && targetLang === to && translator) {
-                const result = await translator.translate(text);
-
-                return { translation: result, from, to };
-            }
-
-            const availability = await self.Translator.availability({ sourceLanguage: from, targetLanguage: to });
-
-            if (availability !== 'available') {
-                throw new Error(`target=Translator&availability=${availability}&from=${from}&to=${to}`);
-            }
-
-            translator = await self.Translator.create({ sourceLanguage: from, targetLanguage: to });
-            const result = await translator.translate(text);
-
-            sourceLang = from;
-            targetLang = to;
-
-            return { translation: result, from, to };
+            return extractTranslation(data);
         },
-        downloadDetector: async (params: { loaded?: (loaded: string) => void; }) => {
-            if (!available) { throw new Error('unavailable'); }
-
-            const { loaded } = params;
-
-            const availability = await self.LanguageDetector.availability();
-
-            if (availability === 'unavailable') {
-                throw new Error(`target=LanguageDetector&availability=${availability}`);
-            }
-
-            if (availability === 'available') {
-                return scBrowserAI;
-            }
-
-            detector = await self.LanguageDetector.create({ monitor: (monitor) => {
-                monitor.addEventListener('downloadprogress', (e) => {
-                    console.log(e)
-                    loaded?.(`${Math.floor((e as ProgressEvent).loaded * 100)}%`);
-                });
-            } });
-
-            await detector.ready;
-
-            return scBrowserAI;
-        },
-        downloadTranslator: async (params: { sourceLanguage: string; targetLanguage: string; loaded?: (loaded: string) => void; }) => {
-            if (!available) { throw new Error('unavailable'); }
-
-            const { sourceLanguage, targetLanguage, loaded } = params;
-
-            const availability = await self.Translator.availability({ sourceLanguage, targetLanguage });
-
-            if (availability === 'unavailable') {
-                throw new Error(`target=Translator&availability=${availability}`);
-            }
-
-            if (availability === 'available') {
-                return scBrowserAI;
-            }
-
-            translator = await self.Translator.create({ sourceLanguage, targetLanguage, monitor: (monitor) => {
-                monitor.addEventListener('downloadprogress', (e) => {
-                    loaded?.(`${Math.floor((e as ProgressEvent).loaded * 100)}%`);
-                });
-            } });
-
-            await translator.ready;
-
-            return scBrowserAI;
-        }
-    }
+        translate,
+        downloadDetector: async () => scBrowserAI,
+        downloadTranslator: async () => scBrowserAI
+    };
 })();
 
 export default scBrowserAI;

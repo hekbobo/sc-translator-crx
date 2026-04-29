@@ -1,11 +1,9 @@
 import React from 'react';
-import { GOOGLE_COM, BING_COM, MOJIDICT_COM, BAIDU_COM, MICROSOFT_COM, BROWSER_AI } from '../../constants/translateSource';
+import { GOOGLE_COM, BING_COM, MICROSOFT_COM, BROWSER_AI } from '../../constants/translateSource';
 import google from './favicons/google.png';
 import bing from './favicons/bing.png';
-import mojidict from './favicons/mojidict.png';
-import baidu from './favicons/baidu.png';
 import microsoft from './favicons/microsofttranslator.png';
-import browserAI from './favicons/browserAI.png';
+import browserAI from './favicons/ic_ai.png';
 import './style.css';
 import { cn } from '../../public/utils';
 
@@ -27,8 +25,6 @@ const getFavicon = (source: string) => {
     switch (source) {
         case GOOGLE_COM: return FaviconImg(google);
         case BING_COM: return FaviconImg(bing);
-        case MOJIDICT_COM: return FaviconImg(mojidict);
-        case BAIDU_COM: return FaviconImg(baidu);
         case MICROSOFT_COM: return FaviconImg(microsoft);
         case BROWSER_AI: return FaviconImg(browserAI);
         default: return (
@@ -45,12 +41,10 @@ const FaviconImg = (src: string) => (<img className='favicon' src={src} alt='fav
 
 const getName = (source: string) => {
     switch (source) {
-        case GOOGLE_COM: return 'Google Translate';
-        case BING_COM: return 'Bing Translate';
-        case MOJIDICT_COM: return 'Mojidict';
-        case BAIDU_COM: return 'Baidu Translate';
-        case MICROSOFT_COM: return 'Microsoft Translator';
-        case BROWSER_AI: return 'AI (Beta)';
+        case GOOGLE_COM: return 'Google';
+        case BING_COM: return 'Bing';
+        case MICROSOFT_COM: return 'Microsoft';
+        case BROWSER_AI: return 'AI';
         default: return source;
     }
 };

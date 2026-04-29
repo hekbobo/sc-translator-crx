@@ -1,7 +1,12 @@
 .popup-header {
     color: var(--text-icon);
-    padding: 2px 4px;
-    justify-content: flex-end;
+    padding: 6px 10px 2px;
+    justify-content: space-between;
+    gap: 10px;
+}
+.popup-header__brand {
+    display: flex;
+    align-items: center;
 }
 .popup-header__icons .iconfont {
     font-size: 20px !important;

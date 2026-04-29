@@ -212,6 +212,18 @@
     "optionsBrowserAIModel": {
         "message": "AI Model"
     },
+    "optionsBrowserAITest": {
+        "message": "Test connection"
+    },
+    "optionsBrowserAITesting": {
+        "message": "Testing..."
+    },
+    "optionsBrowserAITestSuccess": {
+        "message": "Connection successful."
+    },
+    "optionsBrowserAITestFailed": {
+        "message": "Connection failed."
+    },
     "optionsTranslateToTargetLanguage": {
         "message": "Translate to target language"
     },

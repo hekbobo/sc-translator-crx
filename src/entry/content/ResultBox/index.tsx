@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import CollectButton from '../../../components/PanelIconButtons/CollectButton';
 import OpenHistoryPageButton from '../../../components/PanelIconButtons/OpenHistoryPageButton';
-import DisplayEditAreaButton from '../../../components/PanelIconButtons/DisplayEditAreaButton';
 import { useAppSelector, useOptions, useWindowSize } from '../../../public/react-use';
 import { calculatePosition, drag } from '../../../public/utils';
 import { GetStorageKeys, Position } from '../../../types';
 import MultipleTranslateResult from '../MultipleTranslateResult';
 import './style.css';
-import PinButton from '../../../components/PanelIconButtons/PinButton';
 import CloseButton from '../../../components/PanelIconButtons/CloseButton';
 import Logo from '../../../components/Logo';
 const useOptionsDependency: GetStorageKeys<
@@ -88,8 +86,6 @@ const ResultBox: React.FC = () => {
                 <span className='panel__header-icons flex-align-items-center'>
                     <CollectButton />
                     <OpenHistoryPageButton />
-                    <DisplayEditAreaButton />
-                    <PinButton />
                     <CloseButton />
                 </span>
             </div>

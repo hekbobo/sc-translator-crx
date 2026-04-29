@@ -1,12 +1,14 @@
 .web-page-translate {
     position: fixed;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16), 0 2px 8px rgba(15, 23, 42, 0.08);
     right: 8px;
     bottom: 8px;
-    padding: 4px;
-    border-radius: 4px;
+    padding: 6px;
+    border-radius: 16px;
     color: var(--text-normal);
-    background: var(--bg-content);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96));
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    backdrop-filter: blur(10px);
     z-index: 2147483647;
 }
 .web-page-translate__error {
@@ -14,26 +16,91 @@
     max-width: 285px;
 }
 .web-page-translate__content .panel-icon-btn>.iconfont {
-    font-size: 20px;
+    font-size: 18px;
 }
 .page-translation__select-box {
     display: flex;
     align-items: center;
+    gap: 6px;
+    padding: 2px 8px 2px 2px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(226, 232, 240, 0.9);
 }
 .web-page-translate__content .source-select {
-    padding: 4px 6px;
+    padding: 2px 4px;
+    border-radius: 10px;
 }
 .web-page-translate__select {
-    width: 100px;
+    width: 102px;
 }
 .web-page-translate__content__logo {
-    font-size: 20px;
+    width: 28px;
+    height: 28px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(37, 99, 235, 0.08);
+    color: rgb(37, 99, 235);
+    flex: 0 0 auto;
 }
 .web-page-translate__content__division {
-    margin: 0 4px;
+    margin: 0 2px;
     width: 1px;
-    height: 26px;
-    background-color: var(--text-normal);
-    opacity: 0.6;
+    height: 18px;
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(148, 163, 184, 0.9), rgba(148, 163, 184, 0));
+    opacity: 0.8;
+}
+.web-page-translate__content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.web-page-translate__content .panel-icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+.web-page-translate__content .panel-icon-btn:hover {
+    background: rgba(248, 250, 252, 0.98);
+}
+.web-page-translate__content .panel-icon-btn .ripple {
+    border-radius: 10px;
+}
+.web-page-translate__content .source-select__value,
+.web-page-translate__content .source-select__favicon-only,
+.web-page-translate__content .source-favicon,
+.web-page-translate__content .favicon {
+    width: 18px;
+    height: 18px;
+}
+.web-page-translate__content .source-favicon > span {
+    font-size: 12px;
+}
+.web-page-translate__content .source-select .iconfont,
+.web-page-translate__content .language-select {
+    height: 32px;
+    border-radius: 10px;
+    background: transparent;
+}
+.web-page-translate__content .source-select .iconfont,
+.web-page-translate__content .language-select .iconfont {
+    font-size: 12px;
+}
+.web-page-translate__content .language-select__badge {
+    gap: 4px;
+}
+.web-page-translate__content .language-select__badge-text {
+    font-size: 13px;
+    line-height: 1;
+}
+.web-page-translate__content .source-select__value {
+    min-width: 0;
+}
+.web-page-translate__content .source-select__value .source-favicon {
+    gap: 4px;
 }

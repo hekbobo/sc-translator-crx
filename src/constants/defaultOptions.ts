@@ -61,7 +61,7 @@ const defaultOptions: DefaultOptions = {
     autoPlayAudioLangs: [],
     browserAIApiKey: '',
     browserAIBaseUrl: '',
-    browserAIModel: 'gpt-4o-mini'
+    browserAIModel: ''
 };
 
 export default defaultOptions;

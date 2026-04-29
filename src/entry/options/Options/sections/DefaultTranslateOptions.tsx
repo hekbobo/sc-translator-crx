@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Switch from '../../../../components/Switch';
 import { mtLangCode } from '../../../../constants/langCode';
 import { BROWSER_AI, translateSource } from '../../../../constants/translateSource';
@@ -9,6 +9,7 @@ import MultipleSourcesDisplay from '../../components/MultipleSourcesDisplay';
 import scOptions from '../../../../public/sc-options';
 import LanguageSelect from '../../../../components/LanguageSelect';
 import TextField from '../../../../components/TextField';
+import scBrowserAI from '../../../../public/sc-browser-ai';
 
 const useOptionsDependency: GetStorageKeys<
     'userLanguage' |
@@ -38,6 +39,8 @@ const DefaultTranslateOptions: React.FC = () => {
         browserAIBaseUrl,
         browserAIModel
     } = useOptions(useOptionsDependency);
+    const [aiTestState, setAiTestState] = useState<'idle' | 'testing' | 'success' | 'error'>('idle');
+    const [aiTestMessage, setAiTestMessage] = useState('');
 
     const availableSources = useMemo(
         () => translateSource.map(v => v.source),
@@ -57,6 +60,21 @@ const DefaultTranslateOptions: React.FC = () => {
         }
     }, [normalizedMultipleTranslateSourceList.length, sanitizedMultipleTranslateSourceList]);
 
+    const onTestAIConnection = async () => {
+        setAiTestState('testing');
+        setAiTestMessage('');
+
+        try {
+            await scBrowserAI.test?.();
+            setAiTestState('success');
+            setAiTestMessage(getMessage('optionsBrowserAITestSuccess'));
+        }
+        catch (err) {
+            setAiTestState('error');
+            setAiTestMessage((err as Error).message || getMessage('optionsBrowserAITestFailed'));
+        }
+    };
+
     return (
         <div className='opt-section default-translate-options'>
             <div className='opt-section-row default-translate-options__switch-row'>
@@ -66,7 +84,7 @@ const DefaultTranslateOptions: React.FC = () => {
                     onChange={v => scOptions.set({ translateEnglishOnly: v })}
                 />
             </div>
-            <div className='opt-section-row'>
+            <div className='opt-section-row default-translate-options__section'>
                 <div className='default-translate-options__label'>{getMessage('optionsSourceList')}</div>
                 <div className='default-translate-options__source-wrap'>
                     <MultipleSourcesDisplay
@@ -76,7 +94,7 @@ const DefaultTranslateOptions: React.FC = () => {
                     />
                 </div>
             </div>
-            <div className='opt-section-row default-translate-options__target-row'>
+            <div className='opt-section-row default-translate-options__section default-translate-options__target-row'>
                 <div className='default-translate-options__label'>{getMessage('optionsTo')}</div>
                 <div className='default-translate-options__target-control'>
                     <LanguageSelect
@@ -86,9 +104,22 @@ const DefaultTranslateOptions: React.FC = () => {
                     />
                 </div>
             </div>
-            {showBrowserAISettings && <div className='opt-section-row'>
+            {showBrowserAISettings && <div className='opt-section-row default-translate-options__section'>
                 <div className='default-translate-options__label'>{getMessage('optionsAI')}</div>
                 <div className='default-translate-options__ai-card'>
+                    <div className='default-translate-options__ai-actions'>
+                        <button
+                            className='default-translate-options__test-button'
+                            type='button'
+                            onClick={onTestAIConnection}
+                            disabled={aiTestState === 'testing'}
+                        >
+                            {aiTestState === 'testing' ? getMessage('optionsBrowserAITesting') : getMessage('optionsBrowserAITest')}
+                        </button>
+                        {aiTestMessage && <div className={`default-translate-options__test-status default-translate-options__test-status--${aiTestState}`}>
+                            {aiTestMessage}
+                        </div>}
+                    </div>
                     <TextField
                         label={getMessage('optionsBrowserAIBaseUrl')}
                         value={browserAIBaseUrl}
@@ -105,7 +136,7 @@ const DefaultTranslateOptions: React.FC = () => {
                         label={getMessage('optionsBrowserAIModel')}
                         value={browserAIModel}
                         onChange={value => scOptions.set({ browserAIModel: value.trim() })}
-                        placeholder='gpt-4o-mini'
+                        placeholder=''
                     />
                 </div>
             </div>}

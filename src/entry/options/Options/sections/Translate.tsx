@@ -32,30 +32,36 @@ const Translate: React.FC<TranslateProps> = ({ noCard = false }) => {
     } = useOptions(useOptionsDependency);
 
     const rows = (
-        <>
-            <div className='opt-section-row'>
+        <div className='web-page-translating__switch-list'>
+            <div className='web-page-translating__switch-item'>
+                <div className='web-page-translating__switch-copy'>
+                    <div className='web-page-translating__switch-title'>{getMessage('optionsTranslateWithKeyPress')}</div>
+                </div>
                 <Switch
-                    label={getMessage('optionsTranslateWithKeyPress')}
                     checked={translateWithKeyPress}
                     onChange={v => scOptions.set({ translateWithKeyPress: v })}
                 />
             </div>
-            <div className='opt-section-row'>
+            <div className='web-page-translating__switch-item'>
+                <div className='web-page-translating__switch-copy'>
+                    <div className='web-page-translating__switch-title'>{getMessage('optionsTranslateDirectly')}</div>
+                </div>
                 <Switch
-                    label={getMessage('optionsTranslateDirectly')}
                     checked={translateDirectly}
                     onChange={v => scOptions.set({ translateDirectly: v })}
                 />
             </div>
-            <div className='opt-section-row'>
+            <div className='web-page-translating__switch-item'>
+                <div className='web-page-translating__switch-copy'>
+                    <div className='web-page-translating__switch-title'>{getMessage('optionsDoNotRespondInTextBox')}</div>
+                    <div className='web-page-translating__switch-desc'>{getMessage('optionsDoNotRespondInTextBoxDescription')}</div>
+                </div>
                 <Switch
-                    label={getMessage('optionsDoNotRespondInTextBox')}
                     checked={doNotRespondInTextBox}
                     onChange={v => scOptions.set({ doNotRespondInTextBox: v })}
                 />
-                <div className='item-description'>{getMessage('optionsDoNotRespondInTextBoxDescription')}</div>
             </div>
-        </>
+        </div>
     );
 
     return noCard ? rows : <div className='opt-section'>{rows}</div>;

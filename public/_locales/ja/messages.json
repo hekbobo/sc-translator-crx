@@ -212,6 +212,18 @@
     "optionsBrowserAIModel": {
         "message": "AI モデル"
     },
+    "optionsBrowserAITest": {
+        "message": "接続をテスト"
+    },
+    "optionsBrowserAITesting": {
+        "message": "テスト中..."
+    },
+    "optionsBrowserAITestSuccess": {
+        "message": "接続に成功しました。"
+    },
+    "optionsBrowserAITestFailed": {
+        "message": "接続に失敗しました。"
+    },
     "optionsTranslateToTargetLanguage": {
         "message": "目標言語に翻訳します"
     },
