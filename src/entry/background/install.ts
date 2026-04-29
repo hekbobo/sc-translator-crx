@@ -15,22 +15,18 @@ const initStorageOnInstalled = (userLang: string, update: boolean) => {
 
     switch (userLang) {
         case LANG_ZH_CN:
-            defaultSet.userLanguage = LANG_ZH_CN;
             defaultSet.useDotCn = true;
             defaultSet.defaultAudioSource = BING_COM;
             defaultSet.webPageTranslateSource = MICROSOFT_COM;
             break;
         case LANG_JA:
-            defaultSet.userLanguage = LANG_JA;
-            break;
-        default:
-            userLang.includes('zh') && (defaultSet.userLanguage = LANG_ZH_CN);
             break;
     }
 
     preferredLangCode[LANG_ZH_CN].some((v) => (v.code === userLang)) && (defaultSet.preferredLanguage = userLang);
     defaultSet.preferredLanguage === 'en' && (defaultSet.secondPreferredLanguage = 'es');
-    defaultSet.webPageTranslateTo = defaultSet.preferredLanguage;
+    defaultSet.multipleTranslateTo = LANG_ZH_CN;
+    defaultSet.webPageTranslateTo = LANG_ZH_CN;
     defaultSet.translateButtonsTL = { first: '', second: defaultSet.preferredLanguage, third: defaultSet.secondPreferredLanguage };
 
     scOptions.get(null).then((d: any) => {

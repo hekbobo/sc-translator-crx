@@ -1,5 +1,5 @@
 import { GOOGLE_COM, BING_COM } from './translateSource';
-import { LANG_EN } from './langCode';
+import { LANG_EN, LANG_ZH_CN } from './langCode';
 import { styleVarsList } from './defaultStyleVars';
 import { defaultContextMenus } from './contextMenusIds';
 import { DefaultOptions } from '../types';
@@ -19,7 +19,7 @@ const defaultOptions: DefaultOptions = {
     translateEnglishOnly: true,
     multipleTranslateSourceList: [GOOGLE_COM, BING_COM],
     multipleTranslateFrom: '',
-    multipleTranslateTo: '',
+    multipleTranslateTo: LANG_ZH_CN,
     preferredLanguage: LANG_EN,
     secondPreferredLanguage: LANG_EN,
     styleVarsList: styleVarsList,
@@ -38,7 +38,7 @@ const defaultOptions: DefaultOptions = {
     textPreprocessingPreset: { convertCamelCase: false },
     translateButtons: defaultTranslateButtons,
     webPageTranslateSource: GOOGLE_COM,
-    webPageTranslateTo: LANG_EN,
+    webPageTranslateTo: LANG_ZH_CN,
     webPageTranslateDisplayMode: 1,
     afterSelectingTextRegExpList: [],
     translateButtonsTL: { first: '', second: LANG_EN, third: LANG_EN },
