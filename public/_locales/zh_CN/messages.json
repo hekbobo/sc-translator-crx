@@ -15,7 +15,7 @@
         "message": "朗读您选择的文本"
     },
     "extCallOutCommandDescription": {
-        "message": "在网页中唤出扩展"
+        "message": "在网页 in 唤出扩展"
     },
     "extToggleAutoInsertResultDescription": {
         "message": "切换“自动在网页中插入翻译结果”选项"
@@ -595,5 +595,32 @@
     },
     "hoverHighlighted": {
         "message": "鼠标悬停在高亮文本上时显示译文"
+    },
+    "optionsControlPanel": {
+        "message": "控制面板"
+    },
+    "optionsDefaultTranslateAndAIConfig": {
+        "message": "默认翻译与 AI 配置"
+    },
+    "optionsContactAndProjectDescription": {
+        "message": "联系与项目说明"
+    },
+    "optionsWebpageTranslationAndSelectionBehavior": {
+        "message": "网页翻译与划词行为"
+    },
+    "optionsContextMenusAndSorting": {
+        "message": "右键菜单与排序"
+    },
+    "optionsSettingsSubtitle": {
+        "message": "设置"
+    },
+    "popupCollection": {
+        "message": "收藏"
+    },
+    "popupHistory": {
+        "message": "历史"
+    },
+    "popupSettings": {
+        "message": "设置"
     }
 }

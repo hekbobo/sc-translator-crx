@@ -75,7 +75,7 @@
         "message": "選擇文本後展示按鈕"
     },
     "optionsShowButtonAfterSelectDescription": {
-        "message": "當你選擇一些文本並釋放鼠標左鍵後，將顯示你在下方所勾選的按鈕。按鈕的順序與你勾選的順序相關。如果你不想顯示任何按鈕，只需取消勾選所有按鈕即可。"
+        "message": "當你選擇一些文本並釋放鼠標左键後，將顯示你在下方所勾選的按鈕。按鈕的順序與你勾選的順序相關。如果你不想顯示任何按鈕，只需取消勾選所有按鈕即可。"
     },
     "optionsTranslateWithKeyPress": {
         "message": "按住 Ctrl 鍵並選擇文本後翻譯"
@@ -114,7 +114,7 @@
         "message": "首選語言"
     },
     "optionsPreferredLanguageDescription": {
-        "message": "當翻譯的目標語言為「自動選擇」時，會翻譯為「首選語言」。當文本的語言與「首選語言」相同時，將會翻譯為「次選語言」。"
+        "message": "當翻譯的目標語言為「自動選擇」時，會翻譯為「首選語言」。當文本的語言與「首选語言」相同時，將會翻譯為「次選語言」。"
     },
     "optionsCallOutCommandDescription": {
         "message": "當擴充功能在網頁中啟用時，點擊此快捷鍵可以直接喚出擴充功能。當在已喚出擴充功能的狀態下點擊此快捷鍵時，將會聚焦文本框。"
@@ -595,5 +595,32 @@
     },
     "hoverHighlighted": {
         "message": "滑鼠懸停在高亮文本上時顯示譯文"
+    },
+    "optionsControlPanel": {
+        "message": "控制面板"
+    },
+    "optionsDefaultTranslateAndAIConfig": {
+        "message": "默認翻譯與 AI 配置"
+    },
+    "optionsContactAndProjectDescription": {
+        "message": "聯繫與項目說明"
+    },
+    "optionsWebpageTranslationAndSelectionBehavior": {
+        "message": "網頁翻譯與劃詞行為"
+    },
+    "optionsContextMenusAndSorting": {
+        "message": "右鍵菜單與排序"
+    },
+    "optionsSettingsSubtitle": {
+        "message": "設置"
+    },
+    "popupCollection": {
+        "message": "收藏"
+    },
+    "popupHistory": {
+        "message": "歷史"
+    },
+    "popupSettings": {
+        "message": "設置"
     }
 }

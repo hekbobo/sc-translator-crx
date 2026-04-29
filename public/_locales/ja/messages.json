@@ -595,5 +595,32 @@
     },
     "hoverHighlighted": {
         "message": "ハイライトされたテキストの上にマウスを置いたときに訳文を表示します"
+    },
+    "optionsControlPanel": {
+        "message": "コントロールパネル"
+    },
+    "optionsDefaultTranslateAndAIConfig": {
+        "message": "デフォルトの翻訳とAI設定"
+    },
+    "optionsContactAndProjectDescription": {
+        "message": "連絡先とプロジェクトの説明"
+    },
+    "optionsWebpageTranslationAndSelectionBehavior": {
+        "message": "Webページ翻訳と選択動作"
+    },
+    "optionsContextMenusAndSorting": {
+        "message": "コンテキストメニューとソート"
+    },
+    "optionsSettingsSubtitle": {
+        "message": "設定"
+    },
+    "popupCollection": {
+        "message": "コレクション"
+    },
+    "popupHistory": {
+        "message": "履歴"
+    },
+    "popupSettings": {
+        "message": "設定"
     }
 }

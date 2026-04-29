@@ -43,7 +43,7 @@ const OptionsMenu: React.FC = () => {
                     <Logo style={{ fontSize: '30px' }} />
                     <div className='options-topbar__brand-copy'>
                         <div className='options-topbar__title'>{getMessage('optionsTitle')}</div>
-                        <div className='options-topbar__subtitle'>Settings</div>
+                        <div className='options-topbar__subtitle'>{getMessage('optionsSettingsSubtitle')}</div>
                     </div>
                 </div>
                 <div className='options-topbar__actions'>
@@ -54,7 +54,7 @@ const OptionsMenu: React.FC = () => {
 
             <aside className='options-sidebar'>
                 <div className='options-sidebar__hero'>
-                    <div className='options-sidebar__hero-title'>控制面板</div>
+                    <div className='options-sidebar__hero-title'>{getMessage('optionsControlPanel')}</div>
                     <div className='options-sidebar__hero-subtitle'>v5.10.0</div>
                 </div>
                 <nav className='options-sidebar__items'>

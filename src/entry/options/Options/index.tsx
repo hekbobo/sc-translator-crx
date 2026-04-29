@@ -19,7 +19,7 @@ const Options: React.FC = () => {
                             <div className='options-card__icon'>◎</div>
                             <div>
                                 <div className='options-card__title'>{getMessage('optionsDefaultTranslateOptions')}</div>
-                                <div className='options-card__subtitle'>默认翻译与 AI 配置</div>
+                                <div className='options-card__subtitle'>{getMessage('optionsDefaultTranslateAndAIConfig')}</div>
                             </div>
                         </div>
                         <DefaultTranslateOptions />
@@ -30,7 +30,7 @@ const Options: React.FC = () => {
                             <div className='options-card__icon'>↗</div>
                             <div>
                                 <div className='options-card__title'>{getMessage('optionsWebPageTranslating')}</div>
-                                <div className='options-card__subtitle'>整页翻译与划词行为</div>
+                                <div className='options-card__subtitle'>{getMessage('optionsWebpageTranslationAndSelectionBehavior')}</div>
                             </div>
                         </div>
                         <div className='options-card__body'>
@@ -44,7 +44,7 @@ const Options: React.FC = () => {
                             <div className='options-card__icon'>☰</div>
                             <div>
                                 <div className='options-card__title'>{getMessage('optionsContextMenus')}</div>
-                                <div className='options-card__subtitle'>右键菜单与排序</div>
+                                <div className='options-card__subtitle'>{getMessage('optionsContextMenusAndSorting')}</div>
                             </div>
                         </div>
                         <ContextMenus />
@@ -55,7 +55,7 @@ const Options: React.FC = () => {
                             <div className='options-card__icon'>i</div>
                             <div>
                                 <div className='options-card__title'>{getMessage('optionsAbout')}</div>
-                                <div className='options-card__subtitle'>联系与项目说明</div>
+                                <div className='options-card__subtitle'>{getMessage('optionsContactAndProjectDescription')}</div>
                             </div>
                         </div>
                         <div className='options-card__body'>

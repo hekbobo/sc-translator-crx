@@ -595,5 +595,32 @@
     },
     "hoverHighlighted": {
         "message": "Display the translation when the mouse hovers over the highlighted text"
+    },
+    "optionsControlPanel": {
+        "message": "Control Panel"
+    },
+    "optionsDefaultTranslateAndAIConfig": {
+        "message": "Default Translate & AI Configuration"
+    },
+    "optionsContactAndProjectDescription": {
+        "message": "Contact & Project Description"
+    },
+    "optionsWebpageTranslationAndSelectionBehavior": {
+        "message": "Webpage Translation & Selection Behavior"
+    },
+    "optionsContextMenusAndSorting": {
+        "message": "Context Menu & Sorting"
+    },
+    "optionsSettingsSubtitle": {
+        "message": "Settings"
+    },
+    "popupCollection": {
+        "message": "Collection"
+    },
+    "popupHistory": {
+        "message": "History"
+    },
+    "popupSettings": {
+        "message": "Settings"
     }
 }
