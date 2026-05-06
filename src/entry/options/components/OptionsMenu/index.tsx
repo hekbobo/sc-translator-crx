@@ -19,6 +19,16 @@ const OptionsMenu: React.FC = () => {
     const signal = useSignal();
     const windowSize = useWindowSize();
 
+    const versionLabel = (() => {
+        try {
+            const version = globalThis?.chrome?.runtime?.getManifest?.()?.version;
+            return version ? `v${version}` : 'v0.0.0';
+        }
+        catch {
+            return 'v0.0.0';
+        }
+    })();
+
     useEffect(() => {
         if (windowSize.width >= 1200) {
             setShowNavBarMenu(false);
@@ -55,7 +65,7 @@ const OptionsMenu: React.FC = () => {
             <aside className='options-sidebar'>
                 <div className='options-sidebar__hero'>
                     <div className='options-sidebar__hero-title'>{getMessage('optionsControlPanel')}</div>
-                    <div className='options-sidebar__hero-subtitle'>v5.10.0</div>
+                    <div className='options-sidebar__hero-subtitle'>{versionLabel}</div>
                 </div>
                 <nav className='options-sidebar__items'>
                     {menusItems.map((item) => (
@@ -83,7 +93,7 @@ const OptionsMenu: React.FC = () => {
                             <Logo style={{ fontSize: '30px' }} />
                             <div>
                                 <div className='options-topbar__title'>{getMessage('optionsTitle')}</div>
-                                <div className='options-topbar__subtitle'>v5.10.0</div>
+                                <div className='options-topbar__subtitle'>{versionLabel}</div>
                             </div>
                         </div>
                         <div className='nav-bar-menu__sidebar-items'>
